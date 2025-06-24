@@ -1,0 +1,106 @@
+{
+  "model_config": {
+    "segmentation_backbone": "swin_unetr",
+    "model_size": "base",
+    "img_size": 64,
+    "in_channels": 3,
+    "patch_size": 8,
+    "drop_rate": 0.1,
+    "attn_drop_rate": 0.1,
+    "drop_path_rate": 0.1,
+    "kan_grid_size": 8,
+    "use_llm": true
+  },
+  "training_config": {
+    "batch_size": 16,
+    "backbone_lr": 1e-4,
+    "head_lr": 3e-4,
+    "llm_lr": 5e-5,
+    "min_lr": 1e-6,
+    "weight_decay": 1e-5,
+    "epochs_per_dataset": 2,
+    "save_every": 5,
+    "num_workers": 4,
+    "gradient_clip_norm": 1.0,
+    "data_sampling": 0.1
+  },
+  "loss_config": {
+    "ce_weight": 0.5,
+    "dice_weight": 0.5,
+    "focal_alpha": 0.75,
+    "focal_gamma": 2.0,
+    "tversky_alpha": 0.3,
+    "tversky_beta": 0.7
+  },
+  "datasets": [
+    {
+      "name": "brain_mri_nd5",
+      "path": "data/classification/brain_mri_nd5",
+      "task": "classification",
+      "modality": "MRI",
+      "classes": [
+        "glioma",
+        "meningioma",
+        "none",
+        "pituitary"
+      ],
+      "num_classes": 4,
+      "limit_samples_fraction": 0.1,
+      "enabled": false
+    },
+    {
+      "name": "hf_brain_tumor",
+      "path": "data/classification/hf_brain_tumor",
+      "task": "classification",
+      "modality": "MRI",
+      "classes": [
+        "glioma",
+        "meningioma",
+        "none",
+        "pituitary"
+      ],
+      "num_classes": 4,
+      "limit_samples_fraction": 0.1,
+      "enabled": true
+    },
+    {
+      "name": "kvasir_seg",
+      "path": "data/segmentation/kvasir_seg",
+      "task": "segmentation",
+      "modality": "Endoscopic",
+      "num_classes": 2,
+      "mask_suffix": "_mask",
+      "limit_samples_fraction": 0.1,
+      "enabled": true
+    },
+    {
+      "name": "pancreas",
+      "path": "data/classification/pancreas",
+      "task": "classification",
+      "modality": "CT",
+      "classes": [
+        "NPancreas",
+        "PPancreas"
+      ],
+      "num_classes": 2,
+      "enabled": false
+    },
+    {
+      "name": "cvc_clinicdb",
+      "path": "data/segmentation/cvc_clinicdb",
+      "task": "segmentation",
+      "modality": "Endoscopic",
+      "num_classes": 2,
+      "mask_suffix": "_mask",
+      "enabled": false
+    }
+  ],
+  "finetune": {
+    "datasets": [ "hf_brain_tumor", "pancreas" ],
+    "checkpoint": "checkpoints/model_best.pth",
+    "epochs_per_dataset": 3,
+    "save_dir": "checkpoints/finetune"
+  },
+  "save_dir": "checkpoints",
+  "clean_checkpoints": true
+}
