@@ -208,6 +208,8 @@ class KANFoundationTrainer:
                     "limit_samples_fraction": limit_fraction,
                     "enabled": dataset.get("enabled", True),
                 }
+                # Use global train_split setting
+                dataset_config["train_split"] = self.config["training_config"].get("train_split", 0.8)
 
                 # Add task-specific configurations
                 if dataset["task"] == "classification":

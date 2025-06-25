@@ -30,6 +30,24 @@ def main():
     # Load configuration
     with open(args.config, "r") as f:
         config = json.load(f)
+    # Set random seeds for reproducibility
+    seed = config.get("training_config", {}).get("seed", None)
+    if seed is not None:
+        import random as _random
+        import numpy as _np
+        _random.seed(seed)
+        _np.random.seed(seed)
+        torch.manual_seed(seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(seed)
+        # enforce deterministic algorithms
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
+        # global flag for PyTorch 1.8+
+        try:
+            torch.use_deterministic_algorithms(True)
+        except AttributeError:
+            pass
 
     # Use CPU if specified or if CUDA is not available
     if args.device == "cpu" or not torch.cuda.is_available():

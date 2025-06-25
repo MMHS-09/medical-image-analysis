@@ -1,8 +1,8 @@
 {
   "model_config": {
-    "segmentation_backbone": "swin_unetr",
+    "segmentation_backbone": "unet2plus",
     "model_size": "base",
-    "img_size": 64,
+    "img_size": 128,
     "in_channels": 3,
     "patch_size": 8,
     "drop_rate": 0.1,
@@ -14,15 +14,17 @@
   "training_config": {
     "batch_size": 16,
     "backbone_lr": 1e-4,
-    "head_lr": 3e-4,
-    "llm_lr": 5e-5,
+    "head_lr": 1e-3,
+    "llm_lr": 1e-4,
     "min_lr": 1e-6,
     "weight_decay": 1e-5,
-    "epochs_per_dataset": 2,
+    "epochs_per_dataset": 5,
     "save_every": 5,
     "num_workers": 4,
     "gradient_clip_norm": 1.0,
-    "data_sampling": 0.1
+    "data_sampling": 1.0,
+    "train_split": 0.8,
+    "seed": 42
   },
   "loss_config": {
     "ce_weight": 0.5,
@@ -45,8 +47,7 @@
         "pituitary"
       ],
       "num_classes": 4,
-      "limit_samples_fraction": 0.1,
-      "enabled": false
+      "enabled": true
     },
     {
       "name": "hf_brain_tumor",
@@ -60,17 +61,6 @@
         "pituitary"
       ],
       "num_classes": 4,
-      "limit_samples_fraction": 0.1,
-      "enabled": true
-    },
-    {
-      "name": "kvasir_seg",
-      "path": "data/segmentation/kvasir_seg",
-      "task": "segmentation",
-      "modality": "Endoscopic",
-      "num_classes": 2,
-      "mask_suffix": "_mask",
-      "limit_samples_fraction": 0.1,
       "enabled": true
     },
     {
@@ -83,7 +73,16 @@
         "PPancreas"
       ],
       "num_classes": 2,
-      "enabled": false
+      "enabled": true
+    },
+    {
+      "name": "kvasir_seg",
+      "path": "data/segmentation/kvasir_seg",
+      "task": "segmentation",
+      "modality": "Endoscopic",
+      "num_classes": 2,
+      "mask_suffix": "_mask",
+      "enabled": true
     },
     {
       "name": "cvc_clinicdb",
@@ -92,7 +91,34 @@
       "modality": "Endoscopic",
       "num_classes": 2,
       "mask_suffix": "_mask",
-      "enabled": false
+      "enabled": true
+    },
+    {
+      "name": "btcv",
+      "path": "data/segmentation/btcv",
+      "task": "segmentation",
+      "modality": "CT",
+      "num_classes": 2,
+      "mask_suffix": "_mask",
+      "enabled": true
+    },
+    {
+      "name": "medseg_covid",
+      "path": "data/segmentation/medseg_covid",
+      "task": "segmentation",
+      "modality": "CT",
+      "num_classes": 2,
+      "mask_suffix": "_mask",
+      "enabled": true
+    },
+    {
+      "name": "medseg_liver",
+      "path": "data/segmentation/medseg_liver",
+      "task": "segmentation",
+      "modality": "CT",
+      "num_classes": 2,
+      "mask_suffix": "_mask",
+      "enabled": true
     }
   ],
   "finetune": {

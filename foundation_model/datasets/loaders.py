@@ -11,7 +11,7 @@ from core.augmentation import ImprovedTransforms, MedicalSegmentationAugmentatio
 from torch.utils.data import WeightedRandomSampler
 
 # Supported image extensions
-SUPPORTED_IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp", ".webp"]
+SUPPORTED_IMAGE_EXTENSIONS = [".png"]
 
 
 class ClassificationDataset(Dataset):
@@ -301,8 +301,10 @@ class MultiDatasetLoader:
             limit_samples = config.get("limit_samples", -1)
 
             if task == "classification":
-                train_dir = os.path.join(config["path"], "Training")
-                test_dir = os.path.join(config["path"], "Testing")
+                # Use dataset root for both training and testing (folders merged)
+                root_dir = config["path"]
+                train_dir = root_dir
+                test_dir = root_dir
 
                 # Classification augmentations and balancing sampler
                 # Use unified image size from loader
@@ -316,6 +318,18 @@ class MultiDatasetLoader:
                     modality=config.get("modality", "MRI"),
                     limit_samples_fraction=limit_samples_fraction,
                 )
+                # Balance classes by oversampling minority classes with augmentation
+                from collections import defaultdict
+                class_samples = defaultdict(list)
+                for img_path, label in train_dataset.samples:
+                    class_samples[label].append((img_path, label))
+                max_count = max(len(v) for v in class_samples.values())
+                balanced = []
+                for label, samples_list in class_samples.items():
+                    # duplicate minority class samples
+                    extras = random.choices(samples_list, k=(max_count - len(samples_list))) if len(samples_list) < max_count else []
+                    balanced.extend(samples_list + extras)
+                train_dataset.samples = balanced
 
                 # For test, use validation transforms
                 test_fraction = limit_samples_fraction * 0.2 if limit_samples_fraction is not None else None
@@ -351,8 +365,11 @@ class MultiDatasetLoader:
                 )
 
             elif task == "segmentation":
-                train_dir = os.path.join(config["path"], "Training")
-                test_dir = os.path.join(config["path"], "Testing")
+                # Use merged dataset root for segmentation (no separate Training/Testing folders)
+                root_dir = config["path"]
+                train_dir = root_dir
+                test_dir = root_dir
+
                 # Segmentation augmentation
                 # Use unified image size for segmentation augmentations
                 seg_aug = MedicalSegmentationAugmentation(img_size=self.img_size)
@@ -381,6 +398,10 @@ class MultiDatasetLoader:
                     mask_suffix=config.get("mask_suffix", "_mask"),
                     limit_samples_fraction=test_fraction,
                 )
+                # If no validation samples, ensure at least one
+                if len(test_dataset) == 0 and len(train_dataset) > 0:
+                    sample_pair = train_dataset.image_mask_pairs[0]
+                    test_dataset.image_mask_pairs = [sample_pair]
 
                 train_loader = DataLoader(
                     train_dataset,
@@ -400,6 +421,19 @@ class MultiDatasetLoader:
 
             else:
                 raise ValueError(f"Unsupported task: {task}")
+
+            # Perform automatic train/val split based on train_split
+            split_frac = config.get("train_split", 0.8)
+            if task == "classification":
+                full_samples = train_dataset.samples
+                split_idx = int(len(full_samples) * split_frac)
+                train_dataset.samples = full_samples[:split_idx]
+                test_dataset.samples = full_samples[split_idx:]
+            else:
+                full_pairs = train_dataset.image_mask_pairs
+                split_idx = int(len(full_pairs) * split_frac)
+                train_dataset.image_mask_pairs = full_pairs[:split_idx]
+                test_dataset.image_mask_pairs = full_pairs[split_idx:]
 
             # Create dataloaders
             dataset_info = {
