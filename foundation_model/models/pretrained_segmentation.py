@@ -305,11 +305,10 @@ class UNet2Plus(nn.Module):
         else:
             return None
 
-    def forward(self, encoder_features):
+    def forward(self, images, encoder_features):
         """Forward pass adapting to the encoder features format"""
-        # First converted to a standard tensor if needed
+        # For UNet2Plus, ignore 'images'; use encoder_features to build input
         if isinstance(encoder_features, list) and len(encoder_features) > 0:
-            # Get first feature and resize to input size
             feat = encoder_features[0]
             if feat.dim() == 3:  # [B, N, C] format
                 B, N, C = feat.shape
@@ -317,19 +316,18 @@ class UNet2Plus(nn.Module):
                 x = feat.permute(0, 2, 1).reshape(B, C, H, W)
             else:
                 x = feat
-                
             # Resize to expected input size
             x = F.interpolate(
-                x, size=(self.img_size, self.img_size), 
-                mode='bilinear', align_corners=False
+                x,
+                size=(self.img_size, self.img_size),
+                mode='bilinear',
+                align_corners=False,
             )
-            
             # Forward through UNet++
             seg_logits = self.forward_unet2plus(x)
-            return seg_logits, []  # Return logits and empty list for compatibility
-        else:
-            # Handle error case
-            return None, []
+            return seg_logits, []
+        # If no encoder_features provided or not list, return empty output
+        return None, []
 
 
 class PretrainedModels:
@@ -363,12 +361,13 @@ class PretrainedModels:
             class SwinUNETRWrapper(nn.Module):
                 def __init__(self):
                     super().__init__()
+                    # Instantiate MONAI SwinUNETR using explicit keyword arguments to match installed signature
                     self.model = SwinUNETR(
-                        img_size=(img_size, img_size, img_size),
+                        spatial_dims=3,
+                        img_size=(self.img_size, self.img_size, self.img_size),
                         in_chans=encoder_dims[0],
                         out_chans=num_classes,
                         feature_size=48,
-                        drop_rate=0.0
                     )
                     self.img_size = img_size
                 def forward(self, x, encoder_features=None):

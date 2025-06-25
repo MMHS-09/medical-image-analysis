@@ -676,13 +676,10 @@ class MedicalFoundationModel(nn.Module):
                 print(
                     f"WARNING: Segmentation decoder returned None, creating empty output tensor"
                 )
-                # Create a default output with zeros
-                batch_size = spatial_features[0].size(0)
-                num_classes = getattr(
-                    self.segmentation_decoders[task_id], "num_classes", 2
-                )
+                # Create a default output with zeros, enable gradients for backward compatibility
                 seg_output = torch.zeros(
-                    (batch_size, num_classes, H, W), device=spatial_features[0].device
+                    (batch_size, num_classes, input_size[0], input_size[1]),
+                    device=spatial_features[0].device,
                 )
 
             # Handle tuple return
@@ -709,6 +706,7 @@ class MedicalFoundationModel(nn.Module):
             # Return a fallback output for robustness
             batch_size = spatial_features[0].size(0)
             num_classes = getattr(self.segmentation_decoders[task_id], "num_classes", 2)
+            # Create a default output with zeros, enable gradients for backward compatibility
             seg_output = torch.zeros(
                 (batch_size, num_classes, input_size[0], input_size[1]),
                 device=spatial_features[0].device,

@@ -329,20 +329,22 @@ class MultiDatasetLoader:
                     # duplicate minority class samples
                     extras = random.choices(samples_list, k=(max_count - len(samples_list))) if len(samples_list) < max_count else []
                     balanced.extend(samples_list + extras)
-                train_dataset.samples = balanced
-
-                # For test, use validation transforms
-                test_fraction = limit_samples_fraction * 0.2 if limit_samples_fraction is not None else None
-
+                # Assign balanced samples, then apply train/validation split
+                split_frac = config.get("train_split", 0.8)
+                split_idx = int(len(balanced) * split_frac)
+                train_dataset.samples = balanced[:split_idx]
+                # Create validation dataset manually
+                val_samples = balanced[split_idx:]
                 test_dataset = ClassificationDataset(
                     root_dir=test_dir,
                     transform=val_transform,
-                    limit_samples=limit_samples // 5 if limit_samples > 0 else -1,
+                    limit_samples=-1,
                     modality=config.get("modality", "MRI"),
-                    limit_samples_fraction=test_fraction,
+                    limit_samples_fraction=None,
                 )
+                test_dataset.samples = val_samples
 
-                # Build a weighted sampler for balancing classes
+                # Build weighted sampler and data loaders based on split
                 labels = [label for _, label in train_dataset.samples]
                 class_counts = np.bincount(labels)
                 class_weights = 1.0 / (class_counts + 1e-8)
@@ -355,7 +357,6 @@ class MultiDatasetLoader:
                     num_workers=self.num_workers,
                     pin_memory=self.pin_memory,
                 )
-
                 test_loader = DataLoader(
                     test_dataset,
                     batch_size=self.batch_size,
@@ -421,19 +422,6 @@ class MultiDatasetLoader:
 
             else:
                 raise ValueError(f"Unsupported task: {task}")
-
-            # Perform automatic train/val split based on train_split
-            split_frac = config.get("train_split", 0.8)
-            if task == "classification":
-                full_samples = train_dataset.samples
-                split_idx = int(len(full_samples) * split_frac)
-                train_dataset.samples = full_samples[:split_idx]
-                test_dataset.samples = full_samples[split_idx:]
-            else:
-                full_pairs = train_dataset.image_mask_pairs
-                split_idx = int(len(full_pairs) * split_frac)
-                train_dataset.image_mask_pairs = full_pairs[:split_idx]
-                test_dataset.image_mask_pairs = full_pairs[split_idx:]
 
             # Create dataloaders
             dataset_info = {

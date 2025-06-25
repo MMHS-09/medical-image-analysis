@@ -70,7 +70,9 @@ class KANFoundationTrainer:
             drop_rate=config["model_config"].get("drop_rate", 0.1),
             attn_drop_rate=config["model_config"].get("attn_drop_rate", 0.1),
             drop_path_rate=config["model_config"].get("drop_path_rate", 0.1),
+            kan_grid_size=config["model_config"].get("kan_grid_size", 8),
             use_llm=config["model_config"].get("use_llm", False),
+            segmentation_backbone=config["model_config"].get("segmentation_backbone", "resnet18"),
         )
 
         self.model.to(device)

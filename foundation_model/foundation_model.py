@@ -7,6 +7,7 @@ and classification tasks using the Kolmogorov-Arnold Network architecture.
 """
 
 import os
+os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 
 # Set tokenizers parallelism to false before other imports to avoid warnings
 os.environ["TOKENIZERS_PARALLELISM"] = "false"

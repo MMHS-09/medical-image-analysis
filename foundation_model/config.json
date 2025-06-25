@@ -18,11 +18,11 @@
     "llm_lr": 1e-4,
     "min_lr": 1e-6,
     "weight_decay": 1e-5,
-    "epochs_per_dataset": 5,
+    "epochs_per_dataset": 200,
     "save_every": 5,
     "num_workers": 4,
     "gradient_clip_norm": 1.0,
-    "data_sampling": 1.0,
+    "data_sampling": 1,
     "train_split": 0.8,
     "seed": 42
   },
@@ -47,7 +47,7 @@
         "pituitary"
       ],
       "num_classes": 4,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "hf_brain_tumor",
@@ -61,7 +61,7 @@
         "pituitary"
       ],
       "num_classes": 4,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "pancreas",
@@ -73,7 +73,7 @@
         "PPancreas"
       ],
       "num_classes": 2,
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "kvasir_seg",
