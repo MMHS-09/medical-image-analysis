@@ -1,0 +1,52 @@
+training:
+  batch_size: 8     # Smaller batch size for quick testing
+  learning_rate: 0.001
+  num_epochs: 30     # Fewer epochs for quick testing
+  early_stopping_patience: 3
+  save_every_n_epochs: 2
+
+model:
+  backbone: "efficientnet_b3"
+  pretrained: true
+  num_classes: null  # Will be set based on dataset
+  dropout: 0.2
+
+data:
+  image_size: [64, 64]
+  max_samples_per_class: null  # Max samples per class for classification (null = all data)
+  max_samples_per_dataset: null  # Max samples per dataset for segmentation (null = all data)
+  data_fraction: 1.0 # Fraction of data to use for training
+  augmentation:
+    horizontal_flip: 0.5
+    vertical_flip: 0.3
+    rotation: 15
+    brightness: 0.2
+    contrast: 0.2
+    
+classification_datasets:
+  - name: "brain_mri_nd5"
+    classes: ["glioma", "meningioma", "none", "pituitary"]
+  - name: "hf_brain_tumor"
+    classes: ["glioma", "meningioma", "none", "pituitary"]
+  - name: "pancreas"
+    classes: ["NPancreas", "PPancreas"]
+
+segmentation_datasets:
+  - name: "btcv"
+    num_classes: 2  # Binary segmentation
+  - name: "cvc_clinicdb"
+    num_classes: 2
+  - name: "kvasir_seg"
+    num_classes: 2
+  - name: "medseg_covid"
+    num_classes: 2
+  - name: "medseg_liver"
+    num_classes: 2
+
+paths:
+  data_root: "./data"
+  models_dir: "./models"
+  results_dir: "./results"
+  logs_dir: "./logs"
+  logs_dir: "./logs"
+  results_dir: "./results"

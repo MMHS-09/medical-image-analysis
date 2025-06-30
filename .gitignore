@@ -1,1 +1,4 @@
 *.pth
+results/**/models/
+foundation_model/data/
+foundation_model/models/

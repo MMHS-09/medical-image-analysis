@@ -1,0 +1,103 @@
+{
+  "classification_brain_mri_nd5": {
+    "loss": 0.013790487900320943,
+    "accuracy": 0.9814450379533315,
+    "precision": 0.9821632945750227,
+    "recall": 0.9814450379533315,
+    "f1_score": 0.9815062085500333,
+    "precision_glioma": 0.997270245677889,
+    "recall_glioma": 0.9699115044247788,
+    "f1_glioma": 0.9834006280843428,
+    "precision_meningioma": 0.945031712473573,
+    "recall_meningioma": 0.9944382647385984,
+    "f1_meningioma": 0.9691056910569106,
+    "precision_none": 0.9983164983164983,
+    "recall_none": 0.9579967689822294,
+    "f1_none": 0.9777411376751854,
+    "precision_pituitary": 0.9891067538126361,
+    "recall_pituitary": 0.9988998899889989,
+    "f1_pituitary": 0.9939792008757526
+  },
+  "classification_hf_brain_tumor": {
+    "loss": 0.02679181349456718,
+    "accuracy": 0.9807829181494662,
+    "precision": 0.9810012840269887,
+    "recall": 0.9807829181494662,
+    "f1_score": 0.9807856657649499,
+    "precision_glioma": 0.974025974025974,
+    "recall_glioma": 0.9900990099009901,
+    "f1_glioma": 0.9819967266775778,
+    "precision_meningioma": 0.9723926380368099,
+    "recall_meningioma": 0.9875389408099688,
+    "f1_meningioma": 0.9799072642967542,
+    "precision_none": 0.9974683544303797,
+    "recall_none": 0.9656862745098039,
+    "f1_none": 0.9813200498132005,
+    "precision_pituitary": 0.976063829787234,
+    "recall_pituitary": 0.9839142091152815,
+    "f1_pituitary": 0.9799732977303071
+  },
+  "classification_pancreas": {
+    "loss": 0.0017786983057290358,
+    "accuracy": 0.9943181818181818,
+    "precision": 0.9944390715667311,
+    "recall": 0.9943181818181818,
+    "f1_score": 0.9943377604667927,
+    "precision_NPancreas": 0.9787234042553191,
+    "recall_NPancreas": 1.0,
+    "f1_NPancreas": 0.989247311827957,
+    "precision_PPancreas": 1.0,
+    "recall_PPancreas": 0.9923076923076923,
+    "f1_PPancreas": 0.9961389961389961
+  },
+  "segmentation_btcv": {
+    "loss": 0.13220757246017456,
+    "accuracy": 0.93487548828125,
+    "mean_iou": 0.5085183960781615,
+    "mean_dice": 0.5593193225274623,
+    "iou_Class_0": 0.9344916502889581,
+    "dice_Class_0": 0.9661366593640986,
+    "iou_Class_1": 0.08254514186736499,
+    "dice_Class_1": 0.15250198569082588
+  },
+  "segmentation_cvc_clinicdb": {
+    "loss": 0.015413458845237406,
+    "accuracy": 0.9688948964684959,
+    "mean_iou": 0.8318775988844076,
+    "mean_dice": 0.9022962226836724,
+    "iou_Class_0": 0.9664945533068287,
+    "dice_Class_0": 0.9829618410908746,
+    "iou_Class_1": 0.6972606444619865,
+    "dice_Class_1": 0.8216306042764702
+  },
+  "segmentation_kvasir_seg": {
+    "loss": 0.01870820052921772,
+    "accuracy": 0.94961669921875,
+    "mean_iou": 0.8261655719880754,
+    "mean_dice": 0.9003436896036459,
+    "iou_Class_0": 0.942535328924338,
+    "dice_Class_0": 0.9704176957710816,
+    "iou_Class_1": 0.7097958150518128,
+    "dice_Class_1": 0.8302696834362102
+  },
+  "segmentation_medseg_covid": {
+    "loss": 0.03776992037892342,
+    "accuracy": 0.9733642578125,
+    "mean_iou": 0.6829713319039578,
+    "mean_dice": 0.7752796693760715,
+    "iou_Class_0": 0.9728967667395718,
+    "dice_Class_0": 0.9862622141627718,
+    "iou_Class_1": 0.39304589706834364,
+    "dice_Class_1": 0.5642971245893711
+  },
+  "segmentation_medseg_liver": {
+    "loss": 0.018907100639560005,
+    "accuracy": 0.9916215376420454,
+    "mean_iou": 0.9088948668589034,
+    "mean_dice": 0.9503184856805691,
+    "iou_Class_0": 0.9912731896191512,
+    "dice_Class_0": 0.9956174720644344,
+    "iou_Class_1": 0.8265165440986555,
+    "dice_Class_1": 0.9050194992967038
+  }
+}
