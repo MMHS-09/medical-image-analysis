@@ -3,3 +3,12 @@ https://figshare.com/authors/MedSeg/9940190
 https://github.com/ziyangwang007/Awesome-Medical-Image-Segmentation-Dataset
 
 https://github.com/openmedlab/dataset/blob/main/SA-Med2D-20M.md
+
+
+
+
+for finetuning
+
+https://www.kaggle.com/datasets/orvile/pmram-bangladeshi-brain-cancer-mri-dataset
+
+https://www.kaggle.com/datasets/ozguraslank/brain-stroke-ct-dataset

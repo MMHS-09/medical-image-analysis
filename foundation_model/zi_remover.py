@@ -18,5 +18,5 @@ def remove_zone_identifier_files(root_path):
 
     print(f"\nTotal Zone.Identifier files removed: {removed_files_count}")
 
-root_directory = r"/home/jobayer/research/mhs/medical-image-analysis/fmodel/"
+root_directory = r"/home/jobayer/research/mhs/medical-image-analysis/"
 remove_zone_identifier_files(root_directory)
