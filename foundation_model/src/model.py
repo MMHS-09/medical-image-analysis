@@ -103,6 +103,9 @@ class FoundationModel(nn.Module):
             nn.Dropout(dropout),
             nn.Linear(512, num_classes)
         )
+        # Move the new head to the same device as the model
+        device = next(self.parameters()).device
+        self.classification_layers[dataset_name] = self.classification_layers[dataset_name].to(device)
     
     def add_segmentation_head(self, dataset_name: str, num_classes: int, dropout: float = 0.2):
         """Add a new segmentation head for a dataset"""
@@ -113,6 +116,9 @@ class FoundationModel(nn.Module):
             num_classes=num_classes,
             dropout=dropout
         )
+        # Move the new head to the same device as the model
+        device = next(self.parameters()).device
+        self.segmentation_layers[dataset_name] = self.segmentation_layers[dataset_name].to(device)
 
 
 class UNetDecoder(nn.Module):
@@ -195,29 +201,47 @@ class DecoderBlock(nn.Module):
         return x
 
 
-def create_foundation_model(config: dict) -> FoundationModel:
-    """Create foundation model based on configuration"""
+def create_foundation_model(
+    config: dict = None,
+    backbone: str = None,
+    pretrained: bool = None,
+    dropout: float = None,
+    classification_heads: dict = None,
+    segmentation_heads: dict = None
+) -> FoundationModel:
+    """Create foundation model based on configuration or direct parameters"""
     
-    # Prepare classification heads
-    classification_heads = {}
-    for dataset_config in config.get('classification_datasets', []):
-        dataset_name = dataset_config['name']
-        num_classes = len(dataset_config['classes'])
-        classification_heads[dataset_name] = num_classes
-    
-    # Prepare segmentation heads
-    segmentation_heads = {}
-    for dataset_config in config.get('segmentation_datasets', []):
-        dataset_name = dataset_config['name']
-        num_classes = dataset_config['num_classes']
-        segmentation_heads[dataset_name] = num_classes
-    
-    model = FoundationModel(
-        backbone=config['model']['backbone'],
-        pretrained=config['model']['pretrained'],
-        dropout=config['model']['dropout'],
-        classification_heads=classification_heads,
-        segmentation_heads=segmentation_heads
-    )
+    if config is not None:
+        # Use configuration-based creation
+        # Prepare classification heads
+        classification_heads = {}
+        for dataset_config in config.get('classification_datasets', []):
+            dataset_name = dataset_config['name']
+            num_classes = len(dataset_config['classes'])
+            classification_heads[dataset_name] = num_classes
+        
+        # Prepare segmentation heads
+        segmentation_heads = {}
+        for dataset_config in config.get('segmentation_datasets', []):
+            dataset_name = dataset_config['name']
+            num_classes = dataset_config['num_classes']
+            segmentation_heads[dataset_name] = num_classes
+        
+        model = FoundationModel(
+            backbone=config['model']['backbone'],
+            pretrained=config['model']['pretrained'],
+            dropout=config['model']['dropout'],
+            classification_heads=classification_heads,
+            segmentation_heads=segmentation_heads
+        )
+    else:
+        # Use direct parameters
+        model = FoundationModel(
+            backbone=backbone or "efficientnet-b3",
+            pretrained=pretrained if pretrained is not None else True,
+            dropout=dropout or 0.2,
+            classification_heads=classification_heads or {},
+            segmentation_heads=segmentation_heads or {}
+        )
     
     return model

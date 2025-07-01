@@ -50,7 +50,17 @@ class MedicalImageDataset(Dataset):
     def _load_classification_samples(self) -> List[Dict]:
         """Load classification samples with optional limits"""
         samples = []
-        dataset_path = os.path.join(self.data_path, "classification", self.dataset_name)
+        
+        # Handle different data path scenarios
+        if os.path.exists(self.data_path) and os.path.isdir(self.data_path):
+            # If data_path is a direct path to the dataset (for finetuning)
+            dataset_path = self.data_path
+        else:
+            # Default path construction (for training)
+            dataset_path = os.path.join(self.data_path, "classification", self.dataset_name)
+        
+        if not os.path.exists(dataset_path):
+            raise FileNotFoundError(f"Dataset path not found: {dataset_path}")
         
         for class_idx, class_name in enumerate(self.classes):
             class_path = os.path.join(dataset_path, class_name)
@@ -88,7 +98,17 @@ class MedicalImageDataset(Dataset):
     def _load_segmentation_samples(self) -> List[Dict]:
         """Load segmentation samples with optional limits"""
         samples = []
-        dataset_path = os.path.join(self.data_path, "segmentation", self.dataset_name)
+        
+        # Handle different data path scenarios
+        if os.path.exists(self.data_path) and os.path.isdir(self.data_path):
+            # If data_path is a direct path to the dataset (for finetuning)
+            dataset_path = self.data_path
+        else:
+            # Default path construction (for training)
+            dataset_path = os.path.join(self.data_path, "segmentation", self.dataset_name)
+        
+        if not os.path.exists(dataset_path):
+            raise FileNotFoundError(f"Dataset path not found: {dataset_path}")
         
         # Find all image and mask pairs
         image_files = []
@@ -239,11 +259,15 @@ def create_dataloaders(
     classes: Optional[List[str]] = None,
     batch_size: int = 16,
     num_workers: int = 4,
-    train_split: float = 0.8
+    train_split: float = 0.8,
+    data_path: Optional[str] = None
 ) -> Dict[str, DataLoader]:
     """Create train and validation dataloaders"""
     
-    data_path = config['paths']['data_root']
+    # Use custom data_path if provided, otherwise use config
+    if data_path is None:
+        data_path = config['paths']['data_root']
+    
     image_size = tuple(config['data']['image_size'])
     
     # Get data limiting parameters from config

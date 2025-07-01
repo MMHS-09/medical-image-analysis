@@ -12,9 +12,12 @@ import json
 class Visualizer:
     """Visualization utilities for medical image analysis"""
     
-    def __init__(self, save_dir: str = "./results"):
-        self.save_dir = save_dir
-        os.makedirs(save_dir, exist_ok=True)
+    def __init__(self, config=None, save_dir: str = "./results"):
+        if config is not None and 'paths' in config and 'results_dir' in config['paths']:
+            self.save_dir = config['paths']['results_dir']
+        else:
+            self.save_dir = save_dir
+        os.makedirs(self.save_dir, exist_ok=True)
         
         # Set style
         plt.style.use('default')
@@ -138,7 +141,7 @@ class Visualizer:
         # Save to CSV
         df.to_csv(file_path, index=False)
     
-    def save_training_history_to_csv(self, history: Dict[str, List[float]], dataset_name: str, task: str):
+    def save_training_history_to_csv(self, history: Dict[str, List[float]], dataset_name: str, task: str, prefix: str = ""):
         """Save training history to CSV file"""
         # Prepare data for CSV
         data = {}
@@ -167,7 +170,7 @@ class Visualizer:
         df['task'] = task
         
         # Save to CSV
-        csv_filename = f"{task}_{dataset_name}_training_history.csv"
+        csv_filename = f"{prefix}{task}_{dataset_name}_training_history.csv"
         csv_path = os.path.join(self.save_dir, csv_filename)
         df.to_csv(csv_path, index=False)
         

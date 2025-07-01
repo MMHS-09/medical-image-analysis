@@ -3,3 +3,4 @@ results/**/models/
 foundation_model/data/
 foundation_model/models/
 *:Zone.Identifier
+foundation_model/ft_results

@@ -5,6 +5,33 @@ training:
   early_stopping_patience: 3
   save_every_n_epochs: 2
 
+# Finetuning specific configuration
+finetuning:
+  foundation_model_path: "./models/foundation_model_final.pth"
+  learning_rate: 0.001  # Lower learning rate for finetuning
+  num_epochs: 1000      # Fewer epochs for finetuning
+  early_stopping_patience: 500
+  save_every_n_epochs: 250
+  freeze_backbone: false  # Whether to freeze backbone during finetuning
+  
+  # Task-specific datasets for finetuning
+  tasks:
+    # Example classification task
+    # - task: "classification"
+    #   dataset_name: "pmram"
+    #   classes: ["glioma", "meningioma", "normal", "pituitary"]
+    #   data_path: "./data/classification/pmram"
+    #   model_save_path: "./results/finetuned_pmram/finetuned_pmram.pth"
+    #   results_save_path: "./results/finetuned_pmram"
+
+    # Example segmentation task
+    - task: "segmentation"
+      dataset_name: "brain_stroke"
+      num_classes: 2
+      data_path: "./data/segmentation/brain_stroke"
+      model_save_path: "./ft_results/finetuned_pmram/finetuned_brain_stroke.pth"
+      results_save_path: "./ft_results/finetuned_pmram"
+
 model:
   backbone: "efficientnet_b3"
   pretrained: true

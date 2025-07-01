@@ -26,7 +26,7 @@ class FoundationModelInference:
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         
         # Load checkpoint
-        checkpoint = torch.load(model_path, map_location=self.device)
+        checkpoint = torch.load(model_path, map_location=self.device, weights_only=False)
         
         # Load config
         if config_path:

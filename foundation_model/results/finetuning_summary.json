@@ -1,0 +1,20 @@
+{
+  "finetuning_timestamp": "2025-07-01T12:00:39.276984",
+  "foundation_model_path": "./models/foundation_model_final.pth",
+  "tasks_completed": 1,
+  "results": {
+    "segmentation_brain_stroke": {
+      "final_loss": 0.028688108548521996,
+      "final_metrics": {
+        "loss": 0.028688108548521996,
+        "accuracy": 0.999176025390625,
+        "mean_iou": 0.8403891714119548,
+        "mean_dice": 0.9051231503588499,
+        "iou_Class_0": 0.9991745693997596,
+        "dice_Class_0": 0.9995871142956324,
+        "iou_Class_1": 0.68160377342415,
+        "dice_Class_1": 0.8106591864220675
+      }
+    }
+  }
+}
