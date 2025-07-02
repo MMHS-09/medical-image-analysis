@@ -1,17 +1,19 @@
 training:
-  batch_size: 8     # Smaller batch size for quick testing
+  batch_size: 32     # Smaller batch size for quick testing
   learning_rate: 0.001
-  num_epochs: 30     # Fewer epochs for quick testing
-  early_stopping_patience: 3
-  save_every_n_epochs: 2
+  num_epochs: 100     # Fewer epochs for quick testing
+  enable_early_stopping: false  # Enable/disable early stopping
+  early_stopping_patience: 1
+  save_every_n_epochs: 25
 
 # Finetuning specific configuration
 finetuning:
   foundation_model_path: "./models/foundation_model_final.pth"
   learning_rate: 0.001  # Lower learning rate for finetuning
-  num_epochs: 1000      # Fewer epochs for finetuning
-  early_stopping_patience: 500
-  save_every_n_epochs: 250
+  num_epochs: 10      # Fewer epochs for finetuning
+  enable_early_stopping: true  # Enable/disable early stopping for finetuning
+  early_stopping_patience: 5
+  save_every_n_epochs: 5
   freeze_backbone: false  # Whether to freeze backbone during finetuning
   
   # Task-specific datasets for finetuning
@@ -37,6 +39,8 @@ model:
   pretrained: true
   num_classes: null  # Will be set based on dataset
   dropout: 0.2
+  use_attention: true  # Enable CBAM and multi-head attention
+  num_attention_heads: 8  # Number of attention heads for classification
 
 data:
   image_size: [64, 64]
@@ -49,7 +53,7 @@ data:
     rotation: 15
     brightness: 0.2
     contrast: 0.2
-    
+
 classification_datasets:
   - name: "brain_mri_nd5"
     classes: ["glioma", "meningioma", "none", "pituitary"]
@@ -75,5 +79,8 @@ paths:
   models_dir: "./models"
   results_dir: "./results"
   logs_dir: "./logs"
-  logs_dir: "./logs"
-  results_dir: "./results"
+
+# Logging configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  suppress_model_loading_warnings: false  # Set to true to suppress expected model loading warnings

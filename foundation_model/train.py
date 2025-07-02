@@ -204,11 +204,16 @@ class FoundationModelTrainer:
         class_names = classes if classes else [f"Class_{i}" for i in range(num_classes)]
         metrics_calculator = create_metrics_calculator(task, num_classes, class_names)
         
-        # Setup early stopping
-        early_stopping = EarlyStopping(
-            patience=self.config['training']['early_stopping_patience'],
-            mode='min'
-        )
+        # Setup early stopping (if enabled)
+        early_stopping = None
+        if self.config['training'].get('enable_early_stopping', True):
+            early_stopping = EarlyStopping(
+                patience=self.config['training']['early_stopping_patience'],
+                mode='min'
+            )
+            logger.info(f"Early stopping enabled with patience: {self.config['training']['early_stopping_patience']}")
+        else:
+            logger.info("Early stopping disabled - training will run for full number of epochs")
         
         # Training loop
         best_val_loss = float('inf')
@@ -283,8 +288,8 @@ class FoundationModelTrainer:
                 best_val_loss = val_metrics['loss']
                 self.save_checkpoint(epoch, task, dataset_name, val_metrics['loss'])
             
-            # Early stopping check
-            if early_stopping(val_metrics['loss']):
+            # Early stopping check (if enabled)
+            if early_stopping is not None and early_stopping(val_metrics['loss']):
                 logger.info(f"Early stopping triggered at epoch {epoch+1}")
                 break
             

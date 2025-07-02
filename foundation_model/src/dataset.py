@@ -52,8 +52,8 @@ class MedicalImageDataset(Dataset):
         samples = []
         
         # Handle different data path scenarios
-        if os.path.exists(self.data_path) and os.path.isdir(self.data_path):
-            # If data_path is a direct path to the dataset (for finetuning)
+        # First, try if data_path is a direct path to the dataset (for finetuning)
+        if os.path.exists(os.path.join(self.data_path, self.classes[0] if self.classes else "dummy")):
             dataset_path = self.data_path
         else:
             # Default path construction (for training)
@@ -100,8 +100,9 @@ class MedicalImageDataset(Dataset):
         samples = []
         
         # Handle different data path scenarios
-        if os.path.exists(self.data_path) and os.path.isdir(self.data_path):
-            # If data_path is a direct path to the dataset (for finetuning)
+        # First, check if data_path contains image files directly (for finetuning)
+        test_files = glob.glob(os.path.join(self.data_path, "*.png")) + glob.glob(os.path.join(self.data_path, "*.jpg"))
+        if test_files:
             dataset_path = self.data_path
         else:
             # Default path construction (for training)

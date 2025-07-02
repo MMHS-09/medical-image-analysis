@@ -15,7 +15,7 @@ import json
 # Add src to path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
-from src.model import create_foundation_model
+from src.model import create_foundation_model, load_model_weights_safely
 from src.dataset import create_dataloaders
 from src.loss import get_loss_function
 from src.metric import create_metrics_calculator, EarlyStopping
@@ -104,11 +104,9 @@ class FoundationModelFineTuner:
             segmentation_heads=model_config.get('segmentation_heads', {})
         ).to(self.device)
         
-        # Load model weights
-        if 'model_state_dict' in checkpoint:
-            self.model.load_state_dict(checkpoint['model_state_dict'])
-        else:
-            self.model.load_state_dict(checkpoint)
+        # Load model weights with proper error handling
+        suppress_warnings = self.config.get('logging', {}).get('suppress_model_loading_warnings', False)
+        missing_keys, unexpected_keys = load_model_weights_safely(self.model, checkpoint, logger, suppress_warnings)
         
         logger.info(f"Foundation model loaded successfully")
         logger.info(f"Loaded classification heads: {list(self.model.classification_heads.keys())}")
@@ -253,11 +251,16 @@ class FoundationModelFineTuner:
         class_names = classes if classes else [f"Class_{i}" for i in range(num_classes)]
         metrics_calculator = create_metrics_calculator(task, num_classes, class_names)
         
-        # Setup early stopping
-        early_stopping = EarlyStopping(
-            patience=self.config['finetuning']['early_stopping_patience'],
-            mode='min'
-        )
+        # Setup early stopping (if enabled)
+        early_stopping = None
+        if self.config['finetuning'].get('enable_early_stopping', True):
+            early_stopping = EarlyStopping(
+                patience=self.config['finetuning']['early_stopping_patience'],
+                mode='min'
+            )
+            logger.info(f"Early stopping enabled with patience: {self.config['finetuning']['early_stopping_patience']}")
+        else:
+            logger.info("Early stopping disabled - finetuning will run for full number of epochs")
         
         # Training loop
         best_val_loss = float('inf')
@@ -329,8 +332,8 @@ class FoundationModelFineTuner:
                 best_val_loss = val_metrics['loss']
                 self.save_checkpoint(epoch, task, dataset_name, val_metrics['loss'], task_config)
             
-            # Early stopping check
-            if early_stopping(val_metrics['loss']):
+            # Early stopping check (if enabled)
+            if early_stopping is not None and early_stopping(val_metrics['loss']):
                 logger.info(f"Early stopping triggered at epoch {epoch+1}")
                 break
             

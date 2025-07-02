@@ -10,6 +10,7 @@ import albumentations as A
 from albumentations.pytorch import ToTensorV2
 import argparse
 import json
+import logging
 from typing import Dict, List, Union, Tuple, Optional
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -24,8 +25,11 @@ warnings.filterwarnings('ignore')
 # Add src to path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
-from src.model import create_foundation_model
+from src.model import create_foundation_model, load_model_weights_safely
 from src.visualization import Visualizer
+
+# Setup logger
+logger = logging.getLogger(__name__)
 
 
 class FoundationModelInference:
@@ -103,11 +107,8 @@ class FoundationModelInference:
             segmentation_heads=model_config.get('segmentation_heads', {})
         ).to(self.device)
         
-        # Load model weights
-        if 'model_state_dict' in checkpoint:
-            model.load_state_dict(checkpoint['model_state_dict'])
-        else:
-            model.load_state_dict(checkpoint)
+        # Load model weights with proper error handling
+        missing_keys, unexpected_keys = load_model_weights_safely(model, checkpoint, logger)
         
         model.eval()
         return model
