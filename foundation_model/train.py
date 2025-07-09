@@ -219,27 +219,35 @@ class FoundationModelTrainer:
         best_val_loss = float('inf')
         dataset_history = {'train_loss': [], 'val_loss': [], 'train_metrics': [], 'val_metrics': []}
         
+        # Keep track of final validation metrics calculator for confusion matrix
+        final_val_metrics_calculator = None
+        
         for epoch in range(self.config['training']['num_epochs']):
             # Training phase
+            train_metrics_calculator = create_metrics_calculator(task, num_classes, class_names)
             train_metrics = self.train_epoch(
                 model=self.model,
                 dataloader=dataloaders['train'],
                 loss_fn=loss_fn,
                 optimizer=optimizer,
-                metrics_calculator=metrics_calculator,
+                metrics_calculator=train_metrics_calculator,
                 task=task,
                 dataset_name=dataset_name
             )
             
-            # Validation phase
+            # Validation phase - create separate metrics calculator
+            val_metrics_calculator = create_metrics_calculator(task, num_classes, class_names)
             val_metrics = self.validate_epoch(
                 model=self.model,
                 dataloader=dataloaders['val'],
                 loss_fn=loss_fn,
-                metrics_calculator=metrics_calculator,
+                metrics_calculator=val_metrics_calculator,
                 task=task,
                 dataset_name=dataset_name
             )
+            
+            # Store the final validation metrics calculator
+            final_val_metrics_calculator = val_metrics_calculator
             
             # Update history
             dataset_history['train_loss'].append(train_metrics['loss'])
@@ -274,14 +282,27 @@ class FoundationModelTrainer:
                 val_dice = val_metrics.get('mean_dice', 0.0)
                 train_iou = train_metrics.get('mean_iou', 0.0)
                 val_iou = val_metrics.get('mean_iou', 0.0)
+                train_pixel_acc = train_metrics.get('pixel_accuracy', 0.0)
+                val_pixel_acc = val_metrics.get('pixel_accuracy', 0.0)
+                val_hausdorff = val_metrics.get('mean_hausdorff_distance', 0.0)
                 
                 logger.info(f"Train Loss: {train_metrics['loss']:.4f}, Val Loss: {val_metrics['loss']:.4f}")
                 logger.info(f"Train Dice: {train_dice:.4f}, Val Dice: {val_dice:.4f}")
                 logger.info(f"Train IoU: {train_iou:.4f}, Val IoU: {val_iou:.4f}")
+                logger.info(f"Train Pixel Acc: {train_pixel_acc:.4f}, Val Pixel Acc: {val_pixel_acc:.4f}")
+                
+                if val_hausdorff > 0:
+                    logger.info(f"Val Hausdorff Distance: {val_hausdorff:.4f}")
                 
                 # Also print to console for immediate feedback
-                print(f"Epoch {epoch+1}/{self.config['training']['num_epochs']} - "
-                      f"Loss: {val_metrics['loss']:.4f}, Dice: {val_dice:.4f}, IoU: {val_iou:.4f}")
+                if val_hausdorff > 0:
+                    print(f"Epoch {epoch+1}/{self.config['training']['num_epochs']} - "
+                          f"Loss: {val_metrics['loss']:.4f}, Dice: {val_dice:.4f}, IoU: {val_iou:.4f}, "
+                          f"Pixel Acc: {val_pixel_acc:.4f}, Hausdorff: {val_hausdorff:.4f}")
+                else:
+                    print(f"Epoch {epoch+1}/{self.config['training']['num_epochs']} - "
+                          f"Loss: {val_metrics['loss']:.4f}, Dice: {val_dice:.4f}, IoU: {val_iou:.4f}, "
+                          f"Pixel Acc: {val_pixel_acc:.4f}")
             
             # Save best model
             if val_metrics['loss'] < best_val_loss:
@@ -299,6 +320,16 @@ class FoundationModelTrainer:
         
         # Store history
         self.training_history[f"{task}_{dataset_name}"] = dataset_history
+        
+        # Save confusion matrix for classification tasks
+        if task == 'classification' and final_val_metrics_calculator is not None:
+            cm_save_path = os.path.join(
+                self.config['paths']['results_dir'], 
+                f"confusion_matrix_{dataset_name}.txt"
+            )
+            # Use the final validation metrics calculator which has the last epoch's predictions
+            final_val_metrics_calculator.save_confusion_matrix(cm_save_path, dataset_name)
+            logger.info(f"Confusion matrix saved: {cm_save_path}")
         
         # Plot training history
         plot_history = self._prepare_history_for_plotting(dataset_history)
@@ -328,6 +359,17 @@ class FoundationModelTrainer:
         else:
             print(f"  Dice Score: {final_metrics.get('mean_dice', 0):.4f}")
             print(f"  IoU Score: {final_metrics.get('mean_iou', 0):.4f}")
+            print(f"  Pixel Accuracy: {final_metrics.get('pixel_accuracy', 0):.4f}")
+            
+            # Add Hausdorff Distance if available
+            hausdorff_dist = final_metrics.get('mean_hausdorff_distance', 0)
+            if hausdorff_dist > 0:
+                print(f"  Hausdorff Distance: {hausdorff_dist:.4f}")
+            
+            # Add ASSD if available
+            assd = final_metrics.get('mean_assd', 0)
+            if assd > 0:
+                print(f"  Avg Symmetric Surface Distance: {assd:.4f}")
         
         print(f"{'='*60}\n")
         
@@ -380,7 +422,8 @@ class FoundationModelTrainer:
             else:  # segmentation
                 pbar.set_postfix({
                     'loss': f"{loss.item():.4f}",
-                    'dice': f"{current_metrics.get('mean_dice', 0):.3f}"
+                    'dice': f"{current_metrics.get('mean_dice', 0):.3f}",
+                    'pixel_acc': f"{current_metrics.get('pixel_accuracy', 0):.3f}"
                 })
         
         return metrics_calculator.compute_metrics()
@@ -426,7 +469,8 @@ class FoundationModelTrainer:
                 else:  # segmentation
                     pbar.set_postfix({
                         'loss': f"{loss.item():.4f}",
-                        'dice': f"{current_metrics.get('mean_dice', 0):.3f}"
+                        'dice': f"{current_metrics.get('mean_dice', 0):.3f}",
+                        'pixel_acc': f"{current_metrics.get('pixel_accuracy', 0):.3f}"
                     })
         
         return metrics_calculator.compute_metrics()
@@ -475,8 +519,11 @@ class FoundationModelTrainer:
         with open(results_path, 'w') as f:
             json.dump(all_results, f, indent=2)
         
-        # Create text summary
+        # Create text summary (now includes confusion matrix references)
         self.visualizer.create_results_summary(all_results)
+        
+        # Create enhanced summary with confusion matrix details
+        self.create_enhanced_summary(all_results)
         
         # Create metrics comparison plot
         self.visualizer.plot_metrics_comparison(all_results)
@@ -497,18 +544,140 @@ class FoundationModelTrainer:
         
         logger.info("Final summary created!")
     
+    def create_enhanced_summary(self, all_results):
+        """Create enhanced summary with confusion matrix details"""
+        summary_path = os.path.join(self.config['paths']['results_dir'], "enhanced_results_summary.txt")
+        
+        with open(summary_path, 'w') as f:
+            f.write("Medical Image Analysis - Enhanced Results Summary\n")
+            f.write("=" * 60 + "\n\n")
+            
+            # Separate classification and segmentation results
+            classification_results = {k: v for k, v in all_results.items() if k.startswith('classification_')}
+            segmentation_results = {k: v for k, v in all_results.items() if k.startswith('segmentation_')}
+            
+            # Classification Results Section
+            if classification_results:
+                f.write("CLASSIFICATION RESULTS\n")
+                f.write("=" * 30 + "\n\n")
+                
+                for dataset_name, metrics in classification_results.items():
+                    dataset_simple_name = dataset_name.replace('classification_', '')
+                    f.write(f"Dataset: {dataset_simple_name}\n")
+                    f.write("-" * 40 + "\n")
+                    
+                    # Main metrics
+                    f.write("Main Metrics:\n")
+                    for metric_name, value in metrics.items():
+                        if isinstance(value, float):
+                            f.write(f"  {metric_name}: {value:.4f}\n")
+                        else:
+                            f.write(f"  {metric_name}: {value}\n")
+                    
+                    # Confusion matrix files
+                    f.write("\nConfusion Matrix Files:\n")
+                    cm_text_file = f"confusion_matrix_{dataset_simple_name}.txt"
+                    cm_img_file = f"confusion_matrix_{dataset_simple_name}.png"
+                    f.write(f"  Text file: {cm_text_file}\n")
+                    f.write(f"  Image file: {cm_img_file}\n")
+                    
+                    # Check if confusion matrix files exist and read summary
+                    cm_path = os.path.join(self.config['paths']['results_dir'], cm_text_file)
+                    if os.path.exists(cm_path):
+                        f.write(f"\nConfusion Matrix Summary:\n")
+                        try:
+                            with open(cm_path, 'r') as cm_file:
+                                cm_content = cm_file.read()
+                                # Extract just the overall statistics section
+                                if "Overall Statistics:" in cm_content:
+                                    stats_section = cm_content.split("Overall Statistics:")[1]
+                                    f.write(f"  {stats_section.strip()}\n")
+                        except Exception as e:
+                            f.write(f"  Error reading confusion matrix: {e}\n")
+                    
+                    f.write("\n" + "="*50 + "\n\n")
+            
+            # Segmentation Results Section
+            if segmentation_results:
+                f.write("SEGMENTATION RESULTS\n")
+                f.write("=" * 30 + "\n\n")
+                
+                for dataset_name, metrics in segmentation_results.items():
+                    dataset_simple_name = dataset_name.replace('segmentation_', '')
+                    f.write(f"Dataset: {dataset_simple_name}\n")
+                    f.write("-" * 40 + "\n")
+                    
+                    # Main metrics
+                    f.write("Main Metrics:\n")
+                    for metric_name, value in metrics.items():
+                        if isinstance(value, float):
+                            f.write(f"  {metric_name}: {value:.4f}\n")
+                        else:
+                            f.write(f"  {metric_name}: {value}\n")
+                    
+                    f.write("\n" + "="*50 + "\n\n")
+            
+            # Overall Summary
+            f.write("OVERALL SUMMARY\n")
+            f.write("=" * 20 + "\n\n")
+            
+            # Best performing datasets
+            if classification_results:
+                best_classification = max(classification_results.items(), 
+                                        key=lambda x: x[1].get('accuracy', 0))
+                f.write(f"Best Classification Dataset: {best_classification[0]}\n")
+                f.write(f"  Accuracy: {best_classification[1].get('accuracy', 0):.4f}\n")
+                f.write(f"  F1-Score: {best_classification[1].get('f1_score', 0):.4f}\n\n")
+            
+            if segmentation_results:
+                best_segmentation = max(segmentation_results.items(), 
+                                      key=lambda x: x[1].get('mean_dice', 0))
+                f.write(f"Best Segmentation Dataset: {best_segmentation[0]}\n")
+                f.write(f"  Dice Score: {best_segmentation[1].get('mean_dice', 0):.4f}\n")
+                f.write(f"  IoU Score: {best_segmentation[1].get('mean_iou', 0):.4f}\n\n")
+            
+            # File locations
+            f.write("Generated Files:\n")
+            f.write("-" * 15 + "\n")
+            f.write("- all_results.json: Complete results in JSON format\n")
+            f.write("- results_summary.txt: Basic results summary\n")
+            f.write("- enhanced_results_summary.txt: This file\n")
+            f.write("- metrics_comparison.png: Visual comparison of metrics\n")
+            f.write("- all_training_histories.csv: Complete training history\n")
+            f.write("- final_metrics_summary.csv: Final metrics in CSV format\n")
+            
+            for dataset_name in classification_results.keys():
+                dataset_simple_name = dataset_name.replace('classification_', '')
+                f.write(f"- confusion_matrix_{dataset_simple_name}.txt: Confusion matrix details\n")
+                f.write(f"- confusion_matrix_{dataset_simple_name}.png: Confusion matrix plot\n")
+        
+        logger.info(f"Enhanced summary created: {summary_path}")
+        return summary_path
+    
     def _prepare_history_for_plotting(self, history):
         """Prepare history for plotting"""
         plot_history = {}
         
         # Extract metrics from train and val metrics
         if history['train_metrics']:
-            for key in history['train_metrics'][0].keys():
-                plot_history[f'train_{key}'] = [m[key] for m in history['train_metrics']]
+            # Get all possible keys from all epochs (some metrics might not be present in all epochs)
+            all_train_keys = set()
+            for metrics in history['train_metrics']:
+                all_train_keys.update(metrics.keys())
+            
+            for key in all_train_keys:
+                # Use .get() with default value to handle missing keys
+                plot_history[f'train_{key}'] = [m.get(key, 0.0) for m in history['train_metrics']]
                 
         if history['val_metrics']:
-            for key in history['val_metrics'][0].keys():
-                plot_history[f'val_{key}'] = [m[key] for m in history['val_metrics']]
+            # Get all possible keys from all epochs (some metrics might not be present in all epochs)
+            all_val_keys = set()
+            for metrics in history['val_metrics']:
+                all_val_keys.update(metrics.keys())
+            
+            for key in all_val_keys:
+                # Use .get() with default value to handle missing keys
+                plot_history[f'val_{key}'] = [m.get(key, 0.0) for m in history['val_metrics']]
         
         return plot_history
 

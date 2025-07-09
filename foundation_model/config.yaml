@@ -1,5 +1,5 @@
 training:
-  batch_size: 32     # Smaller batch size for quick testing
+  batch_size: 16     # Smaller batch size for quick testing
   learning_rate: 0.001
   num_epochs: 100     # Fewer epochs for quick testing
   enable_early_stopping: false  # Enable/disable early stopping
@@ -28,11 +28,11 @@ finetuning:
 
     # Example segmentation task
     - task: "segmentation"
-      dataset_name: "brain_stroke"
+      dataset_name: "brain_stroke_bleeding"
       num_classes: 2
-      data_path: "./data/segmentation/brain_stroke"
-      model_save_path: "./ft_results/finetuned_pmram/finetuned_brain_stroke.pth"
-      results_save_path: "./ft_results/finetuned_pmram"
+      data_path: "./data/segmentation/brain_stroke_bleeding"
+      model_save_path: "./ft_results/finetuned_brain_stroke_bleeding/brain_stroke_bleeding.pth"
+      results_save_path: "./ft_results/finetuned_brain_stroke_bleeding"
 
 model:
   backbone: "efficientnet_b3"
@@ -64,14 +64,16 @@ classification_datasets:
 
 segmentation_datasets:
   - name: "btcv"
+    num_classes: 2
+  - name: "medseg_covid"
     num_classes: 2  # Binary segmentation
+  - name: "medseg_liver"
+    num_classes: 2
+  - name: "brain_stroke"
+    num_classes: 2
   - name: "cvc_clinicdb"
     num_classes: 2
   - name: "kvasir_seg"
-    num_classes: 2
-  - name: "medseg_covid"
-    num_classes: 2
-  - name: "medseg_liver"
     num_classes: 2
 
 paths:

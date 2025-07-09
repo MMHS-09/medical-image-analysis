@@ -1,0 +1,49 @@
+Confusion Matrix for brain_mri_nd5
+========================================
+
+Classes: glioma, meningioma, none, pituitary
+
+Confusion Matrix:
+Rows: Actual, Columns: Predicted
+
+Actual\Predicted	glioma	meningioma	none	pituitary
+glioma	1099	1	0	0
+meningioma	1	886	0	0
+none	0	1	624	0
+pituitary	0	0	0	945
+
+Per-class Statistics:
+--------------------
+glioma:
+  Precision: 0.9991
+  Recall: 0.9991
+  F1-Score: 0.9991
+  Support: 1100.0
+
+meningioma:
+  Precision: 0.9977
+  Recall: 0.9989
+  F1-Score: 0.9983
+  Support: 887.0
+
+none:
+  Precision: 1.0000
+  Recall: 0.9984
+  F1-Score: 0.9992
+  Support: 625.0
+
+pituitary:
+  Precision: 1.0000
+  Recall: 1.0000
+  F1-Score: 1.0000
+  Support: 945.0
+
+Overall Statistics:
+--------------------
+Accuracy: 0.9992
+Macro Avg Precision: 0.9992
+Macro Avg Recall: 0.9991
+Macro Avg F1-Score: 0.9992
+Weighted Avg Precision: 0.9992
+Weighted Avg Recall: 0.9992
+Weighted Avg F1-Score: 0.9992

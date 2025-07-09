@@ -29,8 +29,8 @@ class Visualizer:
         is_segmentation = 'train_mean_dice' in history or 'train_mean_iou' in history
         
         if is_segmentation:
-            # For segmentation: Loss, Accuracy, Dice, IoU
-            fig, axes = plt.subplots(2, 2, figsize=(15, 10))
+            # For segmentation: Loss, Pixel Accuracy, Dice, IoU, Hausdorff Distance
+            fig, axes = plt.subplots(2, 3, figsize=(18, 10))
             fig.suptitle('Segmentation Training History', fontsize=16)
             
             # Loss plot
@@ -42,8 +42,17 @@ class Visualizer:
             axes[0, 0].legend()
             axes[0, 0].grid(True, alpha=0.3)
             
-            # Accuracy plot
-            if 'train_accuracy' in history:
+            # Pixel Accuracy plot
+            if 'train_pixel_accuracy' in history:
+                axes[0, 1].plot(history['train_pixel_accuracy'], label='Training Pixel Acc', marker='o')
+                axes[0, 1].plot(history.get('val_pixel_accuracy', []), label='Validation Pixel Acc', marker='s')
+                axes[0, 1].set_title('Pixel Accuracy')
+                axes[0, 1].set_xlabel('Epoch')
+                axes[0, 1].set_ylabel('Pixel Accuracy')
+                axes[0, 1].legend()
+                axes[0, 1].grid(True, alpha=0.3)
+            elif 'train_accuracy' in history:
+                # Fallback to general accuracy
                 axes[0, 1].plot(history['train_accuracy'], label='Training Accuracy', marker='o')
                 axes[0, 1].plot(history.get('val_accuracy', []), label='Validation Accuracy', marker='s')
                 axes[0, 1].set_title('Accuracy')
@@ -71,6 +80,49 @@ class Visualizer:
                 axes[1, 1].set_ylabel('IoU')
                 axes[1, 1].legend()
                 axes[1, 1].grid(True, alpha=0.3)
+            
+            # Hausdorff Distance plot
+            if 'train_mean_hausdorff_distance' in history or 'val_mean_hausdorff_distance' in history:
+                if 'train_mean_hausdorff_distance' in history:
+                    # Filter out zero values for better visualization
+                    train_hd = [x for x in history['train_mean_hausdorff_distance'] if x > 0]
+                    if train_hd:
+                        axes[0, 2].plot(range(len(train_hd)), train_hd, label='Training Hausdorff', marker='o')
+                
+                if 'val_mean_hausdorff_distance' in history:
+                    val_hd = [x for x in history['val_mean_hausdorff_distance'] if x > 0]
+                    if val_hd:
+                        axes[0, 2].plot(range(len(val_hd)), val_hd, label='Validation Hausdorff', marker='s')
+                
+                axes[0, 2].set_title('Hausdorff Distance')
+                axes[0, 2].set_xlabel('Epoch')
+                axes[0, 2].set_ylabel('Hausdorff Distance')
+                axes[0, 2].legend()
+                axes[0, 2].grid(True, alpha=0.3)
+            else:
+                # Hide the empty subplot
+                axes[0, 2].set_visible(False)
+            
+            # ASSD plot
+            if 'train_mean_assd' in history or 'val_mean_assd' in history:
+                if 'train_mean_assd' in history:
+                    train_assd = [x for x in history['train_mean_assd'] if x > 0]
+                    if train_assd:
+                        axes[1, 2].plot(range(len(train_assd)), train_assd, label='Training ASSD', marker='o')
+                
+                if 'val_mean_assd' in history:
+                    val_assd = [x for x in history['val_mean_assd'] if x > 0]
+                    if val_assd:
+                        axes[1, 2].plot(range(len(val_assd)), val_assd, label='Validation ASSD', marker='s')
+                
+                axes[1, 2].set_title('Average Symmetric Surface Distance')
+                axes[1, 2].set_xlabel('Epoch')
+                axes[1, 2].set_ylabel('ASSD')
+                axes[1, 2].legend()
+                axes[1, 2].grid(True, alpha=0.3)
+            else:
+                # Hide the empty subplot
+                axes[1, 2].set_visible(False)
         else:
             # For classification: Loss, Accuracy, F1, Precision/Recall
             fig, axes = plt.subplots(2, 2, figsize=(15, 10))
@@ -481,6 +533,14 @@ class Visualizer:
                         f.write(f"{metric_name}: {value:.4f}\n")
                     else:
                         f.write(f"{metric_name}: {value}\n")
+                
+                # Add confusion matrix reference for classification tasks
+                if dataset_name.startswith('classification_'):
+                    dataset_simple_name = dataset_name.replace('classification_', '')
+                    cm_file = f"confusion_matrix_{dataset_simple_name}.txt"
+                    cm_img_file = f"confusion_matrix_{dataset_simple_name}.png"
+                    f.write(f"\nConfusion Matrix: {cm_file}\n")
+                    f.write(f"Confusion Matrix Plot: {cm_img_file}\n")
                 
                 f.write("\n")
         

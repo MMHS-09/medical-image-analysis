@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
 import numpy as np
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
 from typing import Dict, List, Tuple, Optional
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -87,18 +87,16 @@ class MetricsCalculator:
         y_pred = np.array(self.predictions)
         
         # Basic metrics
-        accuracy = accuracy_score(y_true, y_pred)
+        pixel_accuracy = accuracy_score(y_true, y_pred)
         
         # IoU calculation
         iou_scores = []
         dice_scores = []
-        hausdorff_distances = []
+        hausdorff_distances_per_class = []
         assd_scores = []
         
-        # Need to reshape for surface distance calculations
-        # Assuming we can reconstruct the original image dimensions
-        # For now, we'll calculate these metrics on smaller patches or skip if too memory intensive
-        calculate_surface_metrics = len(y_true) < 1000000  # Only for smaller images
+        # More permissive surface metrics calculation
+        calculate_surface_metrics = len(y_true) < 5000000  # Further increased threshold
         
         for class_idx in range(self.num_classes):
             # Binary masks for current class
@@ -115,42 +113,97 @@ class MetricsCalculator:
             dice = (2.0 * intersection) / (true_mask.sum() + pred_mask.sum() + 1e-7)
             dice_scores.append(dice)
             
-            # Advanced surface metrics (only for binary segmentation and manageable sizes)
-            if calculate_surface_metrics and self.num_classes == 2 and class_idx == 1:
+            # Enhanced Hausdorff Distance calculation for each class
+            if calculate_surface_metrics:
                 try:
-                    # Try to estimate image dimensions (assuming square images)
-                    img_size = int(np.sqrt(len(y_true)))
-                    if img_size * img_size == len(y_true):
-                        true_mask_2d = true_mask.reshape(img_size, img_size)
-                        pred_mask_2d = pred_mask.reshape(img_size, img_size)
+                    # Try multiple possible image dimensions
+                    total_pixels = len(y_true)
+                    possible_dims = []
+                    
+                    # Common image dimensions (expanded list)
+                    common_dims = [16, 32, 64, 96, 128, 192, 224, 256, 384, 512, 768, 1024]
+                    
+                    # Try square dimensions
+                    for dim in common_dims:
+                        if dim * dim == total_pixels:
+                            possible_dims.append((dim, dim))
+                    
+                    # Try rectangular dimensions
+                    for height in common_dims:
+                        for width in common_dims:
+                            if height * width == total_pixels:
+                                possible_dims.append((height, width))
+                                if len(possible_dims) >= 5:  # Limit to avoid too many combinations
+                                    break
+                        if len(possible_dims) >= 5:
+                            break
+                    
+                    # Try factor-based dimensions
+                    if not possible_dims:
+                        for factor in range(2, int(np.sqrt(total_pixels)) + 1):
+                            if total_pixels % factor == 0:
+                                width = factor
+                                height = total_pixels // factor
+                                possible_dims.append((height, width))
+                                if len(possible_dims) >= 5:
+                                    break
+                    
+                    # If we still can't determine dimensions, try square root
+                    if not possible_dims:
+                        img_size = int(np.sqrt(total_pixels))
+                        if img_size * img_size == total_pixels:
+                            possible_dims.append((img_size, img_size))
+                    
+                    # Use the first valid dimension
+                    if possible_dims:
+                        height, width = possible_dims[0]
+                        true_mask_2d = true_mask.reshape(height, width)
+                        pred_mask_2d = pred_mask.reshape(height, width)
                         
+                        # Calculate Hausdorff distance for all classes (including background)
                         hd = hausdorff_distance(pred_mask_2d, true_mask_2d)
-                        assd = average_symmetric_surface_distance(pred_mask_2d, true_mask_2d)
                         
-                        # Handle infinite values
+                        # Handle infinite and zero values more permissively
                         if np.isfinite(hd):
-                            hausdorff_distances.append(hd)
-                        if np.isfinite(assd):
-                            assd_scores.append(assd)
-                except:
-                    # Skip surface metrics if calculation fails
+                            hausdorff_distances_per_class.append(hd)
+                            
+                            # Calculate ASSD for foreground classes
+                            if class_idx > 0:  # Skip background class for ASSD
+                                assd = average_symmetric_surface_distance(pred_mask_2d, true_mask_2d)
+                                if np.isfinite(assd):
+                                    assd_scores.append(assd)
+                                
+                except Exception as e:
+                    # Continue to next class instead of skipping all surface metrics
                     pass
         
+        # Calculate mean metrics
         mean_iou = np.mean(iou_scores)
         mean_dice = np.mean(dice_scores)
         
         metrics = {
             "loss": avg_loss,
-            "accuracy": accuracy,
+            "pixel_accuracy": pixel_accuracy,  # Always include pixel accuracy
+            "accuracy": pixel_accuracy,  # Keep backward compatibility
             "mean_iou": mean_iou,
             "mean_dice": mean_dice
         }
         
-        # Add surface distance metrics if available
-        if hausdorff_distances:
-            metrics["hausdorff_distance"] = np.mean(hausdorff_distances)
+        # Add Hausdorff Distance metrics (more permissive)
+        if hausdorff_distances_per_class:
+            # Filter out invalid values before calculating statistics
+            valid_hausdorff = [h for h in hausdorff_distances_per_class if h >= 0]
+            if valid_hausdorff:
+                metrics["mean_hausdorff_distance"] = np.mean(valid_hausdorff)
+                metrics["max_hausdorff_distance"] = np.max(valid_hausdorff)
+                metrics["min_hausdorff_distance"] = np.min(valid_hausdorff)
+        
+        # Add Average Symmetric Surface Distance
         if assd_scores:
-            metrics["avg_symmetric_surface_distance"] = np.mean(assd_scores)
+            valid_assd = [a for a in assd_scores if a >= 0]
+            if valid_assd:
+                metrics["mean_assd"] = np.mean(valid_assd)
+                metrics["avg_symmetric_surface_distance"] = np.mean(valid_assd)  # Keep backward compatibility
         
         # Per-class IoU and Dice
         for i, class_name in enumerate(self.class_names):
@@ -158,8 +211,102 @@ class MetricsCalculator:
                 metrics[f"iou_{class_name}"] = iou_scores[i]
                 metrics[f"dice_{class_name}"] = dice_scores[i]
         
+        # Add per-class Hausdorff distances (for all classes)
+        if hausdorff_distances_per_class:
+            for i, class_name in enumerate(self.class_names):
+                if i < len(hausdorff_distances_per_class) and hausdorff_distances_per_class[i] >= 0:
+                    metrics[f"hausdorff_{class_name}"] = hausdorff_distances_per_class[i]
+        
         return metrics
     
+    def get_confusion_matrix(self) -> np.ndarray:
+        """Get confusion matrix for classification tasks"""
+        if self.task != "classification" or not self.predictions:
+            return None
+        
+        y_true = np.array(self.targets)
+        y_pred = np.array(self.predictions)
+        
+        return confusion_matrix(y_true, y_pred)
+    
+    def save_confusion_matrix(self, save_path: str, dataset_name: str = "Unknown") -> str:
+        """Save confusion matrix as both image and text"""
+        if self.task != "classification" or not self.predictions:
+            return None
+        
+        y_true = np.array(self.targets)
+        y_pred = np.array(self.predictions)
+        
+        cm = confusion_matrix(y_true, y_pred)
+        
+        # Create figure
+        plt.figure(figsize=(10, 8))
+        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+                   xticklabels=self.class_names, yticklabels=self.class_names)
+        plt.title(f'Confusion Matrix - {dataset_name}')
+        plt.xlabel('Predicted')
+        plt.ylabel('Actual')
+        plt.tight_layout()
+        
+        # Save image
+        img_path = save_path.replace('.txt', '.png')
+        plt.savefig(img_path, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        # Save as text file
+        with open(save_path, 'w') as f:
+            f.write(f"Confusion Matrix for {dataset_name}\n")
+            f.write("=" * 40 + "\n\n")
+            
+            # Write class labels
+            f.write("Classes: " + ", ".join(self.class_names) + "\n\n")
+            
+            # Write confusion matrix
+            f.write("Confusion Matrix:\n")
+            f.write("Rows: Actual, Columns: Predicted\n\n")
+            
+            # Header
+            f.write("Actual\\Predicted")
+            for class_name in self.class_names:
+                f.write(f"\t{class_name}")
+            f.write("\n")
+            
+            # Matrix rows
+            for i, class_name in enumerate(self.class_names):
+                f.write(f"{class_name}")
+                for j in range(len(self.class_names)):
+                    f.write(f"\t{cm[i, j]}")
+                f.write("\n")
+            
+            # Additional statistics
+            f.write("\nPer-class Statistics:\n")
+            f.write("-" * 20 + "\n")
+            
+            # Calculate per-class precision, recall, f1
+            from sklearn.metrics import classification_report
+            report = classification_report(y_true, y_pred, target_names=self.class_names, output_dict=True)
+            
+            for class_name in self.class_names:
+                if class_name in report:
+                    f.write(f"{class_name}:\n")
+                    f.write(f"  Precision: {report[class_name]['precision']:.4f}\n")
+                    f.write(f"  Recall: {report[class_name]['recall']:.4f}\n")
+                    f.write(f"  F1-Score: {report[class_name]['f1-score']:.4f}\n")
+                    f.write(f"  Support: {report[class_name]['support']}\n\n")
+            
+            # Overall statistics
+            f.write("Overall Statistics:\n")
+            f.write("-" * 20 + "\n")
+            f.write(f"Accuracy: {report['accuracy']:.4f}\n")
+            f.write(f"Macro Avg Precision: {report['macro avg']['precision']:.4f}\n")
+            f.write(f"Macro Avg Recall: {report['macro avg']['recall']:.4f}\n")
+            f.write(f"Macro Avg F1-Score: {report['macro avg']['f1-score']:.4f}\n")
+            f.write(f"Weighted Avg Precision: {report['weighted avg']['precision']:.4f}\n")
+            f.write(f"Weighted Avg Recall: {report['weighted avg']['recall']:.4f}\n")
+            f.write(f"Weighted Avg F1-Score: {report['weighted avg']['f1-score']:.4f}\n")
+        
+        return img_path
+
     def plot_confusion_matrix(self, save_path: Optional[str] = None) -> plt.Figure:
         """Plot confusion matrix (for classification tasks)"""
         if self.task != "classification" or not self.predictions:
