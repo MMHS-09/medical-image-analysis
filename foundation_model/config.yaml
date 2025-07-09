@@ -1,7 +1,7 @@
 training:
-  batch_size: 16     # Smaller batch size for quick testing
+  batch_size: 32     # Smaller batch size for quick testing
   learning_rate: 0.001
-  num_epochs: 100     # Fewer epochs for quick testing
+  num_epochs: 200     # Fewer epochs for quick testing
   enable_early_stopping: false  # Enable/disable early stopping
   early_stopping_patience: 1
   save_every_n_epochs: 25
@@ -10,8 +10,8 @@ training:
 finetuning:
   foundation_model_path: "./models/foundation_model_final.pth"
   learning_rate: 0.001  # Lower learning rate for finetuning
-  num_epochs: 10      # Fewer epochs for finetuning
-  enable_early_stopping: true  # Enable/disable early stopping for finetuning
+  num_epochs: 100      # Fewer epochs for finetuning
+  enable_early_stopping: false  # Enable/disable early stopping for finetuning
   early_stopping_patience: 5
   save_every_n_epochs: 5
   freeze_backbone: false  # Whether to freeze backbone during finetuning
@@ -23,16 +23,16 @@ finetuning:
     #   dataset_name: "pmram"
     #   classes: ["glioma", "meningioma", "normal", "pituitary"]
     #   data_path: "./data/classification/pmram"
-    #   model_save_path: "./results/finetuned_pmram/finetuned_pmram.pth"
-    #   results_save_path: "./results/finetuned_pmram"
+    #   model_save_path: "./ft_results/finetuned_pmram/finetuned_pmram.pth"
+    #   results_save_path: "./ft_results/finetuned_pmram"
 
     # Example segmentation task
     - task: "segmentation"
       dataset_name: "brain_stroke_bleeding"
       num_classes: 2
       data_path: "./data/segmentation/brain_stroke_bleeding"
-      model_save_path: "./ft_results/finetuned_brain_stroke_bleeding/brain_stroke_bleeding.pth"
-      results_save_path: "./ft_results/finetuned_brain_stroke_bleeding"
+      model_save_path: "./ft_results/finetuned_bleeding/finetuned_bleeding.pth"
+      results_save_path: "./ft_results/finetuned_bleeding"
 
 model:
   backbone: "efficientnet_b3"
@@ -64,12 +64,10 @@ classification_datasets:
 
 segmentation_datasets:
   - name: "btcv"
-    num_classes: 2
-  - name: "medseg_covid"
     num_classes: 2  # Binary segmentation
-  - name: "medseg_liver"
+  - name: "medseg_covid"
     num_classes: 2
-  - name: "brain_stroke"
+  - name: "medseg_liver"
     num_classes: 2
   - name: "cvc_clinicdb"
     num_classes: 2
@@ -81,6 +79,29 @@ paths:
   models_dir: "./models"
   results_dir: "./results"
   logs_dir: "./logs"
+
+# Inference configuration
+inference:
+  # Model and dataset settings
+  model_path: "./ft_results/finetuned_bleeding/finetuned_bleeding.pth"
+  dataset_path: "./data/segmentation/brain_stroke_bleeding_test"
+  dataset_name: "brain_stroke_bleeding"
+  task: "segmentation"  # classification or segmentation
+  output_dir: "./inference_results"
+  
+  # Visualization settings
+  visualize: true
+  max_samples_viz: 10  # Number of samples to include in PDF visualization (rows)
+  
+  # Image preprocessing
+  image_size: [64, 64]
+  normalization:
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
+  
+  # Metrics settings
+  save_detailed_results: true
+  generate_report: true
 
 # Logging configuration
 logging:

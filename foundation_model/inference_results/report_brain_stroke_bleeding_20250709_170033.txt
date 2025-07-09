@@ -1,0 +1,32 @@
+FOUNDATION MODEL INFERENCE REPORT
+==================================================
+
+Generated: 2025-07-09 17:00:33
+Task: segmentation
+Dataset: brain_stroke_bleeding
+Dataset Path: data/segmentation/brain_stroke_bleeding_test
+Model Path: ./ft_results/finetuned_bleeding/finetuned_bleeding.pth
+Output Directory: inference_results
+
+SUMMARY
+--------------------
+Total samples processed: 100
+Available datasets in model: ['btcv', 'medseg_covid', 'medseg_liver', 'cvc_clinicdb', 'kvasir_seg', 'brain_stroke_bleeding']
+
+METRICS
+--------------------
+avg_dice_score: 0.5887
+std_dice_score: 0.3082
+avg_iou: 0.4794
+std_iou: 0.2884
+avg_pixel_accuracy: 0.9947
+std_pixel_accuracy: 0.0045
+avg_sensitivity: 0.6326
+std_sensitivity: 0.3190
+avg_specificity: 0.9975
+std_specificity: 0.0023
+avg_precision: 0.6047
+std_precision: 0.3206
+avg_f1_score: 0.5887
+std_f1_score: 0.3082
+num_samples: 100

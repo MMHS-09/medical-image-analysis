@@ -1,0 +1,112 @@
+Medical Image Analysis - Foundation Model Results
+==================================================
+
+Dataset: classification_brain_mri_nd5
+------------------------------
+loss: 0.0002
+accuracy: 0.9989
+precision: 0.9989
+recall: 0.9989
+f1_score: 0.9989
+precision_glioma: 0.9991
+recall_glioma: 0.9981
+f1_glioma: 0.9986
+precision_meningioma: 0.9989
+recall_meningioma: 0.9989
+f1_meningioma: 0.9989
+precision_none: 0.9984
+recall_none: 0.9984
+f1_none: 0.9984
+precision_pituitary: 0.9989
+recall_pituitary: 1.0000
+f1_pituitary: 0.9995
+
+Dataset: classification_hf_brain_tumor
+------------------------------
+loss: 0.0000
+accuracy: 1.0000
+precision: 1.0000
+recall: 1.0000
+f1_score: 1.0000
+precision_glioma: 1.0000
+recall_glioma: 1.0000
+f1_glioma: 1.0000
+precision_meningioma: 1.0000
+recall_meningioma: 1.0000
+f1_meningioma: 1.0000
+precision_none: 1.0000
+recall_none: 1.0000
+f1_none: 1.0000
+precision_pituitary: 1.0000
+recall_pituitary: 1.0000
+f1_pituitary: 1.0000
+
+Dataset: classification_pancreas
+------------------------------
+loss: 0.0005
+accuracy: 0.9943
+precision: 0.9945
+recall: 0.9943
+f1_score: 0.9943
+precision_NPancreas: 0.9737
+recall_NPancreas: 1.0000
+f1_NPancreas: 0.9867
+precision_PPancreas: 1.0000
+recall_PPancreas: 0.9928
+f1_PPancreas: 0.9964
+
+Dataset: segmentation_btcv
+------------------------------
+loss: 0.0917
+accuracy: 0.9898
+mean_iou: 0.4949
+mean_dice: 0.4974
+iou_Class_0: 0.9898
+dice_Class_0: 0.9949
+iou_Class_1: 0.0000
+dice_Class_1: 0.0000
+
+Dataset: segmentation_medseg_covid
+------------------------------
+loss: 0.0120
+accuracy: 0.9880
+mean_iou: 0.4940
+mean_dice: 0.4970
+iou_Class_0: 0.9880
+dice_Class_0: 0.9940
+iou_Class_1: 0.0000
+dice_Class_1: 0.0000
+
+Dataset: segmentation_medseg_liver
+------------------------------
+loss: 0.0066
+accuracy: 0.9972
+mean_iou: 0.9610
+mean_dice: 0.9797
+iou_Class_0: 0.9971
+dice_Class_0: 0.9985
+iou_Class_1: 0.9248
+dice_Class_1: 0.9609
+
+Dataset: segmentation_cvc_clinicdb
+------------------------------
+loss: 0.0016
+accuracy: 0.9875
+mean_iou: 0.9247
+mean_dice: 0.9598
+iou_Class_0: 0.9865
+dice_Class_0: 0.9932
+iou_Class_1: 0.8628
+dice_Class_1: 0.9264
+
+Dataset: segmentation_kvasir_seg
+------------------------------
+loss: 0.0026
+accuracy: 0.9718
+mean_iou: 0.9017
+mean_dice: 0.9471
+iou_Class_0: 0.9670
+dice_Class_0: 0.9832
+iou_Class_1: 0.8365
+dice_Class_1: 0.9110
+

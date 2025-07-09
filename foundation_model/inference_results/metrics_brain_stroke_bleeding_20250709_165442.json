@@ -1,0 +1,17 @@
+{
+  "avg_dice_score": 0.5887275673854416,
+  "std_dice_score": 0.30816355046386285,
+  "avg_iou": 0.4793623174469772,
+  "std_iou": 0.28839175939586276,
+  "avg_pixel_accuracy": 0.994658203125,
+  "std_pixel_accuracy": 0.0045145925641753995,
+  "avg_sensitivity": 0.6326378361640285,
+  "std_sensitivity": 0.3189803996453594,
+  "avg_specificity": 0.9974792245518118,
+  "std_specificity": 0.002347440993748611,
+  "avg_precision": 0.6046700457860711,
+  "std_precision": 0.32062410578386286,
+  "avg_f1_score": 0.5887275631685355,
+  "std_f1_score": 0.3081635490361762,
+  "num_samples": 100
+}
