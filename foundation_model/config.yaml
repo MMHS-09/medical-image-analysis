@@ -1,7 +1,7 @@
 training:
   batch_size: 32     # Smaller batch size for quick testing
   learning_rate: 0.001
-  num_epochs: 200     # Fewer epochs for quick testing
+  num_epochs: 10     # Fewer epochs for quick testing
   enable_early_stopping: false  # Enable/disable early stopping
   early_stopping_patience: 1
   save_every_n_epochs: 25
@@ -10,7 +10,7 @@ training:
 finetuning:
   foundation_model_path: "./models/foundation_model_final.pth"
   learning_rate: 0.001  # Lower learning rate for finetuning
-  num_epochs: 100      # Fewer epochs for finetuning
+  num_epochs: 250      # Fewer epochs for finetuning
   enable_early_stopping: false  # Enable/disable early stopping for finetuning
   early_stopping_patience: 5
   save_every_n_epochs: 5
@@ -26,13 +26,13 @@ finetuning:
     #   model_save_path: "./ft_results/finetuned_pmram/finetuned_pmram.pth"
     #   results_save_path: "./ft_results/finetuned_pmram"
 
-    # Example segmentation task
+    # # Example segmentation task
     - task: "segmentation"
-      dataset_name: "brain_stroke_bleeding"
+      dataset_name: "cvc_clinicdb"
       num_classes: 2
-      data_path: "./data/segmentation/brain_stroke_bleeding"
-      model_save_path: "./ft_results/finetuned_bleeding/finetuned_bleeding.pth"
-      results_save_path: "./ft_results/finetuned_bleeding"
+      data_path: "./data/segmentation/cvc_clinicdb"
+      model_save_path: "./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth"
+      results_save_path: "./ft_results/finetuned_cvc_clinicdb"
 
 model:
   backbone: "efficientnet_b3"
@@ -46,7 +46,7 @@ data:
   image_size: [64, 64]
   max_samples_per_class: null  # Max samples per class for classification (null = all data)
   max_samples_per_dataset: null  # Max samples per dataset for segmentation (null = all data)
-  data_fraction: 1.0 # Fraction of data to use for training
+  data_fraction: 0.3 # Fraction of data to use for training
   augmentation:
     horizontal_flip: 0.5
     vertical_flip: 0.3
@@ -61,10 +61,12 @@ classification_datasets:
     classes: ["glioma", "meningioma", "none", "pituitary"]
   - name: "pancreas"
     classes: ["NPancreas", "PPancreas"]
+  - name: "breast_cancer"
+    classes: ["Cancer", "NonCancer"]
 
 segmentation_datasets:
-  - name: "btcv"
-    num_classes: 2  # Binary segmentation
+  # - name: "btcv"
+  #   num_classes: 2  # Binary segmentation
   - name: "medseg_covid"
     num_classes: 2
   - name: "medseg_liver"
@@ -72,6 +74,8 @@ segmentation_datasets:
   - name: "cvc_clinicdb"
     num_classes: 2
   - name: "kvasir_seg"
+    num_classes: 2
+  - name: "brain_stroke"
     num_classes: 2
 
 paths:
@@ -82,12 +86,19 @@ paths:
 
 # Inference configuration
 inference:
-  # Model and dataset settings
-  model_path: "./ft_results/finetuned_bleeding/finetuned_bleeding.pth"
-  dataset_path: "./data/segmentation/brain_stroke_bleeding_test"
-  dataset_name: "brain_stroke_bleeding"
+  # # Model and dataset settings
+  model_path: "./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth"
+  dataset_path: "./data/segmentation/cvc_clinicdb_test"
+  dataset_name: "cvc_clinicdb"
   task: "segmentation"  # classification or segmentation
-  output_dir: "./inference_results"
+  output_dir: "./inference_results/cvc_clinicdb_test"
+
+  # Model and dataset settings
+  # model_path: "./ft_results/finetuned_pmram/finetuned_pmram.pth"
+  # dataset_path: "./data/classification/pmram_test"
+  # dataset_name: "pmram"
+  # task: "classification"  # classification or segmentation
+  # output_dir: "./inference_results/pmram"
   
   # Visualization settings
   visualize: true

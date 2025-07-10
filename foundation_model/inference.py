@@ -125,7 +125,16 @@ class FoundationModelInference:
         # Load weights
         missing_keys, unexpected_keys = load_model_weights_safely(model, self.checkpoint, logger)
         
+        # Print loading information
+        if missing_keys:
+            print(f"Warning: Missing keys in checkpoint: {missing_keys}")
+        if unexpected_keys:
+            print(f"Info: Unexpected keys in checkpoint (expected for foundation models): {len(unexpected_keys)} keys")
+        
+        # Ensure model is in evaluation mode and disable gradients
         model.eval()
+        for param in model.parameters():
+            param.requires_grad = False
         
         # Store available datasets
         self.available_datasets = {
@@ -134,6 +143,14 @@ class FoundationModelInference:
         }
         
         print(f"Available {self.task} datasets: {self.available_datasets[self.task]}")
+        
+        # Print model configuration for debugging
+        if self.task == 'classification' and self.dataset_name in self.available_datasets['classification']:
+            # Try to get class information from config
+            for dataset_config in self.config.get('classification_datasets', []):
+                if dataset_config['name'] == self.dataset_name:
+                    print(f"Model was trained on classes: {dataset_config['classes']}")
+                    break
         
         # Validate dataset name
         if self.dataset_name not in self.available_datasets[self.task]:
@@ -155,12 +172,14 @@ class FoundationModelInference:
         ])
     
     def preprocess_image(self, image_path: str) -> torch.Tensor:
-        """Preprocess image for inference"""
+        """Preprocess image for inference - match training preprocessing exactly"""
         image = cv2.imread(str(image_path))
         if image is None:
             raise ValueError(f"Could not load image from {image_path}")
         
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        
+        # Apply the same transforms as validation during training
         transformed = self.transform(image=image)
         image_tensor = transformed['image'].unsqueeze(0)
         
@@ -178,8 +197,8 @@ class FoundationModelInference:
         # Resize to match model output
         mask = cv2.resize(mask, self.image_size, interpolation=cv2.INTER_NEAREST)
         
-        # Convert to binary (0 and 1)
-        mask = (mask > 0).astype(np.uint8)
+        # Convert to binary (0 and 1) - use same threshold as training (127)
+        mask = (mask > 127).astype(np.uint8)
         
         return mask
     
@@ -187,6 +206,14 @@ class FoundationModelInference:
         """Calculate segmentation metrics"""
         if gt_mask is None:
             return {}
+        
+        # Ensure both masks are the same shape
+        if pred_mask.shape != gt_mask.shape:
+            pred_mask = cv2.resize(pred_mask.astype(np.uint8), gt_mask.shape[::-1], interpolation=cv2.INTER_NEAREST)
+        
+        # For binary segmentation, ensure masks are binary (0 and 1)
+        pred_mask = (pred_mask > 0).astype(np.uint8)
+        gt_mask = (gt_mask > 0).astype(np.uint8)
         
         pred_flat = pred_mask.flatten()
         gt_flat = gt_mask.flatten()
@@ -228,10 +255,13 @@ class FoundationModelInference:
     
     def classify_image(self, image_path: str, ground_truth_label: int = None) -> Dict:
         """Classify a single image"""
+        # Ensure model is in eval mode
+        self.model.eval()
+        
         # Preprocess image
         image_tensor = self.preprocess_image(image_path)
         
-        # Inference
+        # Inference with no gradients
         with torch.no_grad():
             logits = self.model(image_tensor, task='classification', dataset_name=self.dataset_name)
             probabilities = F.softmax(logits, dim=1)
@@ -254,17 +284,20 @@ class FoundationModelInference:
     
     def segment_image(self, image_path: str, ground_truth_mask_path: str = None) -> Dict:
         """Segment a single image"""
+        # Ensure model is in eval mode
+        self.model.eval()
+        
         # Preprocess image
         image_tensor = self.preprocess_image(image_path)
         
-        # Inference
+        # Inference with no gradients
         with torch.no_grad():
             logits = self.model(image_tensor, task='segmentation', dataset_name=self.dataset_name)
             probabilities = F.softmax(logits, dim=1)
             predicted_mask = logits.argmax(dim=1)
         
-        # Convert to numpy
-        predicted_mask_np = predicted_mask[0].cpu().numpy()
+        # Convert to numpy - ensure we get the correct mask format
+        predicted_mask_np = predicted_mask[0].cpu().numpy().astype(np.uint8)
         probabilities_np = probabilities[0].cpu().numpy()
         
         result = {
@@ -320,14 +353,31 @@ class FoundationModelInference:
                 except Exception as e:
                     print(f"Error processing {img_file}: {e}")
         else:
-            # Process class folders
-            print(f"Found {len(class_dirs)} classes")
+            # Process class folders - sort to ensure consistent ordering
+            class_dirs = sorted(class_dirs, key=lambda x: x.name)
+            print(f"Found {len(class_dirs)} classes: {[d.name for d in class_dirs]}")
+            
+            # Check if test classes match training classes
+            test_class_names = [d.name for d in class_dirs]
+            expected_classes = None
+            for dataset_config in self.config.get('classification_datasets', []):
+                if dataset_config['name'] == self.dataset_name:
+                    expected_classes = dataset_config['classes']
+                    break
+            
+            if expected_classes:
+                print(f"Expected classes from training: {expected_classes}")
+                if test_class_names != expected_classes:
+                    print(f"WARNING: Test class names don't match training classes!")
+                    print(f"Test: {test_class_names}")
+                    print(f"Training: {expected_classes}")
+                    print("This may cause incorrect class indices!")
             
             for class_idx, class_dir in enumerate(class_dirs):
                 class_name = class_dir.name
                 image_files = list(class_dir.glob("*.png")) + list(class_dir.glob("*.jpg"))
                 
-                print(f"Processing class '{class_name}': {len(image_files)} images")
+                print(f"Processing class '{class_name}' (idx={class_idx}): {len(image_files)} images")
                 
                 for img_file in image_files:
                     try:
@@ -339,20 +389,38 @@ class FoundationModelInference:
     
     def _run_segmentation_inference(self):
         """Run segmentation inference"""
-        # Look for image files
-        image_files = list(self.dataset_path.glob("*.png")) + list(self.dataset_path.glob("*.jpg"))
-        image_files = [f for f in image_files if not f.name.endswith("_mask.png")]
+        # Look for image files with common extensions
+        image_extensions = ["*.png", "*.jpg", "*.jpeg", "*.bmp", "*.tiff"]
+        image_files = []
+        
+        for ext in image_extensions:
+            files = list(self.dataset_path.glob(ext)) + list(self.dataset_path.glob(ext.upper()))
+            image_files.extend(files)
+        
+        # Filter out mask files
+        image_files = [f for f in image_files if not any(mask_keyword in f.name.lower() for mask_keyword in ['_mask', '_gt', 'mask_', 'gt_'])]
         
         print(f"Processing {len(image_files)} images")
         
         for img_file in image_files:
-            # Look for corresponding mask file
-            mask_file = img_file.parent / f"{img_file.stem}_mask.png"
-            if not mask_file.exists():
-                # Try alternative naming conventions
-                mask_file = img_file.parent / f"{img_file.stem}_gt.png"
-                if not mask_file.exists():
-                    mask_file = None
+            # Look for corresponding mask file with various naming conventions
+            mask_file = None
+            stem = img_file.stem
+            
+            # Try different mask naming patterns
+            mask_patterns = [
+                f"{stem}_mask.png",
+                # f"{stem}_gt.png", 
+                # f"{stem}.png",  # For cases where mask has same name but in different folder
+                # f"mask_{stem}.png",
+                # f"gt_{stem}.png"
+            ]
+            
+            for pattern in mask_patterns:
+                potential_mask = img_file.parent / pattern
+                if potential_mask.exists():
+                    mask_file = potential_mask
+                    break
             
             try:
                 result = self.segment_image(

@@ -1,14 +1,36 @@
 https://figshare.com/authors/MedSeg/9940190
-
 https://github.com/ziyangwang007/Awesome-Medical-Image-Segmentation-Dataset
-
 https://github.com/openmedlab/dataset/blob/main/SA-Med2D-20M.md
 
-
-
-
-for finetuning
-
+For Finetuning:
 https://www.kaggle.com/datasets/orvile/pmram-bangladeshi-brain-cancer-mri-dataset
-
 https://www.kaggle.com/datasets/ozguraslank/brain-stroke-ct-dataset
+
+Datasets Link:
+1. Brain MRI ND-5 Dataset = https://ieee-dataport.org/documents/brain-mri-nd-5-dataset
+ glioma = 5692, meningioma = 4519, none = 3066, pituitary = 4507
+2. Alzheimer_MRI = https://huggingface.co/datasets/Falah/Alzheimer_MRI
+3. Pancreas CT images = https://data.mendeley.com/datasets/wm8j6j2mph/1
+4. PMRAM = https://www.kaggle.com/datasets/orvile/pmram-bangladeshi-brain-cancer-mri-dataset
+
+5. brain_stroke = https://www.kaggle.com/datasets/ozguraslank/brain-stroke-ct-dataset (bleeding & ischemia) (should)
+6. BCTV = https://www.synapse.org/Synapse:syn3193805/wiki/217753 (should)
+7. CVC_Clinicdb = https://paperswithcode.com/dataset/cvc-clinicdb
+8. kvasir_seg = https://paperswithcode.com/dataset/kvasir-seg
+9. medsegcovid = https://figshare.com/authors/MedSeg/9940190
+10. medseg_liver = https://figshare.com/articles/dataset/MedSeg_Liver_segments_dataset/13643252
+
+
+
+BCTV:
+
+57ml-cdf0-7pzp-qsem
+67zo-t4df-80fd-6mv1
+dsox-ca9a-j57t-14up
+5ywf-y1nu-94na-rt6c
+6de1-64m4-a4n6-1x8r
+4184-ka83-b3mo-e1n4
+n4mn-j11d-nlet-thqi
+gzgu-xo8i-2y33-jk65
+v8uf-zx7c-icho-3j0k
+z7bu-lotn-jfom-7ecp
