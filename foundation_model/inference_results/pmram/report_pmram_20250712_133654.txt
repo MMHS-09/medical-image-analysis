@@ -1,0 +1,22 @@
+FOUNDATION MODEL INFERENCE REPORT
+==================================================
+
+Generated: 2025-07-12 13:36:54
+Task: classification
+Dataset: pmram
+Dataset Path: data/classification/pmram_test
+Model Path: ./ft_results/finetuned_pmram/finetuned_pmram.pth
+Output Directory: inference_results/pmram
+
+SUMMARY
+--------------------
+Total samples processed: 400
+Available datasets in model: ['brain_mri_nd5', 'hf_brain_tumor', 'pancreas', 'breast_cancer', 'pmram']
+
+METRICS
+--------------------
+accuracy: 0.9850
+precision: 0.9850
+recall: 0.9850
+f1_score: 0.9850
+num_samples: 400

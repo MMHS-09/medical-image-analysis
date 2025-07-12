@@ -1,0 +1,2103 @@
+2025-07-12 13:08:29,732 - INFO - Using device: cuda
+2025-07-12 13:08:29,733 - INFO - Loading foundation model from ./models/foundation_model_final.pth
+2025-07-12 13:08:30,102 - WARNING - No model config found in checkpoint, reconstructing from training config
+2025-07-12 13:08:30,546 - WARNING - Missing keys when loading model (these will be randomly initialized): ['segmentation_layers.brain_stroke_external.decoder_blocks.0.conv1.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.conv1.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.bn1.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.bn1.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.bn1.running_mean', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.bn1.running_var', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.conv2.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.conv2.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.bn2.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.bn2.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.bn2.running_mean', 'segmentation_layers.brain_stroke_external.decoder_blocks.0.bn2.running_var', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.conv1.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.conv1.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.bn1.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.bn1.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.bn1.running_mean', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.bn1.running_var', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.conv2.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.conv2.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.bn2.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.bn2.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.bn2.running_mean', 'segmentation_layers.brain_stroke_external.decoder_blocks.1.bn2.running_var', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.conv1.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.conv1.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.bn1.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.bn1.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.bn1.running_mean', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.bn1.running_var', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.conv2.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.conv2.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.bn2.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.bn2.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.bn2.running_mean', 'segmentation_layers.brain_stroke_external.decoder_blocks.2.bn2.running_var', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.conv1.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.conv1.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.bn1.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.bn1.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.bn1.running_mean', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.bn1.running_var', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.conv2.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.conv2.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.bn2.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.bn2.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.bn2.running_mean', 'segmentation_layers.brain_stroke_external.decoder_blocks.3.bn2.running_var', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.conv1.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.conv1.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.bn1.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.bn1.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.bn1.running_mean', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.bn1.running_var', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.conv2.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.conv2.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.bn2.weight', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.bn2.bias', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.bn2.running_mean', 'segmentation_layers.brain_stroke_external.decoder_blocks.4.bn2.running_var', 'segmentation_layers.brain_stroke_external.cbam_modules.0.ChannelGate.mlp.1.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.0.ChannelGate.mlp.1.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.0.ChannelGate.mlp.3.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.0.ChannelGate.mlp.3.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.0.SpatialGate.spatial.conv.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.0.SpatialGate.spatial.bn.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.0.SpatialGate.spatial.bn.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.0.SpatialGate.spatial.bn.running_mean', 'segmentation_layers.brain_stroke_external.cbam_modules.0.SpatialGate.spatial.bn.running_var', 'segmentation_layers.brain_stroke_external.cbam_modules.1.ChannelGate.mlp.1.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.1.ChannelGate.mlp.1.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.1.ChannelGate.mlp.3.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.1.ChannelGate.mlp.3.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.1.SpatialGate.spatial.conv.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.1.SpatialGate.spatial.bn.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.1.SpatialGate.spatial.bn.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.1.SpatialGate.spatial.bn.running_mean', 'segmentation_layers.brain_stroke_external.cbam_modules.1.SpatialGate.spatial.bn.running_var', 'segmentation_layers.brain_stroke_external.cbam_modules.2.ChannelGate.mlp.1.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.2.ChannelGate.mlp.1.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.2.ChannelGate.mlp.3.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.2.ChannelGate.mlp.3.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.2.SpatialGate.spatial.conv.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.2.SpatialGate.spatial.bn.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.2.SpatialGate.spatial.bn.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.2.SpatialGate.spatial.bn.running_mean', 'segmentation_layers.brain_stroke_external.cbam_modules.2.SpatialGate.spatial.bn.running_var', 'segmentation_layers.brain_stroke_external.cbam_modules.3.ChannelGate.mlp.1.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.3.ChannelGate.mlp.1.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.3.ChannelGate.mlp.3.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.3.ChannelGate.mlp.3.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.3.SpatialGate.spatial.conv.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.3.SpatialGate.spatial.bn.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.3.SpatialGate.spatial.bn.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.3.SpatialGate.spatial.bn.running_mean', 'segmentation_layers.brain_stroke_external.cbam_modules.3.SpatialGate.spatial.bn.running_var', 'segmentation_layers.brain_stroke_external.cbam_modules.4.ChannelGate.mlp.1.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.4.ChannelGate.mlp.1.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.4.ChannelGate.mlp.3.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.4.ChannelGate.mlp.3.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.4.SpatialGate.spatial.conv.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.4.SpatialGate.spatial.bn.weight', 'segmentation_layers.brain_stroke_external.cbam_modules.4.SpatialGate.spatial.bn.bias', 'segmentation_layers.brain_stroke_external.cbam_modules.4.SpatialGate.spatial.bn.running_mean', 'segmentation_layers.brain_stroke_external.cbam_modules.4.SpatialGate.spatial.bn.running_var', 'segmentation_layers.brain_stroke_external.attention_modules.0.query.weight', 'segmentation_layers.brain_stroke_external.attention_modules.0.query.bias', 'segmentation_layers.brain_stroke_external.attention_modules.0.key.weight', 'segmentation_layers.brain_stroke_external.attention_modules.0.key.bias', 'segmentation_layers.brain_stroke_external.attention_modules.0.value.weight', 'segmentation_layers.brain_stroke_external.attention_modules.0.value.bias', 'segmentation_layers.brain_stroke_external.attention_modules.0.output_projection.weight', 'segmentation_layers.brain_stroke_external.attention_modules.0.output_projection.bias', 'segmentation_layers.brain_stroke_external.attention_modules.0.layer_norm.weight', 'segmentation_layers.brain_stroke_external.attention_modules.0.layer_norm.bias', 'segmentation_layers.brain_stroke_external.attention_modules.1.query.weight', 'segmentation_layers.brain_stroke_external.attention_modules.1.query.bias', 'segmentation_layers.brain_stroke_external.attention_modules.1.key.weight', 'segmentation_layers.brain_stroke_external.attention_modules.1.key.bias', 'segmentation_layers.brain_stroke_external.attention_modules.1.value.weight', 'segmentation_layers.brain_stroke_external.attention_modules.1.value.bias', 'segmentation_layers.brain_stroke_external.attention_modules.1.output_projection.weight', 'segmentation_layers.brain_stroke_external.attention_modules.1.output_projection.bias', 'segmentation_layers.brain_stroke_external.attention_modules.1.layer_norm.weight', 'segmentation_layers.brain_stroke_external.attention_modules.1.layer_norm.bias', 'segmentation_layers.brain_stroke_external.attention_modules.2.query.weight', 'segmentation_layers.brain_stroke_external.attention_modules.2.query.bias', 'segmentation_layers.brain_stroke_external.attention_modules.2.key.weight', 'segmentation_layers.brain_stroke_external.attention_modules.2.key.bias', 'segmentation_layers.brain_stroke_external.attention_modules.2.value.weight', 'segmentation_layers.brain_stroke_external.attention_modules.2.value.bias', 'segmentation_layers.brain_stroke_external.attention_modules.2.output_projection.weight', 'segmentation_layers.brain_stroke_external.attention_modules.2.output_projection.bias', 'segmentation_layers.brain_stroke_external.attention_modules.2.layer_norm.weight', 'segmentation_layers.brain_stroke_external.attention_modules.2.layer_norm.bias', 'segmentation_layers.brain_stroke_external.attention_modules.3.query.weight', 'segmentation_layers.brain_stroke_external.attention_modules.3.query.bias', 'segmentation_layers.brain_stroke_external.attention_modules.3.key.weight', 'segmentation_layers.brain_stroke_external.attention_modules.3.key.bias', 'segmentation_layers.brain_stroke_external.attention_modules.3.value.weight', 'segmentation_layers.brain_stroke_external.attention_modules.3.value.bias', 'segmentation_layers.brain_stroke_external.attention_modules.3.output_projection.weight', 'segmentation_layers.brain_stroke_external.attention_modules.3.output_projection.bias', 'segmentation_layers.brain_stroke_external.attention_modules.3.layer_norm.weight', 'segmentation_layers.brain_stroke_external.attention_modules.3.layer_norm.bias', 'segmentation_layers.brain_stroke_external.attention_modules.4.query.weight', 'segmentation_layers.brain_stroke_external.attention_modules.4.query.bias', 'segmentation_layers.brain_stroke_external.attention_modules.4.key.weight', 'segmentation_layers.brain_stroke_external.attention_modules.4.key.bias', 'segmentation_layers.brain_stroke_external.attention_modules.4.value.weight', 'segmentation_layers.brain_stroke_external.attention_modules.4.value.bias', 'segmentation_layers.brain_stroke_external.attention_modules.4.output_projection.weight', 'segmentation_layers.brain_stroke_external.attention_modules.4.output_projection.bias', 'segmentation_layers.brain_stroke_external.attention_modules.4.layer_norm.weight', 'segmentation_layers.brain_stroke_external.attention_modules.4.layer_norm.bias', 'segmentation_layers.brain_stroke_external.final_conv.weight', 'segmentation_layers.brain_stroke_external.final_conv.bias']
+2025-07-12 13:08:30,546 - INFO - Foundation model loaded successfully
+2025-07-12 13:08:30,546 - INFO - Loaded classification heads: ['brain_mri_nd5', 'hf_brain_tumor', 'pancreas', 'breast_cancer']
+2025-07-12 13:08:30,546 - INFO - Loaded segmentation heads: ['medseg_covid', 'medseg_liver', 'cvc_clinicdb', 'kvasir_seg', 'brain_stroke', 'brain_stroke_external']
+2025-07-12 13:08:30,547 - INFO - Foundation model is ready for finetuning on new tasks
+2025-07-12 13:08:30,572 - INFO - Added segmentation head for cvc_clinicdb with 2 classes
+2025-07-12 13:08:30,573 - INFO - Fine-tuning segmentation task on cvc_clinicdb dataset
+2025-07-12 13:08:30,800 - INFO - Fine-tuning entire model with differential learning rates
+2025-07-12 13:08:30,800 - INFO - Early stopping disabled - finetuning will run for full number of epochs
+2025-07-12 13:08:34,853 - INFO - Epoch 1/500
+2025-07-12 13:08:34,853 - INFO - Train Loss: 0.0177, Val Loss: 0.0230
+2025-07-12 13:08:34,853 - INFO - Train Dice: 0.5768, Val Dice: 0.2860
+2025-07-12 13:08:34,853 - INFO - Train IoU: 0.4608, Val IoU: 0.1698
+2025-07-12 13:08:35,048 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:08:38,195 - INFO - Epoch 2/500
+2025-07-12 13:08:38,195 - INFO - Train Loss: 0.0152, Val Loss: 0.0228
+2025-07-12 13:08:38,195 - INFO - Train Dice: 0.6901, Val Dice: 0.4295
+2025-07-12 13:08:38,195 - INFO - Train IoU: 0.5764, Val IoU: 0.2908
+2025-07-12 13:08:38,391 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:08:41,381 - INFO - Epoch 3/500
+2025-07-12 13:08:41,382 - INFO - Train Loss: 0.0135, Val Loss: 0.0164
+2025-07-12 13:08:41,382 - INFO - Train Dice: 0.7262, Val Dice: 0.6541
+2025-07-12 13:08:41,382 - INFO - Train IoU: 0.6166, Val IoU: 0.5486
+2025-07-12 13:08:41,582 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:08:44,625 - INFO - Epoch 4/500
+2025-07-12 13:08:44,625 - INFO - Train Loss: 0.0122, Val Loss: 0.0142
+2025-07-12 13:08:44,625 - INFO - Train Dice: 0.7561, Val Dice: 0.7272
+2025-07-12 13:08:44,625 - INFO - Train IoU: 0.6502, Val IoU: 0.6181
+2025-07-12 13:08:44,831 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:08:47,817 - INFO - Epoch 5/500
+2025-07-12 13:08:47,818 - INFO - Train Loss: 0.0114, Val Loss: 0.0130
+2025-07-12 13:08:47,818 - INFO - Train Dice: 0.7597, Val Dice: 0.7552
+2025-07-12 13:08:47,818 - INFO - Train IoU: 0.6541, Val IoU: 0.6537
+2025-07-12 13:08:48,048 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:08:51,294 - INFO - Epoch 6/500
+2025-07-12 13:08:51,294 - INFO - Train Loss: 0.0106, Val Loss: 0.0114
+2025-07-12 13:08:51,294 - INFO - Train Dice: 0.7746, Val Dice: 0.8074
+2025-07-12 13:08:51,294 - INFO - Train IoU: 0.6702, Val IoU: 0.7077
+2025-07-12 13:08:51,501 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:08:54,536 - INFO - Epoch 7/500
+2025-07-12 13:08:54,537 - INFO - Train Loss: 0.0100, Val Loss: 0.0102
+2025-07-12 13:08:54,537 - INFO - Train Dice: 0.7787, Val Dice: 0.8059
+2025-07-12 13:08:54,537 - INFO - Train IoU: 0.6747, Val IoU: 0.7062
+2025-07-12 13:08:54,749 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:08:57,770 - INFO - Epoch 8/500
+2025-07-12 13:08:57,770 - INFO - Train Loss: 0.0095, Val Loss: 0.0092
+2025-07-12 13:08:57,770 - INFO - Train Dice: 0.7843, Val Dice: 0.8195
+2025-07-12 13:08:57,770 - INFO - Train IoU: 0.6806, Val IoU: 0.7215
+2025-07-12 13:08:57,986 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:00,956 - INFO - Epoch 9/500
+2025-07-12 13:09:00,956 - INFO - Train Loss: 0.0090, Val Loss: 0.0087
+2025-07-12 13:09:00,956 - INFO - Train Dice: 0.7925, Val Dice: 0.8235
+2025-07-12 13:09:00,956 - INFO - Train IoU: 0.6901, Val IoU: 0.7259
+2025-07-12 13:09:01,168 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:04,202 - INFO - Epoch 10/500
+2025-07-12 13:09:04,202 - INFO - Train Loss: 0.0086, Val Loss: 0.0081
+2025-07-12 13:09:04,202 - INFO - Train Dice: 0.7991, Val Dice: 0.8342
+2025-07-12 13:09:04,202 - INFO - Train IoU: 0.6972, Val IoU: 0.7398
+2025-07-12 13:09:04,406 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:07,719 - INFO - Epoch 11/500
+2025-07-12 13:09:07,719 - INFO - Train Loss: 0.0081, Val Loss: 0.0078
+2025-07-12 13:09:07,719 - INFO - Train Dice: 0.8091, Val Dice: 0.8558
+2025-07-12 13:09:07,719 - INFO - Train IoU: 0.7088, Val IoU: 0.7670
+2025-07-12 13:09:07,939 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:11,016 - INFO - Epoch 12/500
+2025-07-12 13:09:11,016 - INFO - Train Loss: 0.0077, Val Loss: 0.0081
+2025-07-12 13:09:11,016 - INFO - Train Dice: 0.8194, Val Dice: 0.8288
+2025-07-12 13:09:11,016 - INFO - Train IoU: 0.7212, Val IoU: 0.7302
+2025-07-12 13:09:14,107 - INFO - Epoch 13/500
+2025-07-12 13:09:14,107 - INFO - Train Loss: 0.0074, Val Loss: 0.0070
+2025-07-12 13:09:14,107 - INFO - Train Dice: 0.8194, Val Dice: 0.8606
+2025-07-12 13:09:14,107 - INFO - Train IoU: 0.7207, Val IoU: 0.7725
+2025-07-12 13:09:14,330 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:17,438 - INFO - Epoch 14/500
+2025-07-12 13:09:17,438 - INFO - Train Loss: 0.0071, Val Loss: 0.0072
+2025-07-12 13:09:17,438 - INFO - Train Dice: 0.8242, Val Dice: 0.8459
+2025-07-12 13:09:17,438 - INFO - Train IoU: 0.7269, Val IoU: 0.7525
+2025-07-12 13:09:20,556 - INFO - Epoch 15/500
+2025-07-12 13:09:20,556 - INFO - Train Loss: 0.0070, Val Loss: 0.0063
+2025-07-12 13:09:20,556 - INFO - Train Dice: 0.8192, Val Dice: 0.8635
+2025-07-12 13:09:20,556 - INFO - Train IoU: 0.7209, Val IoU: 0.7765
+2025-07-12 13:09:20,785 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:24,070 - INFO - Epoch 16/500
+2025-07-12 13:09:24,070 - INFO - Train Loss: 0.0067, Val Loss: 0.0061
+2025-07-12 13:09:24,070 - INFO - Train Dice: 0.8317, Val Dice: 0.8793
+2025-07-12 13:09:24,070 - INFO - Train IoU: 0.7359, Val IoU: 0.7989
+2025-07-12 13:09:24,299 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:27,370 - INFO - Epoch 17/500
+2025-07-12 13:09:27,370 - INFO - Train Loss: 0.0065, Val Loss: 0.0058
+2025-07-12 13:09:27,370 - INFO - Train Dice: 0.8329, Val Dice: 0.8762
+2025-07-12 13:09:27,370 - INFO - Train IoU: 0.7377, Val IoU: 0.7944
+2025-07-12 13:09:27,588 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:30,562 - INFO - Epoch 18/500
+2025-07-12 13:09:30,562 - INFO - Train Loss: 0.0063, Val Loss: 0.0057
+2025-07-12 13:09:30,562 - INFO - Train Dice: 0.8343, Val Dice: 0.8782
+2025-07-12 13:09:30,562 - INFO - Train IoU: 0.7391, Val IoU: 0.7975
+2025-07-12 13:09:30,770 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:33,720 - INFO - Epoch 19/500
+2025-07-12 13:09:33,721 - INFO - Train Loss: 0.0062, Val Loss: 0.0057
+2025-07-12 13:09:33,721 - INFO - Train Dice: 0.8368, Val Dice: 0.8740
+2025-07-12 13:09:33,721 - INFO - Train IoU: 0.7424, Val IoU: 0.7912
+2025-07-12 13:09:33,930 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:36,923 - INFO - Epoch 20/500
+2025-07-12 13:09:36,923 - INFO - Train Loss: 0.0062, Val Loss: 0.0056
+2025-07-12 13:09:36,923 - INFO - Train Dice: 0.8338, Val Dice: 0.8772
+2025-07-12 13:09:36,923 - INFO - Train IoU: 0.7388, Val IoU: 0.7951
+2025-07-12 13:09:37,134 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:40,303 - INFO - Epoch 21/500
+2025-07-12 13:09:40,303 - INFO - Train Loss: 0.0058, Val Loss: 0.0054
+2025-07-12 13:09:40,303 - INFO - Train Dice: 0.8462, Val Dice: 0.8824
+2025-07-12 13:09:40,303 - INFO - Train IoU: 0.7542, Val IoU: 0.8032
+2025-07-12 13:09:40,512 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:43,435 - INFO - Epoch 22/500
+2025-07-12 13:09:43,436 - INFO - Train Loss: 0.0058, Val Loss: 0.0057
+2025-07-12 13:09:43,436 - INFO - Train Dice: 0.8429, Val Dice: 0.8712
+2025-07-12 13:09:43,436 - INFO - Train IoU: 0.7500, Val IoU: 0.7866
+2025-07-12 13:09:46,358 - INFO - Epoch 23/500
+2025-07-12 13:09:46,359 - INFO - Train Loss: 0.0056, Val Loss: 0.0051
+2025-07-12 13:09:46,359 - INFO - Train Dice: 0.8508, Val Dice: 0.8846
+2025-07-12 13:09:46,359 - INFO - Train IoU: 0.7602, Val IoU: 0.8060
+2025-07-12 13:09:46,568 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:49,487 - INFO - Epoch 24/500
+2025-07-12 13:09:49,487 - INFO - Train Loss: 0.0056, Val Loss: 0.0049
+2025-07-12 13:09:49,487 - INFO - Train Dice: 0.8482, Val Dice: 0.8892
+2025-07-12 13:09:49,487 - INFO - Train IoU: 0.7569, Val IoU: 0.8124
+2025-07-12 13:09:49,701 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:52,642 - INFO - Epoch 25/500
+2025-07-12 13:09:52,643 - INFO - Train Loss: 0.0055, Val Loss: 0.0049
+2025-07-12 13:09:52,643 - INFO - Train Dice: 0.8526, Val Dice: 0.8939
+2025-07-12 13:09:52,643 - INFO - Train IoU: 0.7626, Val IoU: 0.8193
+2025-07-12 13:09:52,857 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:56,088 - INFO - Epoch 26/500
+2025-07-12 13:09:56,089 - INFO - Train Loss: 0.0053, Val Loss: 0.0046
+2025-07-12 13:09:56,089 - INFO - Train Dice: 0.8550, Val Dice: 0.8948
+2025-07-12 13:09:56,089 - INFO - Train IoU: 0.7655, Val IoU: 0.8208
+2025-07-12 13:09:56,312 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:09:59,425 - INFO - Epoch 27/500
+2025-07-12 13:09:59,425 - INFO - Train Loss: 0.0053, Val Loss: 0.0057
+2025-07-12 13:09:59,425 - INFO - Train Dice: 0.8585, Val Dice: 0.8725
+2025-07-12 13:09:59,425 - INFO - Train IoU: 0.7703, Val IoU: 0.7880
+2025-07-12 13:10:02,468 - INFO - Epoch 28/500
+2025-07-12 13:10:02,468 - INFO - Train Loss: 0.0052, Val Loss: 0.0046
+2025-07-12 13:10:02,468 - INFO - Train Dice: 0.8595, Val Dice: 0.8948
+2025-07-12 13:10:02,468 - INFO - Train IoU: 0.7714, Val IoU: 0.8204
+2025-07-12 13:10:02,684 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:10:05,825 - INFO - Epoch 29/500
+2025-07-12 13:10:05,825 - INFO - Train Loss: 0.0052, Val Loss: 0.0045
+2025-07-12 13:10:05,825 - INFO - Train Dice: 0.8594, Val Dice: 0.8999
+2025-07-12 13:10:05,825 - INFO - Train IoU: 0.7715, Val IoU: 0.8279
+2025-07-12 13:10:06,046 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:10:09,376 - INFO - Epoch 30/500
+2025-07-12 13:10:09,377 - INFO - Train Loss: 0.0053, Val Loss: 0.0045
+2025-07-12 13:10:09,377 - INFO - Train Dice: 0.8562, Val Dice: 0.8938
+2025-07-12 13:10:09,377 - INFO - Train IoU: 0.7671, Val IoU: 0.8192
+2025-07-12 13:10:12,685 - INFO - Epoch 31/500
+2025-07-12 13:10:12,686 - INFO - Train Loss: 0.0052, Val Loss: 0.0045
+2025-07-12 13:10:12,686 - INFO - Train Dice: 0.8551, Val Dice: 0.8991
+2025-07-12 13:10:12,686 - INFO - Train IoU: 0.7658, Val IoU: 0.8267
+2025-07-12 13:10:15,712 - INFO - Epoch 32/500
+2025-07-12 13:10:15,713 - INFO - Train Loss: 0.0050, Val Loss: 0.0044
+2025-07-12 13:10:15,713 - INFO - Train Dice: 0.8635, Val Dice: 0.9080
+2025-07-12 13:10:15,713 - INFO - Train IoU: 0.7768, Val IoU: 0.8402
+2025-07-12 13:10:15,921 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:10:19,026 - INFO - Epoch 33/500
+2025-07-12 13:10:19,026 - INFO - Train Loss: 0.0048, Val Loss: 0.0040
+2025-07-12 13:10:19,026 - INFO - Train Dice: 0.8678, Val Dice: 0.9070
+2025-07-12 13:10:19,026 - INFO - Train IoU: 0.7827, Val IoU: 0.8386
+2025-07-12 13:10:19,243 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:10:22,359 - INFO - Epoch 34/500
+2025-07-12 13:10:22,360 - INFO - Train Loss: 0.0049, Val Loss: 0.0040
+2025-07-12 13:10:22,360 - INFO - Train Dice: 0.8679, Val Dice: 0.9102
+2025-07-12 13:10:22,360 - INFO - Train IoU: 0.7827, Val IoU: 0.8434
+2025-07-12 13:10:22,580 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:10:25,607 - INFO - Epoch 35/500
+2025-07-12 13:10:25,607 - INFO - Train Loss: 0.0048, Val Loss: 0.0044
+2025-07-12 13:10:25,607 - INFO - Train Dice: 0.8683, Val Dice: 0.8965
+2025-07-12 13:10:25,607 - INFO - Train IoU: 0.7833, Val IoU: 0.8227
+2025-07-12 13:10:28,829 - INFO - Epoch 36/500
+2025-07-12 13:10:28,829 - INFO - Train Loss: 0.0047, Val Loss: 0.0038
+2025-07-12 13:10:28,829 - INFO - Train Dice: 0.8731, Val Dice: 0.9181
+2025-07-12 13:10:28,829 - INFO - Train IoU: 0.7899, Val IoU: 0.8558
+2025-07-12 13:10:29,047 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:10:32,102 - INFO - Epoch 37/500
+2025-07-12 13:10:32,102 - INFO - Train Loss: 0.0047, Val Loss: 0.0040
+2025-07-12 13:10:32,102 - INFO - Train Dice: 0.8666, Val Dice: 0.9133
+2025-07-12 13:10:32,102 - INFO - Train IoU: 0.7810, Val IoU: 0.8483
+2025-07-12 13:10:35,147 - INFO - Epoch 38/500
+2025-07-12 13:10:35,147 - INFO - Train Loss: 0.0046, Val Loss: 0.0039
+2025-07-12 13:10:35,147 - INFO - Train Dice: 0.8732, Val Dice: 0.9141
+2025-07-12 13:10:35,147 - INFO - Train IoU: 0.7898, Val IoU: 0.8495
+2025-07-12 13:10:38,187 - INFO - Epoch 39/500
+2025-07-12 13:10:38,187 - INFO - Train Loss: 0.0044, Val Loss: 0.0038
+2025-07-12 13:10:38,187 - INFO - Train Dice: 0.8808, Val Dice: 0.9212
+2025-07-12 13:10:38,187 - INFO - Train IoU: 0.8004, Val IoU: 0.8606
+2025-07-12 13:10:38,390 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:10:41,426 - INFO - Epoch 40/500
+2025-07-12 13:10:41,426 - INFO - Train Loss: 0.0045, Val Loss: 0.0038
+2025-07-12 13:10:41,426 - INFO - Train Dice: 0.8814, Val Dice: 0.9143
+2025-07-12 13:10:41,426 - INFO - Train IoU: 0.8015, Val IoU: 0.8497
+2025-07-12 13:10:41,649 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:10:45,051 - INFO - Epoch 41/500
+2025-07-12 13:10:45,051 - INFO - Train Loss: 0.0044, Val Loss: 0.0036
+2025-07-12 13:10:45,051 - INFO - Train Dice: 0.8811, Val Dice: 0.9199
+2025-07-12 13:10:45,051 - INFO - Train IoU: 0.8010, Val IoU: 0.8586
+2025-07-12 13:10:45,267 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:10:48,333 - INFO - Epoch 42/500
+2025-07-12 13:10:48,333 - INFO - Train Loss: 0.0044, Val Loss: 0.0037
+2025-07-12 13:10:48,333 - INFO - Train Dice: 0.8789, Val Dice: 0.9171
+2025-07-12 13:10:48,333 - INFO - Train IoU: 0.7978, Val IoU: 0.8542
+2025-07-12 13:10:51,370 - INFO - Epoch 43/500
+2025-07-12 13:10:51,370 - INFO - Train Loss: 0.0044, Val Loss: 0.0038
+2025-07-12 13:10:51,370 - INFO - Train Dice: 0.8792, Val Dice: 0.9156
+2025-07-12 13:10:51,370 - INFO - Train IoU: 0.7983, Val IoU: 0.8518
+2025-07-12 13:10:54,412 - INFO - Epoch 44/500
+2025-07-12 13:10:54,413 - INFO - Train Loss: 0.0044, Val Loss: 0.0038
+2025-07-12 13:10:54,413 - INFO - Train Dice: 0.8805, Val Dice: 0.9149
+2025-07-12 13:10:54,413 - INFO - Train IoU: 0.8000, Val IoU: 0.8510
+2025-07-12 13:10:57,494 - INFO - Learning rate reduced: 1.00e-04 -> 5.00e-05
+2025-07-12 13:10:57,494 - INFO - Epoch 45/500
+2025-07-12 13:10:57,494 - INFO - Train Loss: 0.0044, Val Loss: 0.0038
+2025-07-12 13:10:57,494 - INFO - Train Dice: 0.8807, Val Dice: 0.9150
+2025-07-12 13:10:57,494 - INFO - Train IoU: 0.8005, Val IoU: 0.8508
+2025-07-12 13:11:00,811 - INFO - Epoch 46/500
+2025-07-12 13:11:00,811 - INFO - Train Loss: 0.0043, Val Loss: 0.0033
+2025-07-12 13:11:00,811 - INFO - Train Dice: 0.8810, Val Dice: 0.9277
+2025-07-12 13:11:00,811 - INFO - Train IoU: 0.8007, Val IoU: 0.8709
+2025-07-12 13:11:01,026 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:11:04,105 - INFO - Epoch 47/500
+2025-07-12 13:11:04,105 - INFO - Train Loss: 0.0041, Val Loss: 0.0033
+2025-07-12 13:11:04,105 - INFO - Train Dice: 0.8880, Val Dice: 0.9282
+2025-07-12 13:11:04,105 - INFO - Train IoU: 0.8107, Val IoU: 0.8716
+2025-07-12 13:11:07,196 - INFO - Epoch 48/500
+2025-07-12 13:11:07,196 - INFO - Train Loss: 0.0042, Val Loss: 0.0033
+2025-07-12 13:11:07,196 - INFO - Train Dice: 0.8866, Val Dice: 0.9274
+2025-07-12 13:11:07,196 - INFO - Train IoU: 0.8089, Val IoU: 0.8704
+2025-07-12 13:11:10,198 - INFO - Epoch 49/500
+2025-07-12 13:11:10,198 - INFO - Train Loss: 0.0041, Val Loss: 0.0032
+2025-07-12 13:11:10,198 - INFO - Train Dice: 0.8877, Val Dice: 0.9309
+2025-07-12 13:11:10,198 - INFO - Train IoU: 0.8103, Val IoU: 0.8760
+2025-07-12 13:11:10,401 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:11:13,478 - INFO - Epoch 50/500
+2025-07-12 13:11:13,478 - INFO - Train Loss: 0.0039, Val Loss: 0.0032
+2025-07-12 13:11:13,478 - INFO - Train Dice: 0.8950, Val Dice: 0.9330
+2025-07-12 13:11:13,478 - INFO - Train IoU: 0.8209, Val IoU: 0.8795
+2025-07-12 13:11:13,680 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:11:17,059 - INFO - Epoch 51/500
+2025-07-12 13:11:17,059 - INFO - Train Loss: 0.0040, Val Loss: 0.0032
+2025-07-12 13:11:17,059 - INFO - Train Dice: 0.8935, Val Dice: 0.9306
+2025-07-12 13:11:17,059 - INFO - Train IoU: 0.8187, Val IoU: 0.8756
+2025-07-12 13:11:20,039 - INFO - Epoch 52/500
+2025-07-12 13:11:20,040 - INFO - Train Loss: 0.0041, Val Loss: 0.0032
+2025-07-12 13:11:20,040 - INFO - Train Dice: 0.8881, Val Dice: 0.9322
+2025-07-12 13:11:20,040 - INFO - Train IoU: 0.8109, Val IoU: 0.8781
+2025-07-12 13:11:20,246 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:11:23,370 - INFO - Epoch 53/500
+2025-07-12 13:11:23,371 - INFO - Train Loss: 0.0039, Val Loss: 0.0033
+2025-07-12 13:11:23,371 - INFO - Train Dice: 0.8943, Val Dice: 0.9257
+2025-07-12 13:11:23,371 - INFO - Train IoU: 0.8199, Val IoU: 0.8676
+2025-07-12 13:11:26,449 - INFO - Epoch 54/500
+2025-07-12 13:11:26,449 - INFO - Train Loss: 0.0040, Val Loss: 0.0031
+2025-07-12 13:11:26,449 - INFO - Train Dice: 0.8874, Val Dice: 0.9328
+2025-07-12 13:11:26,449 - INFO - Train IoU: 0.8098, Val IoU: 0.8790
+2025-07-12 13:11:26,646 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:11:29,807 - INFO - Epoch 55/500
+2025-07-12 13:11:29,807 - INFO - Train Loss: 0.0038, Val Loss: 0.0031
+2025-07-12 13:11:29,807 - INFO - Train Dice: 0.8989, Val Dice: 0.9318
+2025-07-12 13:11:29,807 - INFO - Train IoU: 0.8266, Val IoU: 0.8774
+2025-07-12 13:11:30,046 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:11:33,382 - INFO - Epoch 56/500
+2025-07-12 13:11:33,383 - INFO - Train Loss: 0.0039, Val Loss: 0.0033
+2025-07-12 13:11:33,383 - INFO - Train Dice: 0.8968, Val Dice: 0.9244
+2025-07-12 13:11:33,383 - INFO - Train IoU: 0.8234, Val IoU: 0.8655
+2025-07-12 13:11:36,467 - INFO - Epoch 57/500
+2025-07-12 13:11:36,468 - INFO - Train Loss: 0.0039, Val Loss: 0.0031
+2025-07-12 13:11:36,468 - INFO - Train Dice: 0.8951, Val Dice: 0.9317
+2025-07-12 13:11:36,468 - INFO - Train IoU: 0.8209, Val IoU: 0.8773
+2025-07-12 13:11:36,712 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:11:39,901 - INFO - Epoch 58/500
+2025-07-12 13:11:39,902 - INFO - Train Loss: 0.0039, Val Loss: 0.0032
+2025-07-12 13:11:39,902 - INFO - Train Dice: 0.8931, Val Dice: 0.9303
+2025-07-12 13:11:39,902 - INFO - Train IoU: 0.8182, Val IoU: 0.8749
+2025-07-12 13:11:43,074 - INFO - Epoch 59/500
+2025-07-12 13:11:43,074 - INFO - Train Loss: 0.0037, Val Loss: 0.0031
+2025-07-12 13:11:43,074 - INFO - Train Dice: 0.8986, Val Dice: 0.9320
+2025-07-12 13:11:43,074 - INFO - Train IoU: 0.8261, Val IoU: 0.8778
+2025-07-12 13:11:43,324 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:11:46,456 - INFO - Epoch 60/500
+2025-07-12 13:11:46,456 - INFO - Train Loss: 0.0037, Val Loss: 0.0030
+2025-07-12 13:11:46,456 - INFO - Train Dice: 0.8992, Val Dice: 0.9325
+2025-07-12 13:11:46,456 - INFO - Train IoU: 0.8270, Val IoU: 0.8786
+2025-07-12 13:11:46,675 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:11:50,044 - INFO - Epoch 61/500
+2025-07-12 13:11:50,045 - INFO - Train Loss: 0.0038, Val Loss: 0.0031
+2025-07-12 13:11:50,045 - INFO - Train Dice: 0.8988, Val Dice: 0.9324
+2025-07-12 13:11:50,045 - INFO - Train IoU: 0.8264, Val IoU: 0.8783
+2025-07-12 13:11:53,233 - INFO - Epoch 62/500
+2025-07-12 13:11:53,233 - INFO - Train Loss: 0.0036, Val Loss: 0.0030
+2025-07-12 13:11:53,233 - INFO - Train Dice: 0.9030, Val Dice: 0.9328
+2025-07-12 13:11:53,233 - INFO - Train IoU: 0.8326, Val IoU: 0.8790
+2025-07-12 13:11:53,447 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:11:56,698 - INFO - Epoch 63/500
+2025-07-12 13:11:56,698 - INFO - Train Loss: 0.0038, Val Loss: 0.0031
+2025-07-12 13:11:56,698 - INFO - Train Dice: 0.8971, Val Dice: 0.9302
+2025-07-12 13:11:56,698 - INFO - Train IoU: 0.8240, Val IoU: 0.8748
+2025-07-12 13:11:59,746 - INFO - Epoch 64/500
+2025-07-12 13:11:59,746 - INFO - Train Loss: 0.0038, Val Loss: 0.0030
+2025-07-12 13:11:59,746 - INFO - Train Dice: 0.8956, Val Dice: 0.9335
+2025-07-12 13:11:59,746 - INFO - Train IoU: 0.8217, Val IoU: 0.8802
+2025-07-12 13:12:02,814 - INFO - Epoch 65/500
+2025-07-12 13:12:02,814 - INFO - Train Loss: 0.0038, Val Loss: 0.0031
+2025-07-12 13:12:02,814 - INFO - Train Dice: 0.8976, Val Dice: 0.9297
+2025-07-12 13:12:02,814 - INFO - Train IoU: 0.8246, Val IoU: 0.8740
+2025-07-12 13:12:06,188 - INFO - Epoch 66/500
+2025-07-12 13:12:06,188 - INFO - Train Loss: 0.0036, Val Loss: 0.0030
+2025-07-12 13:12:06,188 - INFO - Train Dice: 0.9031, Val Dice: 0.9330
+2025-07-12 13:12:06,188 - INFO - Train IoU: 0.8328, Val IoU: 0.8794
+2025-07-12 13:12:06,404 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:12:09,548 - INFO - Epoch 67/500
+2025-07-12 13:12:09,549 - INFO - Train Loss: 0.0037, Val Loss: 0.0031
+2025-07-12 13:12:09,549 - INFO - Train Dice: 0.9014, Val Dice: 0.9291
+2025-07-12 13:12:09,549 - INFO - Train IoU: 0.8303, Val IoU: 0.8730
+2025-07-12 13:12:12,598 - INFO - Epoch 68/500
+2025-07-12 13:12:12,598 - INFO - Train Loss: 0.0037, Val Loss: 0.0029
+2025-07-12 13:12:12,598 - INFO - Train Dice: 0.8989, Val Dice: 0.9355
+2025-07-12 13:12:12,598 - INFO - Train IoU: 0.8265, Val IoU: 0.8835
+2025-07-12 13:12:12,796 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:12:15,966 - INFO - Epoch 69/500
+2025-07-12 13:12:15,966 - INFO - Train Loss: 0.0037, Val Loss: 0.0029
+2025-07-12 13:12:15,966 - INFO - Train Dice: 0.9013, Val Dice: 0.9347
+2025-07-12 13:12:15,967 - INFO - Train IoU: 0.8301, Val IoU: 0.8822
+2025-07-12 13:12:16,178 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:12:19,213 - INFO - Epoch 70/500
+2025-07-12 13:12:19,213 - INFO - Train Loss: 0.0037, Val Loss: 0.0031
+2025-07-12 13:12:19,213 - INFO - Train Dice: 0.9017, Val Dice: 0.9291
+2025-07-12 13:12:19,213 - INFO - Train IoU: 0.8306, Val IoU: 0.8730
+2025-07-12 13:12:22,474 - INFO - Epoch 71/500
+2025-07-12 13:12:22,474 - INFO - Train Loss: 0.0036, Val Loss: 0.0030
+2025-07-12 13:12:22,474 - INFO - Train Dice: 0.9042, Val Dice: 0.9310
+2025-07-12 13:12:22,474 - INFO - Train IoU: 0.8344, Val IoU: 0.8761
+2025-07-12 13:12:25,521 - INFO - Epoch 72/500
+2025-07-12 13:12:25,522 - INFO - Train Loss: 0.0038, Val Loss: 0.0029
+2025-07-12 13:12:25,522 - INFO - Train Dice: 0.8966, Val Dice: 0.9359
+2025-07-12 13:12:25,522 - INFO - Train IoU: 0.8231, Val IoU: 0.8841
+2025-07-12 13:12:25,725 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:12:28,775 - INFO - Epoch 73/500
+2025-07-12 13:12:28,775 - INFO - Train Loss: 0.0036, Val Loss: 0.0029
+2025-07-12 13:12:28,775 - INFO - Train Dice: 0.9033, Val Dice: 0.9335
+2025-07-12 13:12:28,775 - INFO - Train IoU: 0.8331, Val IoU: 0.8802
+2025-07-12 13:12:32,096 - INFO - Epoch 74/500
+2025-07-12 13:12:32,096 - INFO - Train Loss: 0.0034, Val Loss: 0.0028
+2025-07-12 13:12:32,096 - INFO - Train Dice: 0.9088, Val Dice: 0.9375
+2025-07-12 13:12:32,096 - INFO - Train IoU: 0.8414, Val IoU: 0.8868
+2025-07-12 13:12:32,302 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:12:35,351 - INFO - Epoch 75/500
+2025-07-12 13:12:35,352 - INFO - Train Loss: 0.0036, Val Loss: 0.0028
+2025-07-12 13:12:35,352 - INFO - Train Dice: 0.9043, Val Dice: 0.9398
+2025-07-12 13:12:35,352 - INFO - Train IoU: 0.8345, Val IoU: 0.8906
+2025-07-12 13:12:35,550 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:12:38,849 - INFO - Epoch 76/500
+2025-07-12 13:12:38,849 - INFO - Train Loss: 0.0035, Val Loss: 0.0027
+2025-07-12 13:12:38,849 - INFO - Train Dice: 0.9067, Val Dice: 0.9395
+2025-07-12 13:12:38,849 - INFO - Train IoU: 0.8382, Val IoU: 0.8900
+2025-07-12 13:12:39,049 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:12:42,134 - INFO - Epoch 77/500
+2025-07-12 13:12:42,134 - INFO - Train Loss: 0.0035, Val Loss: 0.0028
+2025-07-12 13:12:42,134 - INFO - Train Dice: 0.9054, Val Dice: 0.9386
+2025-07-12 13:12:42,134 - INFO - Train IoU: 0.8362, Val IoU: 0.8885
+2025-07-12 13:12:45,204 - INFO - Epoch 78/500
+2025-07-12 13:12:45,204 - INFO - Train Loss: 0.0037, Val Loss: 0.0028
+2025-07-12 13:12:45,204 - INFO - Train Dice: 0.9006, Val Dice: 0.9382
+2025-07-12 13:12:45,204 - INFO - Train IoU: 0.8290, Val IoU: 0.8879
+2025-07-12 13:12:48,286 - INFO - Epoch 79/500
+2025-07-12 13:12:48,287 - INFO - Train Loss: 0.0035, Val Loss: 0.0028
+2025-07-12 13:12:48,287 - INFO - Train Dice: 0.9058, Val Dice: 0.9359
+2025-07-12 13:12:48,287 - INFO - Train IoU: 0.8368, Val IoU: 0.8841
+2025-07-12 13:12:51,305 - INFO - Learning rate reduced: 5.00e-05 -> 2.50e-05
+2025-07-12 13:12:51,305 - INFO - Epoch 80/500
+2025-07-12 13:12:51,305 - INFO - Train Loss: 0.0035, Val Loss: 0.0028
+2025-07-12 13:12:51,305 - INFO - Train Dice: 0.9066, Val Dice: 0.9349
+2025-07-12 13:12:51,305 - INFO - Train IoU: 0.8380, Val IoU: 0.8824
+2025-07-12 13:12:54,524 - INFO - Epoch 81/500
+2025-07-12 13:12:54,525 - INFO - Train Loss: 0.0035, Val Loss: 0.0027
+2025-07-12 13:12:54,525 - INFO - Train Dice: 0.9073, Val Dice: 0.9394
+2025-07-12 13:12:54,525 - INFO - Train IoU: 0.8390, Val IoU: 0.8900
+2025-07-12 13:12:57,526 - INFO - Epoch 82/500
+2025-07-12 13:12:57,526 - INFO - Train Loss: 0.0033, Val Loss: 0.0027
+2025-07-12 13:12:57,526 - INFO - Train Dice: 0.9108, Val Dice: 0.9398
+2025-07-12 13:12:57,526 - INFO - Train IoU: 0.8444, Val IoU: 0.8904
+2025-07-12 13:12:57,726 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:13:00,698 - INFO - Epoch 83/500
+2025-07-12 13:13:00,698 - INFO - Train Loss: 0.0032, Val Loss: 0.0027
+2025-07-12 13:13:00,698 - INFO - Train Dice: 0.9162, Val Dice: 0.9390
+2025-07-12 13:13:00,698 - INFO - Train IoU: 0.8527, Val IoU: 0.8892
+2025-07-12 13:13:03,674 - INFO - Epoch 84/500
+2025-07-12 13:13:03,674 - INFO - Train Loss: 0.0034, Val Loss: 0.0027
+2025-07-12 13:13:03,674 - INFO - Train Dice: 0.9059, Val Dice: 0.9390
+2025-07-12 13:13:03,674 - INFO - Train IoU: 0.8370, Val IoU: 0.8892
+2025-07-12 13:13:06,634 - INFO - Epoch 85/500
+2025-07-12 13:13:06,634 - INFO - Train Loss: 0.0033, Val Loss: 0.0026
+2025-07-12 13:13:06,634 - INFO - Train Dice: 0.9121, Val Dice: 0.9427
+2025-07-12 13:13:06,634 - INFO - Train IoU: 0.8464, Val IoU: 0.8953
+2025-07-12 13:13:06,838 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:13:10,148 - INFO - Epoch 86/500
+2025-07-12 13:13:10,148 - INFO - Train Loss: 0.0033, Val Loss: 0.0027
+2025-07-12 13:13:10,149 - INFO - Train Dice: 0.9104, Val Dice: 0.9390
+2025-07-12 13:13:10,149 - INFO - Train IoU: 0.8438, Val IoU: 0.8891
+2025-07-12 13:13:13,171 - INFO - Epoch 87/500
+2025-07-12 13:13:13,171 - INFO - Train Loss: 0.0033, Val Loss: 0.0027
+2025-07-12 13:13:13,172 - INFO - Train Dice: 0.9099, Val Dice: 0.9411
+2025-07-12 13:13:13,172 - INFO - Train IoU: 0.8429, Val IoU: 0.8927
+2025-07-12 13:13:16,310 - INFO - Epoch 88/500
+2025-07-12 13:13:16,310 - INFO - Train Loss: 0.0034, Val Loss: 0.0026
+2025-07-12 13:13:16,310 - INFO - Train Dice: 0.9112, Val Dice: 0.9425
+2025-07-12 13:13:16,310 - INFO - Train IoU: 0.8451, Val IoU: 0.8951
+2025-07-12 13:13:16,529 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:13:19,586 - INFO - Epoch 89/500
+2025-07-12 13:13:19,586 - INFO - Train Loss: 0.0033, Val Loss: 0.0026
+2025-07-12 13:13:19,586 - INFO - Train Dice: 0.9099, Val Dice: 0.9407
+2025-07-12 13:13:19,586 - INFO - Train IoU: 0.8431, Val IoU: 0.8920
+2025-07-12 13:13:22,662 - INFO - Epoch 90/500
+2025-07-12 13:13:22,662 - INFO - Train Loss: 0.0034, Val Loss: 0.0026
+2025-07-12 13:13:22,662 - INFO - Train Dice: 0.9108, Val Dice: 0.9412
+2025-07-12 13:13:22,662 - INFO - Train IoU: 0.8443, Val IoU: 0.8929
+2025-07-12 13:13:25,865 - INFO - Epoch 91/500
+2025-07-12 13:13:25,865 - INFO - Train Loss: 0.0033, Val Loss: 0.0027
+2025-07-12 13:13:25,865 - INFO - Train Dice: 0.9141, Val Dice: 0.9377
+2025-07-12 13:13:25,865 - INFO - Train IoU: 0.8494, Val IoU: 0.8870
+2025-07-12 13:13:28,842 - INFO - Learning rate reduced: 2.50e-05 -> 1.25e-05
+2025-07-12 13:13:28,842 - INFO - Epoch 92/500
+2025-07-12 13:13:28,842 - INFO - Train Loss: 0.0034, Val Loss: 0.0026
+2025-07-12 13:13:28,842 - INFO - Train Dice: 0.9099, Val Dice: 0.9412
+2025-07-12 13:13:28,842 - INFO - Train IoU: 0.8431, Val IoU: 0.8928
+2025-07-12 13:13:31,833 - INFO - Epoch 93/500
+2025-07-12 13:13:31,833 - INFO - Train Loss: 0.0033, Val Loss: 0.0026
+2025-07-12 13:13:31,833 - INFO - Train Dice: 0.9138, Val Dice: 0.9415
+2025-07-12 13:13:31,833 - INFO - Train IoU: 0.8490, Val IoU: 0.8933
+2025-07-12 13:13:32,054 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:13:35,078 - INFO - Epoch 94/500
+2025-07-12 13:13:35,078 - INFO - Train Loss: 0.0034, Val Loss: 0.0026
+2025-07-12 13:13:35,078 - INFO - Train Dice: 0.9091, Val Dice: 0.9415
+2025-07-12 13:13:35,079 - INFO - Train IoU: 0.8418, Val IoU: 0.8932
+2025-07-12 13:13:38,168 - INFO - Epoch 95/500
+2025-07-12 13:13:38,168 - INFO - Train Loss: 0.0032, Val Loss: 0.0025
+2025-07-12 13:13:38,168 - INFO - Train Dice: 0.9139, Val Dice: 0.9445
+2025-07-12 13:13:38,168 - INFO - Train IoU: 0.8491, Val IoU: 0.8983
+2025-07-12 13:13:38,394 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:13:41,685 - INFO - Epoch 96/500
+2025-07-12 13:13:41,685 - INFO - Train Loss: 0.0033, Val Loss: 0.0025
+2025-07-12 13:13:41,685 - INFO - Train Dice: 0.9121, Val Dice: 0.9440
+2025-07-12 13:13:41,686 - INFO - Train IoU: 0.8464, Val IoU: 0.8975
+2025-07-12 13:13:41,899 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:13:45,031 - INFO - Epoch 97/500
+2025-07-12 13:13:45,031 - INFO - Train Loss: 0.0034, Val Loss: 0.0025
+2025-07-12 13:13:45,031 - INFO - Train Dice: 0.9084, Val Dice: 0.9444
+2025-07-12 13:13:45,031 - INFO - Train IoU: 0.8407, Val IoU: 0.8982
+2025-07-12 13:13:45,257 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:13:48,295 - INFO - Epoch 98/500
+2025-07-12 13:13:48,295 - INFO - Train Loss: 0.0032, Val Loss: 0.0025
+2025-07-12 13:13:48,295 - INFO - Train Dice: 0.9195, Val Dice: 0.9447
+2025-07-12 13:13:48,295 - INFO - Train IoU: 0.8578, Val IoU: 0.8987
+2025-07-12 13:13:51,269 - INFO - Epoch 99/500
+2025-07-12 13:13:51,269 - INFO - Train Loss: 0.0033, Val Loss: 0.0025
+2025-07-12 13:13:51,269 - INFO - Train Dice: 0.9138, Val Dice: 0.9436
+2025-07-12 13:13:51,269 - INFO - Train IoU: 0.8490, Val IoU: 0.8968
+2025-07-12 13:13:54,222 - INFO - Epoch 100/500
+2025-07-12 13:13:54,222 - INFO - Train Loss: 0.0032, Val Loss: 0.0025
+2025-07-12 13:13:54,222 - INFO - Train Dice: 0.9157, Val Dice: 0.9440
+2025-07-12 13:13:54,222 - INFO - Train IoU: 0.8518, Val IoU: 0.8975
+2025-07-12 13:13:57,436 - INFO - Learning rate reduced: 1.25e-05 -> 6.25e-06
+2025-07-12 13:13:57,436 - INFO - Epoch 101/500
+2025-07-12 13:13:57,436 - INFO - Train Loss: 0.0033, Val Loss: 0.0025
+2025-07-12 13:13:57,437 - INFO - Train Dice: 0.9108, Val Dice: 0.9425
+2025-07-12 13:13:57,437 - INFO - Train IoU: 0.8444, Val IoU: 0.8949
+2025-07-12 13:14:00,482 - INFO - Epoch 102/500
+2025-07-12 13:14:00,482 - INFO - Train Loss: 0.0031, Val Loss: 0.0025
+2025-07-12 13:14:00,482 - INFO - Train Dice: 0.9158, Val Dice: 0.9435
+2025-07-12 13:14:00,482 - INFO - Train IoU: 0.8521, Val IoU: 0.8966
+2025-07-12 13:14:03,604 - INFO - Epoch 103/500
+2025-07-12 13:14:03,604 - INFO - Train Loss: 0.0032, Val Loss: 0.0025
+2025-07-12 13:14:03,604 - INFO - Train Dice: 0.9138, Val Dice: 0.9435
+2025-07-12 13:14:03,604 - INFO - Train IoU: 0.8489, Val IoU: 0.8966
+2025-07-12 13:14:06,677 - INFO - Epoch 104/500
+2025-07-12 13:14:06,677 - INFO - Train Loss: 0.0032, Val Loss: 0.0025
+2025-07-12 13:14:06,677 - INFO - Train Dice: 0.9159, Val Dice: 0.9447
+2025-07-12 13:14:06,677 - INFO - Train IoU: 0.8522, Val IoU: 0.8986
+2025-07-12 13:14:06,908 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:14:10,003 - INFO - Epoch 105/500
+2025-07-12 13:14:10,003 - INFO - Train Loss: 0.0032, Val Loss: 0.0025
+2025-07-12 13:14:10,003 - INFO - Train Dice: 0.9138, Val Dice: 0.9442
+2025-07-12 13:14:10,003 - INFO - Train IoU: 0.8490, Val IoU: 0.8979
+2025-07-12 13:14:13,324 - INFO - Epoch 106/500
+2025-07-12 13:14:13,324 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:14:13,324 - INFO - Train Dice: 0.9119, Val Dice: 0.9449
+2025-07-12 13:14:13,324 - INFO - Train IoU: 0.8460, Val IoU: 0.8990
+2025-07-12 13:14:13,553 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:14:16,616 - INFO - Epoch 107/500
+2025-07-12 13:14:16,616 - INFO - Train Loss: 0.0033, Val Loss: 0.0025
+2025-07-12 13:14:16,616 - INFO - Train Dice: 0.9105, Val Dice: 0.9446
+2025-07-12 13:14:16,616 - INFO - Train IoU: 0.8440, Val IoU: 0.8985
+2025-07-12 13:14:19,825 - INFO - Epoch 108/500
+2025-07-12 13:14:19,825 - INFO - Train Loss: 0.0032, Val Loss: 0.0025
+2025-07-12 13:14:19,825 - INFO - Train Dice: 0.9134, Val Dice: 0.9449
+2025-07-12 13:14:19,826 - INFO - Train IoU: 0.8483, Val IoU: 0.8991
+2025-07-12 13:14:23,005 - INFO - Epoch 109/500
+2025-07-12 13:14:23,005 - INFO - Train Loss: 0.0032, Val Loss: 0.0025
+2025-07-12 13:14:23,005 - INFO - Train Dice: 0.9154, Val Dice: 0.9447
+2025-07-12 13:14:23,005 - INFO - Train IoU: 0.8514, Val IoU: 0.8987
+2025-07-12 13:14:26,203 - INFO - Learning rate reduced: 6.25e-06 -> 3.13e-06
+2025-07-12 13:14:26,203 - INFO - Epoch 110/500
+2025-07-12 13:14:26,203 - INFO - Train Loss: 0.0031, Val Loss: 0.0025
+2025-07-12 13:14:26,203 - INFO - Train Dice: 0.9176, Val Dice: 0.9447
+2025-07-12 13:14:26,203 - INFO - Train IoU: 0.8549, Val IoU: 0.8987
+2025-07-12 13:14:29,489 - INFO - Epoch 111/500
+2025-07-12 13:14:29,489 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:14:29,489 - INFO - Train Dice: 0.9143, Val Dice: 0.9446
+2025-07-12 13:14:29,489 - INFO - Train IoU: 0.8498, Val IoU: 0.8985
+2025-07-12 13:14:32,555 - INFO - Epoch 112/500
+2025-07-12 13:14:32,556 - INFO - Train Loss: 0.0032, Val Loss: 0.0025
+2025-07-12 13:14:32,556 - INFO - Train Dice: 0.9164, Val Dice: 0.9436
+2025-07-12 13:14:32,556 - INFO - Train IoU: 0.8529, Val IoU: 0.8968
+2025-07-12 13:14:35,650 - INFO - Epoch 113/500
+2025-07-12 13:14:35,650 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:14:35,650 - INFO - Train Dice: 0.9200, Val Dice: 0.9442
+2025-07-12 13:14:35,650 - INFO - Train IoU: 0.8587, Val IoU: 0.8978
+2025-07-12 13:14:35,870 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:14:38,923 - INFO - Epoch 114/500
+2025-07-12 13:14:38,923 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:14:38,923 - INFO - Train Dice: 0.9170, Val Dice: 0.9441
+2025-07-12 13:14:38,923 - INFO - Train IoU: 0.8538, Val IoU: 0.8977
+2025-07-12 13:14:41,924 - INFO - Epoch 115/500
+2025-07-12 13:14:41,925 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:14:41,925 - INFO - Train Dice: 0.9104, Val Dice: 0.9449
+2025-07-12 13:14:41,925 - INFO - Train IoU: 0.8437, Val IoU: 0.8990
+2025-07-12 13:14:42,132 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:14:45,421 - INFO - Epoch 116/500
+2025-07-12 13:14:45,421 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:14:45,422 - INFO - Train Dice: 0.9170, Val Dice: 0.9444
+2025-07-12 13:14:45,422 - INFO - Train IoU: 0.8538, Val IoU: 0.8982
+2025-07-12 13:14:48,473 - INFO - Epoch 117/500
+2025-07-12 13:14:48,473 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:14:48,473 - INFO - Train Dice: 0.9131, Val Dice: 0.9443
+2025-07-12 13:14:48,473 - INFO - Train IoU: 0.8478, Val IoU: 0.8980
+2025-07-12 13:14:51,560 - INFO - Epoch 118/500
+2025-07-12 13:14:51,561 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:14:51,561 - INFO - Train Dice: 0.9122, Val Dice: 0.9449
+2025-07-12 13:14:51,561 - INFO - Train IoU: 0.8464, Val IoU: 0.8990
+2025-07-12 13:14:54,598 - INFO - Epoch 119/500
+2025-07-12 13:14:54,598 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:14:54,598 - INFO - Train Dice: 0.9162, Val Dice: 0.9456
+2025-07-12 13:14:54,598 - INFO - Train IoU: 0.8526, Val IoU: 0.9003
+2025-07-12 13:14:54,943 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:14:58,116 - INFO - Epoch 120/500
+2025-07-12 13:14:58,117 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:14:58,117 - INFO - Train Dice: 0.9198, Val Dice: 0.9452
+2025-07-12 13:14:58,117 - INFO - Train IoU: 0.8583, Val IoU: 0.8995
+2025-07-12 13:15:01,352 - INFO - Epoch 121/500
+2025-07-12 13:15:01,352 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:15:01,352 - INFO - Train Dice: 0.9164, Val Dice: 0.9453
+2025-07-12 13:15:01,352 - INFO - Train IoU: 0.8529, Val IoU: 0.8998
+2025-07-12 13:15:01,574 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:15:04,808 - INFO - Epoch 122/500
+2025-07-12 13:15:04,808 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:15:04,808 - INFO - Train Dice: 0.9163, Val Dice: 0.9459
+2025-07-12 13:15:04,808 - INFO - Train IoU: 0.8528, Val IoU: 0.9007
+2025-07-12 13:15:05,030 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:15:08,145 - INFO - Epoch 123/500
+2025-07-12 13:15:08,145 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:15:08,146 - INFO - Train Dice: 0.9124, Val Dice: 0.9460
+2025-07-12 13:15:08,146 - INFO - Train IoU: 0.8469, Val IoU: 0.9009
+2025-07-12 13:15:11,237 - INFO - Epoch 124/500
+2025-07-12 13:15:11,237 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:15:11,237 - INFO - Train Dice: 0.9163, Val Dice: 0.9462
+2025-07-12 13:15:11,237 - INFO - Train IoU: 0.8528, Val IoU: 0.9013
+2025-07-12 13:15:11,448 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:15:14,473 - INFO - Epoch 125/500
+2025-07-12 13:15:14,474 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:15:14,474 - INFO - Train Dice: 0.9202, Val Dice: 0.9461
+2025-07-12 13:15:14,474 - INFO - Train IoU: 0.8589, Val IoU: 0.9011
+2025-07-12 13:15:17,739 - INFO - Epoch 126/500
+2025-07-12 13:15:17,739 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:15:17,739 - INFO - Train Dice: 0.9161, Val Dice: 0.9465
+2025-07-12 13:15:17,739 - INFO - Train IoU: 0.8526, Val IoU: 0.9017
+2025-07-12 13:15:17,955 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:15:21,120 - INFO - Epoch 127/500
+2025-07-12 13:15:21,120 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:15:21,120 - INFO - Train Dice: 0.9146, Val Dice: 0.9453
+2025-07-12 13:15:21,120 - INFO - Train IoU: 0.8502, Val IoU: 0.8997
+2025-07-12 13:15:24,279 - INFO - Epoch 128/500
+2025-07-12 13:15:24,279 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:15:24,279 - INFO - Train Dice: 0.9174, Val Dice: 0.9459
+2025-07-12 13:15:24,279 - INFO - Train IoU: 0.8545, Val IoU: 0.9006
+2025-07-12 13:15:27,364 - INFO - Epoch 129/500
+2025-07-12 13:15:27,365 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:15:27,365 - INFO - Train Dice: 0.9160, Val Dice: 0.9462
+2025-07-12 13:15:27,365 - INFO - Train IoU: 0.8524, Val IoU: 0.9012
+2025-07-12 13:15:27,593 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:15:30,655 - INFO - Epoch 130/500
+2025-07-12 13:15:30,655 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:15:30,655 - INFO - Train Dice: 0.9202, Val Dice: 0.9457
+2025-07-12 13:15:30,655 - INFO - Train IoU: 0.8590, Val IoU: 0.9004
+2025-07-12 13:15:33,863 - INFO - Epoch 131/500
+2025-07-12 13:15:33,863 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:15:33,863 - INFO - Train Dice: 0.9145, Val Dice: 0.9460
+2025-07-12 13:15:33,863 - INFO - Train IoU: 0.8500, Val IoU: 0.9009
+2025-07-12 13:15:36,854 - INFO - Epoch 132/500
+2025-07-12 13:15:36,855 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:15:36,855 - INFO - Train Dice: 0.9145, Val Dice: 0.9465
+2025-07-12 13:15:36,855 - INFO - Train IoU: 0.8500, Val IoU: 0.9017
+2025-07-12 13:15:37,070 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:15:40,081 - INFO - Epoch 133/500
+2025-07-12 13:15:40,081 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:15:40,081 - INFO - Train Dice: 0.9174, Val Dice: 0.9463
+2025-07-12 13:15:40,081 - INFO - Train IoU: 0.8545, Val IoU: 0.9014
+2025-07-12 13:15:43,059 - INFO - Epoch 134/500
+2025-07-12 13:15:43,059 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:15:43,059 - INFO - Train Dice: 0.9146, Val Dice: 0.9461
+2025-07-12 13:15:43,059 - INFO - Train IoU: 0.8502, Val IoU: 0.9010
+2025-07-12 13:15:46,024 - INFO - Epoch 135/500
+2025-07-12 13:15:46,024 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:15:46,024 - INFO - Train Dice: 0.9180, Val Dice: 0.9452
+2025-07-12 13:15:46,025 - INFO - Train IoU: 0.8554, Val IoU: 0.8996
+2025-07-12 13:15:49,183 - INFO - Learning rate reduced: 3.13e-06 -> 1.56e-06
+2025-07-12 13:15:49,183 - INFO - Epoch 136/500
+2025-07-12 13:15:49,183 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:15:49,183 - INFO - Train Dice: 0.9202, Val Dice: 0.9459
+2025-07-12 13:15:49,183 - INFO - Train IoU: 0.8588, Val IoU: 0.9008
+2025-07-12 13:15:52,163 - INFO - Epoch 137/500
+2025-07-12 13:15:52,163 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:15:52,163 - INFO - Train Dice: 0.9116, Val Dice: 0.9458
+2025-07-12 13:15:52,163 - INFO - Train IoU: 0.8457, Val IoU: 0.9006
+2025-07-12 13:15:55,142 - INFO - Epoch 138/500
+2025-07-12 13:15:55,142 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:15:55,142 - INFO - Train Dice: 0.9111, Val Dice: 0.9462
+2025-07-12 13:15:55,142 - INFO - Train IoU: 0.8449, Val IoU: 0.9012
+2025-07-12 13:15:58,163 - INFO - Epoch 139/500
+2025-07-12 13:15:58,163 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:15:58,163 - INFO - Train Dice: 0.9147, Val Dice: 0.9463
+2025-07-12 13:15:58,163 - INFO - Train IoU: 0.8504, Val IoU: 0.9013
+2025-07-12 13:16:01,148 - INFO - Learning rate reduced: 1.56e-06 -> 7.81e-07
+2025-07-12 13:16:01,148 - INFO - Epoch 140/500
+2025-07-12 13:16:01,148 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:16:01,148 - INFO - Train Dice: 0.9175, Val Dice: 0.9460
+2025-07-12 13:16:01,148 - INFO - Train IoU: 0.8547, Val IoU: 0.9008
+2025-07-12 13:16:04,459 - INFO - Epoch 141/500
+2025-07-12 13:16:04,460 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:16:04,460 - INFO - Train Dice: 0.9166, Val Dice: 0.9457
+2025-07-12 13:16:04,460 - INFO - Train IoU: 0.8533, Val IoU: 0.9004
+2025-07-12 13:16:07,515 - INFO - Epoch 142/500
+2025-07-12 13:16:07,515 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:16:07,515 - INFO - Train Dice: 0.9147, Val Dice: 0.9461
+2025-07-12 13:16:07,515 - INFO - Train IoU: 0.8503, Val IoU: 0.9010
+2025-07-12 13:16:10,618 - INFO - Epoch 143/500
+2025-07-12 13:16:10,618 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:16:10,618 - INFO - Train Dice: 0.9133, Val Dice: 0.9463
+2025-07-12 13:16:10,618 - INFO - Train IoU: 0.8482, Val IoU: 0.9014
+2025-07-12 13:16:13,742 - INFO - Learning rate reduced: 7.81e-07 -> 3.91e-07
+2025-07-12 13:16:13,742 - INFO - Epoch 144/500
+2025-07-12 13:16:13,742 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:16:13,742 - INFO - Train Dice: 0.9179, Val Dice: 0.9458
+2025-07-12 13:16:13,742 - INFO - Train IoU: 0.8553, Val IoU: 0.9006
+2025-07-12 13:16:16,822 - INFO - Epoch 145/500
+2025-07-12 13:16:16,823 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:16:16,823 - INFO - Train Dice: 0.9131, Val Dice: 0.9458
+2025-07-12 13:16:16,823 - INFO - Train IoU: 0.8479, Val IoU: 0.9005
+2025-07-12 13:16:20,090 - INFO - Epoch 146/500
+2025-07-12 13:16:20,090 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:16:20,091 - INFO - Train Dice: 0.9172, Val Dice: 0.9462
+2025-07-12 13:16:20,091 - INFO - Train IoU: 0.8543, Val IoU: 0.9012
+2025-07-12 13:16:23,154 - INFO - Epoch 147/500
+2025-07-12 13:16:23,154 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:16:23,154 - INFO - Train Dice: 0.9171, Val Dice: 0.9463
+2025-07-12 13:16:23,154 - INFO - Train IoU: 0.8540, Val IoU: 0.9013
+2025-07-12 13:16:26,178 - INFO - Epoch 148/500
+2025-07-12 13:16:26,178 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:16:26,178 - INFO - Train Dice: 0.9104, Val Dice: 0.9464
+2025-07-12 13:16:26,178 - INFO - Train IoU: 0.8438, Val IoU: 0.9015
+2025-07-12 13:16:26,387 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:16:29,448 - INFO - Epoch 149/500
+2025-07-12 13:16:29,448 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:16:29,448 - INFO - Train Dice: 0.9172, Val Dice: 0.9459
+2025-07-12 13:16:29,448 - INFO - Train IoU: 0.8543, Val IoU: 0.9007
+2025-07-12 13:16:32,499 - INFO - Epoch 150/500
+2025-07-12 13:16:32,499 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:16:32,499 - INFO - Train Dice: 0.9147, Val Dice: 0.9462
+2025-07-12 13:16:32,499 - INFO - Train IoU: 0.8503, Val IoU: 0.9013
+2025-07-12 13:16:35,805 - INFO - Epoch 151/500
+2025-07-12 13:16:35,805 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:16:35,805 - INFO - Train Dice: 0.9189, Val Dice: 0.9467
+2025-07-12 13:16:35,805 - INFO - Train IoU: 0.8569, Val IoU: 0.9020
+2025-07-12 13:16:36,003 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:16:39,057 - INFO - Epoch 152/500
+2025-07-12 13:16:39,057 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:16:39,057 - INFO - Train Dice: 0.9144, Val Dice: 0.9462
+2025-07-12 13:16:39,057 - INFO - Train IoU: 0.8499, Val IoU: 0.9012
+2025-07-12 13:16:42,077 - INFO - Epoch 153/500
+2025-07-12 13:16:42,077 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:16:42,077 - INFO - Train Dice: 0.9186, Val Dice: 0.9462
+2025-07-12 13:16:42,077 - INFO - Train IoU: 0.8564, Val IoU: 0.9012
+2025-07-12 13:16:45,172 - INFO - Epoch 154/500
+2025-07-12 13:16:45,172 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:16:45,172 - INFO - Train Dice: 0.9156, Val Dice: 0.9467
+2025-07-12 13:16:45,172 - INFO - Train IoU: 0.8518, Val IoU: 0.9020
+2025-07-12 13:16:45,376 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:16:48,531 - INFO - Epoch 155/500
+2025-07-12 13:16:48,531 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:16:48,531 - INFO - Train Dice: 0.9166, Val Dice: 0.9463
+2025-07-12 13:16:48,531 - INFO - Train IoU: 0.8532, Val IoU: 0.9013
+2025-07-12 13:16:51,880 - INFO - Epoch 156/500
+2025-07-12 13:16:51,880 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:16:51,880 - INFO - Train Dice: 0.9156, Val Dice: 0.9464
+2025-07-12 13:16:51,880 - INFO - Train IoU: 0.8518, Val IoU: 0.9016
+2025-07-12 13:16:54,943 - INFO - Epoch 157/500
+2025-07-12 13:16:54,943 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:16:54,943 - INFO - Train Dice: 0.9199, Val Dice: 0.9466
+2025-07-12 13:16:54,943 - INFO - Train IoU: 0.8585, Val IoU: 0.9019
+2025-07-12 13:16:58,052 - INFO - Learning rate reduced: 3.91e-07 -> 1.95e-07
+2025-07-12 13:16:58,052 - INFO - Epoch 158/500
+2025-07-12 13:16:58,052 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:16:58,052 - INFO - Train Dice: 0.9139, Val Dice: 0.9459
+2025-07-12 13:16:58,052 - INFO - Train IoU: 0.8491, Val IoU: 0.9008
+2025-07-12 13:17:01,105 - INFO - Epoch 159/500
+2025-07-12 13:17:01,105 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:17:01,105 - INFO - Train Dice: 0.9153, Val Dice: 0.9462
+2025-07-12 13:17:01,106 - INFO - Train IoU: 0.8513, Val IoU: 0.9012
+2025-07-12 13:17:04,298 - INFO - Epoch 160/500
+2025-07-12 13:17:04,299 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:17:04,299 - INFO - Train Dice: 0.9129, Val Dice: 0.9460
+2025-07-12 13:17:04,299 - INFO - Train IoU: 0.8475, Val IoU: 0.9009
+2025-07-12 13:17:07,702 - INFO - Epoch 161/500
+2025-07-12 13:17:07,702 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:17:07,702 - INFO - Train Dice: 0.9175, Val Dice: 0.9463
+2025-07-12 13:17:07,702 - INFO - Train IoU: 0.8547, Val IoU: 0.9013
+2025-07-12 13:17:10,763 - INFO - Learning rate reduced: 1.95e-07 -> 9.77e-08
+2025-07-12 13:17:10,763 - INFO - Epoch 162/500
+2025-07-12 13:17:10,763 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:17:10,763 - INFO - Train Dice: 0.9161, Val Dice: 0.9460
+2025-07-12 13:17:10,763 - INFO - Train IoU: 0.8526, Val IoU: 0.9008
+2025-07-12 13:17:13,837 - INFO - Epoch 163/500
+2025-07-12 13:17:13,837 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:17:13,837 - INFO - Train Dice: 0.9156, Val Dice: 0.9465
+2025-07-12 13:17:13,837 - INFO - Train IoU: 0.8518, Val IoU: 0.9017
+2025-07-12 13:17:16,916 - INFO - Epoch 164/500
+2025-07-12 13:17:16,916 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:17:16,916 - INFO - Train Dice: 0.9169, Val Dice: 0.9462
+2025-07-12 13:17:16,916 - INFO - Train IoU: 0.8537, Val IoU: 0.9012
+2025-07-12 13:17:20,042 - INFO - Epoch 165/500
+2025-07-12 13:17:20,043 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:17:20,043 - INFO - Train Dice: 0.9172, Val Dice: 0.9461
+2025-07-12 13:17:20,043 - INFO - Train IoU: 0.8543, Val IoU: 0.9010
+2025-07-12 13:17:23,350 - INFO - Learning rate reduced: 9.77e-08 -> 4.88e-08
+2025-07-12 13:17:23,350 - INFO - Epoch 166/500
+2025-07-12 13:17:23,350 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:17:23,350 - INFO - Train Dice: 0.9176, Val Dice: 0.9458
+2025-07-12 13:17:23,350 - INFO - Train IoU: 0.8548, Val IoU: 0.9006
+2025-07-12 13:17:26,434 - INFO - Epoch 167/500
+2025-07-12 13:17:26,434 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:17:26,434 - INFO - Train Dice: 0.9163, Val Dice: 0.9463
+2025-07-12 13:17:26,434 - INFO - Train IoU: 0.8529, Val IoU: 0.9013
+2025-07-12 13:17:29,402 - INFO - Epoch 168/500
+2025-07-12 13:17:29,402 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:17:29,402 - INFO - Train Dice: 0.9165, Val Dice: 0.9463
+2025-07-12 13:17:29,402 - INFO - Train IoU: 0.8532, Val IoU: 0.9015
+2025-07-12 13:17:32,399 - INFO - Epoch 169/500
+2025-07-12 13:17:32,399 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:17:32,399 - INFO - Train Dice: 0.9176, Val Dice: 0.9464
+2025-07-12 13:17:32,399 - INFO - Train IoU: 0.8548, Val IoU: 0.9015
+2025-07-12 13:17:35,418 - INFO - Learning rate reduced: 4.88e-08 -> 2.44e-08
+2025-07-12 13:17:35,418 - INFO - Epoch 170/500
+2025-07-12 13:17:35,418 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:17:35,418 - INFO - Train Dice: 0.9132, Val Dice: 0.9460
+2025-07-12 13:17:35,418 - INFO - Train IoU: 0.8481, Val IoU: 0.9009
+2025-07-12 13:17:38,784 - INFO - Epoch 171/500
+2025-07-12 13:17:38,784 - INFO - Train Loss: 0.0030, Val Loss: 0.0023
+2025-07-12 13:17:38,784 - INFO - Train Dice: 0.9207, Val Dice: 0.9469
+2025-07-12 13:17:38,784 - INFO - Train IoU: 0.8597, Val IoU: 0.9024
+2025-07-12 13:17:38,990 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:17:41,943 - INFO - Epoch 172/500
+2025-07-12 13:17:41,943 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:17:41,943 - INFO - Train Dice: 0.9144, Val Dice: 0.9467
+2025-07-12 13:17:41,943 - INFO - Train IoU: 0.8500, Val IoU: 0.9021
+2025-07-12 13:17:44,935 - INFO - Epoch 173/500
+2025-07-12 13:17:44,935 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:17:44,935 - INFO - Train Dice: 0.9123, Val Dice: 0.9465
+2025-07-12 13:17:44,935 - INFO - Train IoU: 0.8466, Val IoU: 0.9017
+2025-07-12 13:17:47,899 - INFO - Epoch 174/500
+2025-07-12 13:17:47,899 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:17:47,899 - INFO - Train Dice: 0.9172, Val Dice: 0.9467
+2025-07-12 13:17:47,899 - INFO - Train IoU: 0.8542, Val IoU: 0.9020
+2025-07-12 13:17:50,902 - INFO - Learning rate reduced: 2.44e-08 -> 1.22e-08
+2025-07-12 13:17:50,902 - INFO - Epoch 175/500
+2025-07-12 13:17:50,902 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:17:50,902 - INFO - Train Dice: 0.9155, Val Dice: 0.9468
+2025-07-12 13:17:50,903 - INFO - Train IoU: 0.8515, Val IoU: 0.9023
+2025-07-12 13:17:54,131 - INFO - Epoch 176/500
+2025-07-12 13:17:54,131 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:17:54,131 - INFO - Train Dice: 0.9111, Val Dice: 0.9463
+2025-07-12 13:17:54,131 - INFO - Train IoU: 0.8448, Val IoU: 0.9013
+2025-07-12 13:17:57,098 - INFO - Epoch 177/500
+2025-07-12 13:17:57,098 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:17:57,098 - INFO - Train Dice: 0.9168, Val Dice: 0.9463
+2025-07-12 13:17:57,098 - INFO - Train IoU: 0.8536, Val IoU: 0.9014
+2025-07-12 13:18:00,123 - INFO - Epoch 178/500
+2025-07-12 13:18:00,123 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:18:00,123 - INFO - Train Dice: 0.9167, Val Dice: 0.9467
+2025-07-12 13:18:00,123 - INFO - Train IoU: 0.8534, Val IoU: 0.9021
+2025-07-12 13:18:03,170 - INFO - Epoch 179/500
+2025-07-12 13:18:03,170 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:18:03,170 - INFO - Train Dice: 0.9146, Val Dice: 0.9464
+2025-07-12 13:18:03,170 - INFO - Train IoU: 0.8502, Val IoU: 0.9015
+2025-07-12 13:18:06,281 - INFO - Epoch 180/500
+2025-07-12 13:18:06,282 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:18:06,282 - INFO - Train Dice: 0.9160, Val Dice: 0.9460
+2025-07-12 13:18:06,282 - INFO - Train IoU: 0.8523, Val IoU: 0.9009
+2025-07-12 13:18:09,616 - INFO - Epoch 181/500
+2025-07-12 13:18:09,617 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:18:09,617 - INFO - Train Dice: 0.9164, Val Dice: 0.9461
+2025-07-12 13:18:09,617 - INFO - Train IoU: 0.8530, Val IoU: 0.9011
+2025-07-12 13:18:12,639 - INFO - Epoch 182/500
+2025-07-12 13:18:12,639 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:18:12,639 - INFO - Train Dice: 0.9148, Val Dice: 0.9464
+2025-07-12 13:18:12,640 - INFO - Train IoU: 0.8505, Val IoU: 0.9016
+2025-07-12 13:18:15,723 - INFO - Epoch 183/500
+2025-07-12 13:18:15,724 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:18:15,724 - INFO - Train Dice: 0.9213, Val Dice: 0.9464
+2025-07-12 13:18:15,724 - INFO - Train IoU: 0.8606, Val IoU: 0.9016
+2025-07-12 13:18:18,819 - INFO - Epoch 184/500
+2025-07-12 13:18:18,819 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:18:18,819 - INFO - Train Dice: 0.9162, Val Dice: 0.9465
+2025-07-12 13:18:18,819 - INFO - Train IoU: 0.8526, Val IoU: 0.9017
+2025-07-12 13:18:21,938 - INFO - Epoch 185/500
+2025-07-12 13:18:21,938 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:18:21,938 - INFO - Train Dice: 0.9194, Val Dice: 0.9463
+2025-07-12 13:18:21,938 - INFO - Train IoU: 0.8576, Val IoU: 0.9014
+2025-07-12 13:18:25,304 - INFO - Epoch 186/500
+2025-07-12 13:18:25,304 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:18:25,304 - INFO - Train Dice: 0.9176, Val Dice: 0.9462
+2025-07-12 13:18:25,304 - INFO - Train IoU: 0.8549, Val IoU: 0.9012
+2025-07-12 13:18:28,409 - INFO - Epoch 187/500
+2025-07-12 13:18:28,409 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:18:28,409 - INFO - Train Dice: 0.9154, Val Dice: 0.9460
+2025-07-12 13:18:28,409 - INFO - Train IoU: 0.8515, Val IoU: 0.9008
+2025-07-12 13:18:31,432 - INFO - Epoch 188/500
+2025-07-12 13:18:31,432 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:18:31,432 - INFO - Train Dice: 0.9113, Val Dice: 0.9459
+2025-07-12 13:18:31,433 - INFO - Train IoU: 0.8451, Val IoU: 0.9007
+2025-07-12 13:18:34,500 - INFO - Epoch 189/500
+2025-07-12 13:18:34,500 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:18:34,500 - INFO - Train Dice: 0.9180, Val Dice: 0.9462
+2025-07-12 13:18:34,501 - INFO - Train IoU: 0.8555, Val IoU: 0.9012
+2025-07-12 13:18:37,514 - INFO - Epoch 190/500
+2025-07-12 13:18:37,514 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:18:37,514 - INFO - Train Dice: 0.9154, Val Dice: 0.9463
+2025-07-12 13:18:37,514 - INFO - Train IoU: 0.8514, Val IoU: 0.9015
+2025-07-12 13:18:40,782 - INFO - Epoch 191/500
+2025-07-12 13:18:40,782 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:18:40,782 - INFO - Train Dice: 0.9139, Val Dice: 0.9461
+2025-07-12 13:18:40,782 - INFO - Train IoU: 0.8491, Val IoU: 0.9010
+2025-07-12 13:18:43,792 - INFO - Epoch 192/500
+2025-07-12 13:18:43,792 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:18:43,792 - INFO - Train Dice: 0.9150, Val Dice: 0.9465
+2025-07-12 13:18:43,792 - INFO - Train IoU: 0.8508, Val IoU: 0.9017
+2025-07-12 13:18:46,807 - INFO - Epoch 193/500
+2025-07-12 13:18:46,808 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:18:46,808 - INFO - Train Dice: 0.9147, Val Dice: 0.9464
+2025-07-12 13:18:46,808 - INFO - Train IoU: 0.8503, Val IoU: 0.9015
+2025-07-12 13:18:49,806 - INFO - Epoch 194/500
+2025-07-12 13:18:49,806 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:18:49,806 - INFO - Train Dice: 0.9165, Val Dice: 0.9460
+2025-07-12 13:18:49,806 - INFO - Train IoU: 0.8531, Val IoU: 0.9009
+2025-07-12 13:18:52,864 - INFO - Epoch 195/500
+2025-07-12 13:18:52,864 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:18:52,864 - INFO - Train Dice: 0.9135, Val Dice: 0.9464
+2025-07-12 13:18:52,864 - INFO - Train IoU: 0.8485, Val IoU: 0.9016
+2025-07-12 13:18:56,221 - INFO - Epoch 196/500
+2025-07-12 13:18:56,221 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:18:56,221 - INFO - Train Dice: 0.9178, Val Dice: 0.9462
+2025-07-12 13:18:56,221 - INFO - Train IoU: 0.8551, Val IoU: 0.9011
+2025-07-12 13:18:59,260 - INFO - Epoch 197/500
+2025-07-12 13:18:59,260 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:18:59,260 - INFO - Train Dice: 0.9208, Val Dice: 0.9460
+2025-07-12 13:18:59,260 - INFO - Train IoU: 0.8598, Val IoU: 0.9009
+2025-07-12 13:19:02,319 - INFO - Epoch 198/500
+2025-07-12 13:19:02,319 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:19:02,319 - INFO - Train Dice: 0.9178, Val Dice: 0.9464
+2025-07-12 13:19:02,319 - INFO - Train IoU: 0.8551, Val IoU: 0.9015
+2025-07-12 13:19:05,384 - INFO - Epoch 199/500
+2025-07-12 13:19:05,385 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:19:05,385 - INFO - Train Dice: 0.9156, Val Dice: 0.9465
+2025-07-12 13:19:05,385 - INFO - Train IoU: 0.8517, Val IoU: 0.9018
+2025-07-12 13:19:08,438 - INFO - Epoch 200/500
+2025-07-12 13:19:08,438 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:19:08,438 - INFO - Train Dice: 0.9130, Val Dice: 0.9464
+2025-07-12 13:19:08,438 - INFO - Train IoU: 0.8477, Val IoU: 0.9015
+2025-07-12 13:19:11,772 - INFO - Epoch 201/500
+2025-07-12 13:19:11,772 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:19:11,772 - INFO - Train Dice: 0.9148, Val Dice: 0.9462
+2025-07-12 13:19:11,772 - INFO - Train IoU: 0.8505, Val IoU: 0.9013
+2025-07-12 13:19:14,845 - INFO - Epoch 202/500
+2025-07-12 13:19:14,845 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:19:14,845 - INFO - Train Dice: 0.9154, Val Dice: 0.9463
+2025-07-12 13:19:14,845 - INFO - Train IoU: 0.8513, Val IoU: 0.9014
+2025-07-12 13:19:17,949 - INFO - Epoch 203/500
+2025-07-12 13:19:17,949 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:19:17,949 - INFO - Train Dice: 0.9161, Val Dice: 0.9467
+2025-07-12 13:19:17,949 - INFO - Train IoU: 0.8525, Val IoU: 0.9021
+2025-07-12 13:19:21,103 - INFO - Epoch 204/500
+2025-07-12 13:19:21,103 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:19:21,103 - INFO - Train Dice: 0.9157, Val Dice: 0.9463
+2025-07-12 13:19:21,103 - INFO - Train IoU: 0.8519, Val IoU: 0.9013
+2025-07-12 13:19:24,222 - INFO - Epoch 205/500
+2025-07-12 13:19:24,222 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:19:24,222 - INFO - Train Dice: 0.9196, Val Dice: 0.9463
+2025-07-12 13:19:24,222 - INFO - Train IoU: 0.8580, Val IoU: 0.9014
+2025-07-12 13:19:27,520 - INFO - Epoch 206/500
+2025-07-12 13:19:27,520 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:19:27,520 - INFO - Train Dice: 0.9140, Val Dice: 0.9467
+2025-07-12 13:19:27,521 - INFO - Train IoU: 0.8492, Val IoU: 0.9020
+2025-07-12 13:19:30,644 - INFO - Epoch 207/500
+2025-07-12 13:19:30,644 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:19:30,644 - INFO - Train Dice: 0.9175, Val Dice: 0.9468
+2025-07-12 13:19:30,644 - INFO - Train IoU: 0.8547, Val IoU: 0.9021
+2025-07-12 13:19:33,813 - INFO - Epoch 208/500
+2025-07-12 13:19:33,813 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:19:33,813 - INFO - Train Dice: 0.9190, Val Dice: 0.9465
+2025-07-12 13:19:33,813 - INFO - Train IoU: 0.8570, Val IoU: 0.9017
+2025-07-12 13:19:36,933 - INFO - Epoch 209/500
+2025-07-12 13:19:36,933 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:19:36,933 - INFO - Train Dice: 0.9178, Val Dice: 0.9465
+2025-07-12 13:19:36,933 - INFO - Train IoU: 0.8552, Val IoU: 0.9018
+2025-07-12 13:19:40,165 - INFO - Epoch 210/500
+2025-07-12 13:19:40,165 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:19:40,165 - INFO - Train Dice: 0.9176, Val Dice: 0.9467
+2025-07-12 13:19:40,165 - INFO - Train IoU: 0.8548, Val IoU: 0.9021
+2025-07-12 13:19:43,613 - INFO - Epoch 211/500
+2025-07-12 13:19:43,613 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:19:43,613 - INFO - Train Dice: 0.9189, Val Dice: 0.9466
+2025-07-12 13:19:43,613 - INFO - Train IoU: 0.8569, Val IoU: 0.9018
+2025-07-12 13:19:46,733 - INFO - Epoch 212/500
+2025-07-12 13:19:46,733 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:19:46,733 - INFO - Train Dice: 0.9194, Val Dice: 0.9468
+2025-07-12 13:19:46,733 - INFO - Train IoU: 0.8576, Val IoU: 0.9022
+2025-07-12 13:19:49,813 - INFO - Epoch 213/500
+2025-07-12 13:19:49,813 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:19:49,813 - INFO - Train Dice: 0.9176, Val Dice: 0.9467
+2025-07-12 13:19:49,813 - INFO - Train IoU: 0.8548, Val IoU: 0.9021
+2025-07-12 13:19:52,926 - INFO - Epoch 214/500
+2025-07-12 13:19:52,926 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:19:52,926 - INFO - Train Dice: 0.9203, Val Dice: 0.9466
+2025-07-12 13:19:52,926 - INFO - Train IoU: 0.8590, Val IoU: 0.9018
+2025-07-12 13:19:56,060 - INFO - Epoch 215/500
+2025-07-12 13:19:56,060 - INFO - Train Loss: 0.0030, Val Loss: 0.0023
+2025-07-12 13:19:56,060 - INFO - Train Dice: 0.9201, Val Dice: 0.9468
+2025-07-12 13:19:56,060 - INFO - Train IoU: 0.8588, Val IoU: 0.9022
+2025-07-12 13:19:59,437 - INFO - Epoch 216/500
+2025-07-12 13:19:59,437 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:19:59,437 - INFO - Train Dice: 0.9179, Val Dice: 0.9465
+2025-07-12 13:19:59,437 - INFO - Train IoU: 0.8553, Val IoU: 0.9017
+2025-07-12 13:20:02,605 - INFO - Epoch 217/500
+2025-07-12 13:20:02,605 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:20:02,605 - INFO - Train Dice: 0.9172, Val Dice: 0.9467
+2025-07-12 13:20:02,605 - INFO - Train IoU: 0.8542, Val IoU: 0.9020
+2025-07-12 13:20:05,752 - INFO - Epoch 218/500
+2025-07-12 13:20:05,753 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:20:05,753 - INFO - Train Dice: 0.9147, Val Dice: 0.9465
+2025-07-12 13:20:05,753 - INFO - Train IoU: 0.8504, Val IoU: 0.9017
+2025-07-12 13:20:08,948 - INFO - Epoch 219/500
+2025-07-12 13:20:08,948 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:20:08,948 - INFO - Train Dice: 0.9196, Val Dice: 0.9466
+2025-07-12 13:20:08,948 - INFO - Train IoU: 0.8580, Val IoU: 0.9019
+2025-07-12 13:20:12,218 - INFO - Epoch 220/500
+2025-07-12 13:20:12,218 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:20:12,218 - INFO - Train Dice: 0.9173, Val Dice: 0.9461
+2025-07-12 13:20:12,218 - INFO - Train IoU: 0.8543, Val IoU: 0.9010
+2025-07-12 13:20:15,654 - INFO - Epoch 221/500
+2025-07-12 13:20:15,655 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:20:15,655 - INFO - Train Dice: 0.9182, Val Dice: 0.9464
+2025-07-12 13:20:15,655 - INFO - Train IoU: 0.8558, Val IoU: 0.9015
+2025-07-12 13:20:18,877 - INFO - Epoch 222/500
+2025-07-12 13:20:18,877 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:20:18,877 - INFO - Train Dice: 0.9169, Val Dice: 0.9465
+2025-07-12 13:20:18,877 - INFO - Train IoU: 0.8538, Val IoU: 0.9016
+2025-07-12 13:20:22,070 - INFO - Epoch 223/500
+2025-07-12 13:20:22,070 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:20:22,070 - INFO - Train Dice: 0.9103, Val Dice: 0.9462
+2025-07-12 13:20:22,070 - INFO - Train IoU: 0.8436, Val IoU: 0.9012
+2025-07-12 13:20:25,194 - INFO - Epoch 224/500
+2025-07-12 13:20:25,194 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:20:25,194 - INFO - Train Dice: 0.9155, Val Dice: 0.9464
+2025-07-12 13:20:25,194 - INFO - Train IoU: 0.8516, Val IoU: 0.9015
+2025-07-12 13:20:28,339 - INFO - Epoch 225/500
+2025-07-12 13:20:28,340 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:20:28,340 - INFO - Train Dice: 0.9173, Val Dice: 0.9465
+2025-07-12 13:20:28,340 - INFO - Train IoU: 0.8544, Val IoU: 0.9017
+2025-07-12 13:20:31,666 - INFO - Epoch 226/500
+2025-07-12 13:20:31,667 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:20:31,667 - INFO - Train Dice: 0.9148, Val Dice: 0.9463
+2025-07-12 13:20:31,667 - INFO - Train IoU: 0.8505, Val IoU: 0.9013
+2025-07-12 13:20:34,780 - INFO - Epoch 227/500
+2025-07-12 13:20:34,780 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:20:34,780 - INFO - Train Dice: 0.9157, Val Dice: 0.9462
+2025-07-12 13:20:34,780 - INFO - Train IoU: 0.8519, Val IoU: 0.9012
+2025-07-12 13:20:37,889 - INFO - Epoch 228/500
+2025-07-12 13:20:37,889 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:20:37,889 - INFO - Train Dice: 0.9146, Val Dice: 0.9457
+2025-07-12 13:20:37,889 - INFO - Train IoU: 0.8502, Val IoU: 0.9004
+2025-07-12 13:20:40,962 - INFO - Epoch 229/500
+2025-07-12 13:20:40,962 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:20:40,963 - INFO - Train Dice: 0.9171, Val Dice: 0.9461
+2025-07-12 13:20:40,963 - INFO - Train IoU: 0.8540, Val IoU: 0.9011
+2025-07-12 13:20:44,047 - INFO - Epoch 230/500
+2025-07-12 13:20:44,047 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:20:44,047 - INFO - Train Dice: 0.9160, Val Dice: 0.9465
+2025-07-12 13:20:44,047 - INFO - Train IoU: 0.8524, Val IoU: 0.9017
+2025-07-12 13:20:47,629 - INFO - Epoch 231/500
+2025-07-12 13:20:47,629 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:20:47,629 - INFO - Train Dice: 0.9166, Val Dice: 0.9465
+2025-07-12 13:20:47,629 - INFO - Train IoU: 0.8533, Val IoU: 0.9017
+2025-07-12 13:20:50,867 - INFO - Epoch 232/500
+2025-07-12 13:20:50,868 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:20:50,868 - INFO - Train Dice: 0.9155, Val Dice: 0.9467
+2025-07-12 13:20:50,868 - INFO - Train IoU: 0.8515, Val IoU: 0.9021
+2025-07-12 13:20:53,967 - INFO - Epoch 233/500
+2025-07-12 13:20:53,967 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:20:53,967 - INFO - Train Dice: 0.9167, Val Dice: 0.9464
+2025-07-12 13:20:53,967 - INFO - Train IoU: 0.8535, Val IoU: 0.9016
+2025-07-12 13:20:57,091 - INFO - Epoch 234/500
+2025-07-12 13:20:57,091 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:20:57,091 - INFO - Train Dice: 0.9179, Val Dice: 0.9461
+2025-07-12 13:20:57,091 - INFO - Train IoU: 0.8552, Val IoU: 0.9011
+2025-07-12 13:21:00,252 - INFO - Epoch 235/500
+2025-07-12 13:21:00,253 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:21:00,253 - INFO - Train Dice: 0.9200, Val Dice: 0.9463
+2025-07-12 13:21:00,253 - INFO - Train IoU: 0.8586, Val IoU: 0.9014
+2025-07-12 13:21:03,560 - INFO - Epoch 236/500
+2025-07-12 13:21:03,560 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:21:03,560 - INFO - Train Dice: 0.9159, Val Dice: 0.9464
+2025-07-12 13:21:03,560 - INFO - Train IoU: 0.8522, Val IoU: 0.9015
+2025-07-12 13:21:06,654 - INFO - Epoch 237/500
+2025-07-12 13:21:06,654 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:21:06,654 - INFO - Train Dice: 0.9169, Val Dice: 0.9468
+2025-07-12 13:21:06,654 - INFO - Train IoU: 0.8538, Val IoU: 0.9022
+2025-07-12 13:21:09,815 - INFO - Epoch 238/500
+2025-07-12 13:21:09,815 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:21:09,815 - INFO - Train Dice: 0.9177, Val Dice: 0.9465
+2025-07-12 13:21:09,815 - INFO - Train IoU: 0.8550, Val IoU: 0.9017
+2025-07-12 13:21:12,997 - INFO - Epoch 239/500
+2025-07-12 13:21:12,998 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:21:12,998 - INFO - Train Dice: 0.9144, Val Dice: 0.9463
+2025-07-12 13:21:12,998 - INFO - Train IoU: 0.8499, Val IoU: 0.9013
+2025-07-12 13:21:16,094 - INFO - Epoch 240/500
+2025-07-12 13:21:16,095 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:21:16,095 - INFO - Train Dice: 0.9184, Val Dice: 0.9467
+2025-07-12 13:21:16,095 - INFO - Train IoU: 0.8561, Val IoU: 0.9021
+2025-07-12 13:21:19,557 - INFO - Epoch 241/500
+2025-07-12 13:21:19,557 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:21:19,557 - INFO - Train Dice: 0.9168, Val Dice: 0.9458
+2025-07-12 13:21:19,557 - INFO - Train IoU: 0.8535, Val IoU: 0.9005
+2025-07-12 13:21:22,636 - INFO - Epoch 242/500
+2025-07-12 13:21:22,636 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:21:22,636 - INFO - Train Dice: 0.9153, Val Dice: 0.9460
+2025-07-12 13:21:22,636 - INFO - Train IoU: 0.8513, Val IoU: 0.9009
+2025-07-12 13:21:25,833 - INFO - Epoch 243/500
+2025-07-12 13:21:25,833 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:21:25,833 - INFO - Train Dice: 0.9158, Val Dice: 0.9461
+2025-07-12 13:21:25,833 - INFO - Train IoU: 0.8520, Val IoU: 0.9010
+2025-07-12 13:21:28,903 - INFO - Epoch 244/500
+2025-07-12 13:21:28,903 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:21:28,903 - INFO - Train Dice: 0.9164, Val Dice: 0.9462
+2025-07-12 13:21:28,904 - INFO - Train IoU: 0.8530, Val IoU: 0.9011
+2025-07-12 13:21:31,922 - INFO - Epoch 245/500
+2025-07-12 13:21:31,922 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:21:31,922 - INFO - Train Dice: 0.9145, Val Dice: 0.9460
+2025-07-12 13:21:31,922 - INFO - Train IoU: 0.8500, Val IoU: 0.9008
+2025-07-12 13:21:35,170 - INFO - Epoch 246/500
+2025-07-12 13:21:35,170 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:21:35,170 - INFO - Train Dice: 0.9143, Val Dice: 0.9460
+2025-07-12 13:21:35,170 - INFO - Train IoU: 0.8498, Val IoU: 0.9009
+2025-07-12 13:21:38,224 - INFO - Epoch 247/500
+2025-07-12 13:21:38,225 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:21:38,225 - INFO - Train Dice: 0.9135, Val Dice: 0.9463
+2025-07-12 13:21:38,225 - INFO - Train IoU: 0.8485, Val IoU: 0.9014
+2025-07-12 13:21:41,249 - INFO - Epoch 248/500
+2025-07-12 13:21:41,249 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:21:41,249 - INFO - Train Dice: 0.9171, Val Dice: 0.9468
+2025-07-12 13:21:41,249 - INFO - Train IoU: 0.8541, Val IoU: 0.9022
+2025-07-12 13:21:44,295 - INFO - Epoch 249/500
+2025-07-12 13:21:44,295 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:21:44,295 - INFO - Train Dice: 0.9187, Val Dice: 0.9467
+2025-07-12 13:21:44,295 - INFO - Train IoU: 0.8565, Val IoU: 0.9021
+2025-07-12 13:21:47,348 - INFO - Epoch 250/500
+2025-07-12 13:21:47,348 - INFO - Train Loss: 0.0030, Val Loss: 0.0023
+2025-07-12 13:21:47,348 - INFO - Train Dice: 0.9195, Val Dice: 0.9470
+2025-07-12 13:21:47,348 - INFO - Train IoU: 0.8578, Val IoU: 0.9025
+2025-07-12 13:21:50,559 - INFO - Epoch 251/500
+2025-07-12 13:21:50,559 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:21:50,559 - INFO - Train Dice: 0.9139, Val Dice: 0.9465
+2025-07-12 13:21:50,559 - INFO - Train IoU: 0.8491, Val IoU: 0.9018
+2025-07-12 13:21:53,565 - INFO - Epoch 252/500
+2025-07-12 13:21:53,565 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:21:53,565 - INFO - Train Dice: 0.9146, Val Dice: 0.9459
+2025-07-12 13:21:53,565 - INFO - Train IoU: 0.8502, Val IoU: 0.9006
+2025-07-12 13:21:56,586 - INFO - Epoch 253/500
+2025-07-12 13:21:56,586 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:21:56,586 - INFO - Train Dice: 0.9142, Val Dice: 0.9460
+2025-07-12 13:21:56,586 - INFO - Train IoU: 0.8495, Val IoU: 0.9009
+2025-07-12 13:21:59,654 - INFO - Epoch 254/500
+2025-07-12 13:21:59,655 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:21:59,655 - INFO - Train Dice: 0.9168, Val Dice: 0.9462
+2025-07-12 13:21:59,655 - INFO - Train IoU: 0.8536, Val IoU: 0.9013
+2025-07-12 13:22:02,820 - INFO - Epoch 255/500
+2025-07-12 13:22:02,820 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:02,820 - INFO - Train Dice: 0.9188, Val Dice: 0.9462
+2025-07-12 13:22:02,820 - INFO - Train IoU: 0.8568, Val IoU: 0.9013
+2025-07-12 13:22:06,219 - INFO - Epoch 256/500
+2025-07-12 13:22:06,219 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:06,219 - INFO - Train Dice: 0.9195, Val Dice: 0.9463
+2025-07-12 13:22:06,219 - INFO - Train IoU: 0.8578, Val IoU: 0.9014
+2025-07-12 13:22:09,337 - INFO - Epoch 257/500
+2025-07-12 13:22:09,337 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:22:09,337 - INFO - Train Dice: 0.9140, Val Dice: 0.9462
+2025-07-12 13:22:09,337 - INFO - Train IoU: 0.8493, Val IoU: 0.9013
+2025-07-12 13:22:12,448 - INFO - Epoch 258/500
+2025-07-12 13:22:12,449 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:12,449 - INFO - Train Dice: 0.9181, Val Dice: 0.9463
+2025-07-12 13:22:12,449 - INFO - Train IoU: 0.8555, Val IoU: 0.9014
+2025-07-12 13:22:15,618 - INFO - Epoch 259/500
+2025-07-12 13:22:15,618 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:22:15,618 - INFO - Train Dice: 0.9180, Val Dice: 0.9462
+2025-07-12 13:22:15,618 - INFO - Train IoU: 0.8554, Val IoU: 0.9012
+2025-07-12 13:22:18,846 - INFO - Epoch 260/500
+2025-07-12 13:22:18,846 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:18,846 - INFO - Train Dice: 0.9209, Val Dice: 0.9460
+2025-07-12 13:22:18,846 - INFO - Train IoU: 0.8600, Val IoU: 0.9009
+2025-07-12 13:22:22,353 - INFO - Epoch 261/500
+2025-07-12 13:22:22,353 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:22:22,353 - INFO - Train Dice: 0.9195, Val Dice: 0.9457
+2025-07-12 13:22:22,353 - INFO - Train IoU: 0.8578, Val IoU: 0.9003
+2025-07-12 13:22:25,544 - INFO - Epoch 262/500
+2025-07-12 13:22:25,544 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:25,544 - INFO - Train Dice: 0.9189, Val Dice: 0.9463
+2025-07-12 13:22:25,544 - INFO - Train IoU: 0.8569, Val IoU: 0.9015
+2025-07-12 13:22:28,663 - INFO - Epoch 263/500
+2025-07-12 13:22:28,663 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:28,663 - INFO - Train Dice: 0.9173, Val Dice: 0.9461
+2025-07-12 13:22:28,663 - INFO - Train IoU: 0.8544, Val IoU: 0.9010
+2025-07-12 13:22:31,783 - INFO - Epoch 264/500
+2025-07-12 13:22:31,784 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:31,784 - INFO - Train Dice: 0.9172, Val Dice: 0.9457
+2025-07-12 13:22:31,784 - INFO - Train IoU: 0.8542, Val IoU: 0.9003
+2025-07-12 13:22:34,944 - INFO - Epoch 265/500
+2025-07-12 13:22:34,945 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:34,945 - INFO - Train Dice: 0.9201, Val Dice: 0.9461
+2025-07-12 13:22:34,945 - INFO - Train IoU: 0.8587, Val IoU: 0.9011
+2025-07-12 13:22:38,193 - INFO - Epoch 266/500
+2025-07-12 13:22:38,193 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:38,193 - INFO - Train Dice: 0.9153, Val Dice: 0.9463
+2025-07-12 13:22:38,193 - INFO - Train IoU: 0.8512, Val IoU: 0.9014
+2025-07-12 13:22:41,247 - INFO - Epoch 267/500
+2025-07-12 13:22:41,248 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:22:41,248 - INFO - Train Dice: 0.9141, Val Dice: 0.9456
+2025-07-12 13:22:41,248 - INFO - Train IoU: 0.8494, Val IoU: 0.9001
+2025-07-12 13:22:44,354 - INFO - Epoch 268/500
+2025-07-12 13:22:44,354 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:22:44,354 - INFO - Train Dice: 0.9150, Val Dice: 0.9462
+2025-07-12 13:22:44,354 - INFO - Train IoU: 0.8509, Val IoU: 0.9012
+2025-07-12 13:22:47,472 - INFO - Epoch 269/500
+2025-07-12 13:22:47,472 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:22:47,472 - INFO - Train Dice: 0.9146, Val Dice: 0.9462
+2025-07-12 13:22:47,472 - INFO - Train IoU: 0.8501, Val IoU: 0.9012
+2025-07-12 13:22:50,624 - INFO - Epoch 270/500
+2025-07-12 13:22:50,624 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:50,624 - INFO - Train Dice: 0.9160, Val Dice: 0.9464
+2025-07-12 13:22:50,624 - INFO - Train IoU: 0.8524, Val IoU: 0.9015
+2025-07-12 13:22:53,946 - INFO - Epoch 271/500
+2025-07-12 13:22:53,946 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:22:53,946 - INFO - Train Dice: 0.9141, Val Dice: 0.9463
+2025-07-12 13:22:53,946 - INFO - Train IoU: 0.8495, Val IoU: 0.9014
+2025-07-12 13:22:56,991 - INFO - Epoch 272/500
+2025-07-12 13:22:56,991 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:22:56,991 - INFO - Train Dice: 0.9181, Val Dice: 0.9460
+2025-07-12 13:22:56,991 - INFO - Train IoU: 0.8557, Val IoU: 0.9008
+2025-07-12 13:23:00,059 - INFO - Epoch 273/500
+2025-07-12 13:23:00,059 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:23:00,059 - INFO - Train Dice: 0.9172, Val Dice: 0.9466
+2025-07-12 13:23:00,059 - INFO - Train IoU: 0.8542, Val IoU: 0.9018
+2025-07-12 13:23:03,254 - INFO - Epoch 274/500
+2025-07-12 13:23:03,254 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:23:03,254 - INFO - Train Dice: 0.9228, Val Dice: 0.9461
+2025-07-12 13:23:03,255 - INFO - Train IoU: 0.8629, Val IoU: 0.9010
+2025-07-12 13:23:06,326 - INFO - Epoch 275/500
+2025-07-12 13:23:06,326 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:23:06,326 - INFO - Train Dice: 0.9171, Val Dice: 0.9464
+2025-07-12 13:23:06,326 - INFO - Train IoU: 0.8541, Val IoU: 0.9016
+2025-07-12 13:23:09,595 - INFO - Epoch 276/500
+2025-07-12 13:23:09,595 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:23:09,595 - INFO - Train Dice: 0.9156, Val Dice: 0.9469
+2025-07-12 13:23:09,596 - INFO - Train IoU: 0.8518, Val IoU: 0.9025
+2025-07-12 13:23:09,818 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:23:12,950 - INFO - Epoch 277/500
+2025-07-12 13:23:12,951 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:23:12,951 - INFO - Train Dice: 0.9161, Val Dice: 0.9462
+2025-07-12 13:23:12,951 - INFO - Train IoU: 0.8525, Val IoU: 0.9013
+2025-07-12 13:23:16,005 - INFO - Epoch 278/500
+2025-07-12 13:23:16,005 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:23:16,005 - INFO - Train Dice: 0.9138, Val Dice: 0.9460
+2025-07-12 13:23:16,005 - INFO - Train IoU: 0.8490, Val IoU: 0.9008
+2025-07-12 13:23:19,200 - INFO - Epoch 279/500
+2025-07-12 13:23:19,200 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:23:19,200 - INFO - Train Dice: 0.9194, Val Dice: 0.9464
+2025-07-12 13:23:19,200 - INFO - Train IoU: 0.8577, Val IoU: 0.9015
+2025-07-12 13:23:22,305 - INFO - Epoch 280/500
+2025-07-12 13:23:22,306 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:23:22,306 - INFO - Train Dice: 0.9143, Val Dice: 0.9461
+2025-07-12 13:23:22,306 - INFO - Train IoU: 0.8497, Val IoU: 0.9010
+2025-07-12 13:23:25,598 - INFO - Epoch 281/500
+2025-07-12 13:23:25,598 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:23:25,598 - INFO - Train Dice: 0.9164, Val Dice: 0.9466
+2025-07-12 13:23:25,598 - INFO - Train IoU: 0.8530, Val IoU: 0.9019
+2025-07-12 13:23:28,824 - INFO - Epoch 282/500
+2025-07-12 13:23:28,824 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:23:28,824 - INFO - Train Dice: 0.9192, Val Dice: 0.9464
+2025-07-12 13:23:28,824 - INFO - Train IoU: 0.8573, Val IoU: 0.9015
+2025-07-12 13:23:32,024 - INFO - Epoch 283/500
+2025-07-12 13:23:32,024 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:23:32,024 - INFO - Train Dice: 0.9152, Val Dice: 0.9462
+2025-07-12 13:23:32,024 - INFO - Train IoU: 0.8511, Val IoU: 0.9012
+2025-07-12 13:23:35,135 - INFO - Epoch 284/500
+2025-07-12 13:23:35,135 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:23:35,135 - INFO - Train Dice: 0.9179, Val Dice: 0.9462
+2025-07-12 13:23:35,135 - INFO - Train IoU: 0.8553, Val IoU: 0.9012
+2025-07-12 13:23:38,216 - INFO - Epoch 285/500
+2025-07-12 13:23:38,216 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:23:38,216 - INFO - Train Dice: 0.9182, Val Dice: 0.9462
+2025-07-12 13:23:38,216 - INFO - Train IoU: 0.8558, Val IoU: 0.9012
+2025-07-12 13:23:41,606 - INFO - Epoch 286/500
+2025-07-12 13:23:41,607 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:23:41,607 - INFO - Train Dice: 0.9164, Val Dice: 0.9463
+2025-07-12 13:23:41,607 - INFO - Train IoU: 0.8529, Val IoU: 0.9014
+2025-07-12 13:23:44,768 - INFO - Epoch 287/500
+2025-07-12 13:23:44,768 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:23:44,768 - INFO - Train Dice: 0.9160, Val Dice: 0.9460
+2025-07-12 13:23:44,768 - INFO - Train IoU: 0.8524, Val IoU: 0.9009
+2025-07-12 13:23:47,774 - INFO - Epoch 288/500
+2025-07-12 13:23:47,774 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:23:47,774 - INFO - Train Dice: 0.9160, Val Dice: 0.9461
+2025-07-12 13:23:47,774 - INFO - Train IoU: 0.8523, Val IoU: 0.9011
+2025-07-12 13:23:50,785 - INFO - Epoch 289/500
+2025-07-12 13:23:50,786 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:23:50,786 - INFO - Train Dice: 0.9151, Val Dice: 0.9461
+2025-07-12 13:23:50,786 - INFO - Train IoU: 0.8510, Val IoU: 0.9011
+2025-07-12 13:23:53,823 - INFO - Epoch 290/500
+2025-07-12 13:23:53,824 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:23:53,824 - INFO - Train Dice: 0.9153, Val Dice: 0.9465
+2025-07-12 13:23:53,824 - INFO - Train IoU: 0.8513, Val IoU: 0.9018
+2025-07-12 13:23:57,101 - INFO - Epoch 291/500
+2025-07-12 13:23:57,101 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:23:57,101 - INFO - Train Dice: 0.9168, Val Dice: 0.9465
+2025-07-12 13:23:57,101 - INFO - Train IoU: 0.8537, Val IoU: 0.9016
+2025-07-12 13:24:00,193 - INFO - Epoch 292/500
+2025-07-12 13:24:00,194 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:00,194 - INFO - Train Dice: 0.9173, Val Dice: 0.9464
+2025-07-12 13:24:00,194 - INFO - Train IoU: 0.8544, Val IoU: 0.9015
+2025-07-12 13:24:03,370 - INFO - Epoch 293/500
+2025-07-12 13:24:03,370 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:24:03,370 - INFO - Train Dice: 0.9148, Val Dice: 0.9460
+2025-07-12 13:24:03,370 - INFO - Train IoU: 0.8504, Val IoU: 0.9009
+2025-07-12 13:24:06,530 - INFO - Epoch 294/500
+2025-07-12 13:24:06,530 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:06,530 - INFO - Train Dice: 0.9194, Val Dice: 0.9465
+2025-07-12 13:24:06,530 - INFO - Train IoU: 0.8576, Val IoU: 0.9017
+2025-07-12 13:24:09,578 - INFO - Epoch 295/500
+2025-07-12 13:24:09,578 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:24:09,578 - INFO - Train Dice: 0.9138, Val Dice: 0.9462
+2025-07-12 13:24:09,578 - INFO - Train IoU: 0.8490, Val IoU: 0.9012
+2025-07-12 13:24:12,952 - INFO - Epoch 296/500
+2025-07-12 13:24:12,953 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:12,953 - INFO - Train Dice: 0.9175, Val Dice: 0.9466
+2025-07-12 13:24:12,953 - INFO - Train IoU: 0.8547, Val IoU: 0.9019
+2025-07-12 13:24:16,074 - INFO - Epoch 297/500
+2025-07-12 13:24:16,074 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:16,075 - INFO - Train Dice: 0.9160, Val Dice: 0.9464
+2025-07-12 13:24:16,075 - INFO - Train IoU: 0.8523, Val IoU: 0.9015
+2025-07-12 13:24:19,136 - INFO - Epoch 298/500
+2025-07-12 13:24:19,136 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:24:19,136 - INFO - Train Dice: 0.9184, Val Dice: 0.9469
+2025-07-12 13:24:19,136 - INFO - Train IoU: 0.8562, Val IoU: 0.9024
+2025-07-12 13:24:22,406 - INFO - Epoch 299/500
+2025-07-12 13:24:22,406 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:22,406 - INFO - Train Dice: 0.9184, Val Dice: 0.9463
+2025-07-12 13:24:22,406 - INFO - Train IoU: 0.8561, Val IoU: 0.9014
+2025-07-12 13:24:25,588 - INFO - Epoch 300/500
+2025-07-12 13:24:25,588 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:25,588 - INFO - Train Dice: 0.9176, Val Dice: 0.9463
+2025-07-12 13:24:25,588 - INFO - Train IoU: 0.8548, Val IoU: 0.9014
+2025-07-12 13:24:28,842 - INFO - Epoch 301/500
+2025-07-12 13:24:28,842 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:24:28,842 - INFO - Train Dice: 0.9156, Val Dice: 0.9464
+2025-07-12 13:24:28,842 - INFO - Train IoU: 0.8517, Val IoU: 0.9015
+2025-07-12 13:24:31,912 - INFO - Epoch 302/500
+2025-07-12 13:24:31,912 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:31,912 - INFO - Train Dice: 0.9180, Val Dice: 0.9465
+2025-07-12 13:24:31,912 - INFO - Train IoU: 0.8555, Val IoU: 0.9017
+2025-07-12 13:24:35,004 - INFO - Epoch 303/500
+2025-07-12 13:24:35,005 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:35,005 - INFO - Train Dice: 0.9183, Val Dice: 0.9465
+2025-07-12 13:24:35,005 - INFO - Train IoU: 0.8559, Val IoU: 0.9017
+2025-07-12 13:24:38,114 - INFO - Epoch 304/500
+2025-07-12 13:24:38,114 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:38,114 - INFO - Train Dice: 0.9158, Val Dice: 0.9465
+2025-07-12 13:24:38,114 - INFO - Train IoU: 0.8521, Val IoU: 0.9017
+2025-07-12 13:24:41,193 - INFO - Epoch 305/500
+2025-07-12 13:24:41,193 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:24:41,193 - INFO - Train Dice: 0.9157, Val Dice: 0.9466
+2025-07-12 13:24:41,193 - INFO - Train IoU: 0.8519, Val IoU: 0.9018
+2025-07-12 13:24:44,518 - INFO - Epoch 306/500
+2025-07-12 13:24:44,518 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:24:44,518 - INFO - Train Dice: 0.9190, Val Dice: 0.9460
+2025-07-12 13:24:44,518 - INFO - Train IoU: 0.8570, Val IoU: 0.9009
+2025-07-12 13:24:47,595 - INFO - Epoch 307/500
+2025-07-12 13:24:47,595 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:47,595 - INFO - Train Dice: 0.9175, Val Dice: 0.9462
+2025-07-12 13:24:47,595 - INFO - Train IoU: 0.8547, Val IoU: 0.9012
+2025-07-12 13:24:50,677 - INFO - Epoch 308/500
+2025-07-12 13:24:50,677 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:24:50,677 - INFO - Train Dice: 0.9154, Val Dice: 0.9466
+2025-07-12 13:24:50,677 - INFO - Train IoU: 0.8515, Val IoU: 0.9018
+2025-07-12 13:24:53,707 - INFO - Epoch 309/500
+2025-07-12 13:24:53,707 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:24:53,707 - INFO - Train Dice: 0.9196, Val Dice: 0.9463
+2025-07-12 13:24:53,707 - INFO - Train IoU: 0.8579, Val IoU: 0.9014
+2025-07-12 13:24:56,717 - INFO - Epoch 310/500
+2025-07-12 13:24:56,718 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:24:56,718 - INFO - Train Dice: 0.9181, Val Dice: 0.9463
+2025-07-12 13:24:56,718 - INFO - Train IoU: 0.8556, Val IoU: 0.9013
+2025-07-12 13:24:59,988 - INFO - Epoch 311/500
+2025-07-12 13:24:59,988 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:24:59,988 - INFO - Train Dice: 0.9164, Val Dice: 0.9462
+2025-07-12 13:24:59,988 - INFO - Train IoU: 0.8531, Val IoU: 0.9012
+2025-07-12 13:25:03,089 - INFO - Epoch 312/500
+2025-07-12 13:25:03,090 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:25:03,090 - INFO - Train Dice: 0.9172, Val Dice: 0.9462
+2025-07-12 13:25:03,090 - INFO - Train IoU: 0.8542, Val IoU: 0.9012
+2025-07-12 13:25:06,232 - INFO - Epoch 313/500
+2025-07-12 13:25:06,232 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:25:06,232 - INFO - Train Dice: 0.9150, Val Dice: 0.9457
+2025-07-12 13:25:06,232 - INFO - Train IoU: 0.8508, Val IoU: 0.9003
+2025-07-12 13:25:09,412 - INFO - Epoch 314/500
+2025-07-12 13:25:09,413 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:25:09,413 - INFO - Train Dice: 0.9149, Val Dice: 0.9463
+2025-07-12 13:25:09,413 - INFO - Train IoU: 0.8507, Val IoU: 0.9014
+2025-07-12 13:25:12,470 - INFO - Epoch 315/500
+2025-07-12 13:25:12,470 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:25:12,470 - INFO - Train Dice: 0.9165, Val Dice: 0.9461
+2025-07-12 13:25:12,470 - INFO - Train IoU: 0.8531, Val IoU: 0.9010
+2025-07-12 13:25:15,696 - INFO - Epoch 316/500
+2025-07-12 13:25:15,696 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:25:15,696 - INFO - Train Dice: 0.9139, Val Dice: 0.9468
+2025-07-12 13:25:15,696 - INFO - Train IoU: 0.8490, Val IoU: 0.9022
+2025-07-12 13:25:18,777 - INFO - Epoch 317/500
+2025-07-12 13:25:18,777 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:25:18,777 - INFO - Train Dice: 0.9159, Val Dice: 0.9465
+2025-07-12 13:25:18,777 - INFO - Train IoU: 0.8522, Val IoU: 0.9017
+2025-07-12 13:25:21,855 - INFO - Epoch 318/500
+2025-07-12 13:25:21,855 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:25:21,855 - INFO - Train Dice: 0.9161, Val Dice: 0.9467
+2025-07-12 13:25:21,855 - INFO - Train IoU: 0.8525, Val IoU: 0.9021
+2025-07-12 13:25:24,969 - INFO - Epoch 319/500
+2025-07-12 13:25:24,969 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:25:24,969 - INFO - Train Dice: 0.9174, Val Dice: 0.9465
+2025-07-12 13:25:24,969 - INFO - Train IoU: 0.8545, Val IoU: 0.9016
+2025-07-12 13:25:28,027 - INFO - Epoch 320/500
+2025-07-12 13:25:28,027 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:25:28,027 - INFO - Train Dice: 0.9169, Val Dice: 0.9466
+2025-07-12 13:25:28,027 - INFO - Train IoU: 0.8538, Val IoU: 0.9019
+2025-07-12 13:25:31,332 - INFO - Epoch 321/500
+2025-07-12 13:25:31,333 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:25:31,333 - INFO - Train Dice: 0.9168, Val Dice: 0.9464
+2025-07-12 13:25:31,333 - INFO - Train IoU: 0.8537, Val IoU: 0.9016
+2025-07-12 13:25:34,421 - INFO - Epoch 322/500
+2025-07-12 13:25:34,421 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:25:34,421 - INFO - Train Dice: 0.9167, Val Dice: 0.9462
+2025-07-12 13:25:34,421 - INFO - Train IoU: 0.8534, Val IoU: 0.9012
+2025-07-12 13:25:37,507 - INFO - Epoch 323/500
+2025-07-12 13:25:37,507 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:25:37,507 - INFO - Train Dice: 0.9166, Val Dice: 0.9460
+2025-07-12 13:25:37,507 - INFO - Train IoU: 0.8533, Val IoU: 0.9008
+2025-07-12 13:25:40,597 - INFO - Epoch 324/500
+2025-07-12 13:25:40,597 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:25:40,597 - INFO - Train Dice: 0.9177, Val Dice: 0.9464
+2025-07-12 13:25:40,597 - INFO - Train IoU: 0.8550, Val IoU: 0.9016
+2025-07-12 13:25:43,642 - INFO - Epoch 325/500
+2025-07-12 13:25:43,642 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:25:43,642 - INFO - Train Dice: 0.9126, Val Dice: 0.9463
+2025-07-12 13:25:43,642 - INFO - Train IoU: 0.8470, Val IoU: 0.9013
+2025-07-12 13:25:46,950 - INFO - Epoch 326/500
+2025-07-12 13:25:46,951 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:25:46,951 - INFO - Train Dice: 0.9172, Val Dice: 0.9463
+2025-07-12 13:25:46,951 - INFO - Train IoU: 0.8541, Val IoU: 0.9014
+2025-07-12 13:25:50,179 - INFO - Epoch 327/500
+2025-07-12 13:25:50,179 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:25:50,179 - INFO - Train Dice: 0.9127, Val Dice: 0.9462
+2025-07-12 13:25:50,179 - INFO - Train IoU: 0.8473, Val IoU: 0.9013
+2025-07-12 13:25:53,246 - INFO - Epoch 328/500
+2025-07-12 13:25:53,246 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:25:53,246 - INFO - Train Dice: 0.9197, Val Dice: 0.9465
+2025-07-12 13:25:53,246 - INFO - Train IoU: 0.8580, Val IoU: 0.9017
+2025-07-12 13:25:56,333 - INFO - Epoch 329/500
+2025-07-12 13:25:56,333 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:25:56,333 - INFO - Train Dice: 0.9113, Val Dice: 0.9461
+2025-07-12 13:25:56,333 - INFO - Train IoU: 0.8451, Val IoU: 0.9010
+2025-07-12 13:25:59,437 - INFO - Epoch 330/500
+2025-07-12 13:25:59,438 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:25:59,438 - INFO - Train Dice: 0.9146, Val Dice: 0.9461
+2025-07-12 13:25:59,438 - INFO - Train IoU: 0.8502, Val IoU: 0.9011
+2025-07-12 13:26:02,774 - INFO - Epoch 331/500
+2025-07-12 13:26:02,774 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:26:02,774 - INFO - Train Dice: 0.9137, Val Dice: 0.9463
+2025-07-12 13:26:02,774 - INFO - Train IoU: 0.8488, Val IoU: 0.9013
+2025-07-12 13:26:05,936 - INFO - Epoch 332/500
+2025-07-12 13:26:05,937 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:26:05,937 - INFO - Train Dice: 0.9147, Val Dice: 0.9464
+2025-07-12 13:26:05,937 - INFO - Train IoU: 0.8503, Val IoU: 0.9015
+2025-07-12 13:26:09,136 - INFO - Epoch 333/500
+2025-07-12 13:26:09,137 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:26:09,137 - INFO - Train Dice: 0.9180, Val Dice: 0.9464
+2025-07-12 13:26:09,137 - INFO - Train IoU: 0.8554, Val IoU: 0.9015
+2025-07-12 13:26:12,268 - INFO - Epoch 334/500
+2025-07-12 13:26:12,268 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:26:12,268 - INFO - Train Dice: 0.9192, Val Dice: 0.9466
+2025-07-12 13:26:12,268 - INFO - Train IoU: 0.8574, Val IoU: 0.9018
+2025-07-12 13:26:15,415 - INFO - Epoch 335/500
+2025-07-12 13:26:15,415 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:26:15,416 - INFO - Train Dice: 0.9159, Val Dice: 0.9464
+2025-07-12 13:26:15,416 - INFO - Train IoU: 0.8521, Val IoU: 0.9015
+2025-07-12 13:26:18,834 - INFO - Epoch 336/500
+2025-07-12 13:26:18,834 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:26:18,834 - INFO - Train Dice: 0.9168, Val Dice: 0.9462
+2025-07-12 13:26:18,834 - INFO - Train IoU: 0.8537, Val IoU: 0.9012
+2025-07-12 13:26:21,987 - INFO - Epoch 337/500
+2025-07-12 13:26:21,987 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:26:21,987 - INFO - Train Dice: 0.9149, Val Dice: 0.9467
+2025-07-12 13:26:21,987 - INFO - Train IoU: 0.8507, Val IoU: 0.9021
+2025-07-12 13:26:25,103 - INFO - Epoch 338/500
+2025-07-12 13:26:25,103 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:26:25,103 - INFO - Train Dice: 0.9121, Val Dice: 0.9466
+2025-07-12 13:26:25,103 - INFO - Train IoU: 0.8464, Val IoU: 0.9019
+2025-07-12 13:26:28,229 - INFO - Epoch 339/500
+2025-07-12 13:26:28,229 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:26:28,229 - INFO - Train Dice: 0.9146, Val Dice: 0.9464
+2025-07-12 13:26:28,229 - INFO - Train IoU: 0.8502, Val IoU: 0.9015
+2025-07-12 13:26:31,287 - INFO - Epoch 340/500
+2025-07-12 13:26:31,288 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:26:31,288 - INFO - Train Dice: 0.9163, Val Dice: 0.9464
+2025-07-12 13:26:31,288 - INFO - Train IoU: 0.8529, Val IoU: 0.9016
+2025-07-12 13:26:34,548 - INFO - Epoch 341/500
+2025-07-12 13:26:34,549 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:26:34,549 - INFO - Train Dice: 0.9166, Val Dice: 0.9465
+2025-07-12 13:26:34,549 - INFO - Train IoU: 0.8533, Val IoU: 0.9018
+2025-07-12 13:26:37,564 - INFO - Epoch 342/500
+2025-07-12 13:26:37,564 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:26:37,564 - INFO - Train Dice: 0.9163, Val Dice: 0.9461
+2025-07-12 13:26:37,564 - INFO - Train IoU: 0.8529, Val IoU: 0.9011
+2025-07-12 13:26:40,619 - INFO - Epoch 343/500
+2025-07-12 13:26:40,619 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:26:40,620 - INFO - Train Dice: 0.9169, Val Dice: 0.9458
+2025-07-12 13:26:40,620 - INFO - Train IoU: 0.8537, Val IoU: 0.9005
+2025-07-12 13:26:43,730 - INFO - Epoch 344/500
+2025-07-12 13:26:43,731 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:26:43,731 - INFO - Train Dice: 0.9177, Val Dice: 0.9466
+2025-07-12 13:26:43,731 - INFO - Train IoU: 0.8550, Val IoU: 0.9019
+2025-07-12 13:26:46,920 - INFO - Epoch 345/500
+2025-07-12 13:26:46,920 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:26:46,920 - INFO - Train Dice: 0.9150, Val Dice: 0.9463
+2025-07-12 13:26:46,920 - INFO - Train IoU: 0.8507, Val IoU: 0.9014
+2025-07-12 13:26:50,196 - INFO - Epoch 346/500
+2025-07-12 13:26:50,196 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:26:50,196 - INFO - Train Dice: 0.9149, Val Dice: 0.9465
+2025-07-12 13:26:50,196 - INFO - Train IoU: 0.8507, Val IoU: 0.9017
+2025-07-12 13:26:53,269 - INFO - Epoch 347/500
+2025-07-12 13:26:53,269 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:26:53,269 - INFO - Train Dice: 0.9161, Val Dice: 0.9468
+2025-07-12 13:26:53,269 - INFO - Train IoU: 0.8525, Val IoU: 0.9022
+2025-07-12 13:26:56,322 - INFO - Epoch 348/500
+2025-07-12 13:26:56,322 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:26:56,322 - INFO - Train Dice: 0.9172, Val Dice: 0.9462
+2025-07-12 13:26:56,322 - INFO - Train IoU: 0.8543, Val IoU: 0.9012
+2025-07-12 13:26:59,483 - INFO - Epoch 349/500
+2025-07-12 13:26:59,483 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:26:59,483 - INFO - Train Dice: 0.9157, Val Dice: 0.9464
+2025-07-12 13:26:59,484 - INFO - Train IoU: 0.8519, Val IoU: 0.9015
+2025-07-12 13:27:02,627 - INFO - Epoch 350/500
+2025-07-12 13:27:02,628 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:27:02,628 - INFO - Train Dice: 0.9205, Val Dice: 0.9468
+2025-07-12 13:27:02,628 - INFO - Train IoU: 0.8594, Val IoU: 0.9022
+2025-07-12 13:27:06,002 - INFO - Epoch 351/500
+2025-07-12 13:27:06,002 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:27:06,002 - INFO - Train Dice: 0.9176, Val Dice: 0.9462
+2025-07-12 13:27:06,003 - INFO - Train IoU: 0.8549, Val IoU: 0.9013
+2025-07-12 13:27:09,177 - INFO - Epoch 352/500
+2025-07-12 13:27:09,178 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:27:09,178 - INFO - Train Dice: 0.9155, Val Dice: 0.9461
+2025-07-12 13:27:09,178 - INFO - Train IoU: 0.8516, Val IoU: 0.9011
+2025-07-12 13:27:12,315 - INFO - Epoch 353/500
+2025-07-12 13:27:12,315 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:27:12,315 - INFO - Train Dice: 0.9184, Val Dice: 0.9466
+2025-07-12 13:27:12,316 - INFO - Train IoU: 0.8562, Val IoU: 0.9019
+2025-07-12 13:27:15,443 - INFO - Epoch 354/500
+2025-07-12 13:27:15,443 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:27:15,444 - INFO - Train Dice: 0.9191, Val Dice: 0.9464
+2025-07-12 13:27:15,444 - INFO - Train IoU: 0.8572, Val IoU: 0.9015
+2025-07-12 13:27:18,566 - INFO - Epoch 355/500
+2025-07-12 13:27:18,566 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:27:18,566 - INFO - Train Dice: 0.9171, Val Dice: 0.9465
+2025-07-12 13:27:18,566 - INFO - Train IoU: 0.8541, Val IoU: 0.9017
+2025-07-12 13:27:21,961 - INFO - Epoch 356/500
+2025-07-12 13:27:21,961 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:27:21,961 - INFO - Train Dice: 0.9146, Val Dice: 0.9462
+2025-07-12 13:27:21,961 - INFO - Train IoU: 0.8502, Val IoU: 0.9011
+2025-07-12 13:27:25,069 - INFO - Epoch 357/500
+2025-07-12 13:27:25,069 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:27:25,069 - INFO - Train Dice: 0.9161, Val Dice: 0.9461
+2025-07-12 13:27:25,069 - INFO - Train IoU: 0.8525, Val IoU: 0.9010
+2025-07-12 13:27:28,115 - INFO - Epoch 358/500
+2025-07-12 13:27:28,115 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:27:28,115 - INFO - Train Dice: 0.9188, Val Dice: 0.9460
+2025-07-12 13:27:28,115 - INFO - Train IoU: 0.8567, Val IoU: 0.9009
+2025-07-12 13:27:31,099 - INFO - Epoch 359/500
+2025-07-12 13:27:31,099 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:27:31,099 - INFO - Train Dice: 0.9190, Val Dice: 0.9465
+2025-07-12 13:27:31,099 - INFO - Train IoU: 0.8570, Val IoU: 0.9017
+2025-07-12 13:27:34,131 - INFO - Epoch 360/500
+2025-07-12 13:27:34,132 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:27:34,132 - INFO - Train Dice: 0.9167, Val Dice: 0.9464
+2025-07-12 13:27:34,132 - INFO - Train IoU: 0.8534, Val IoU: 0.9015
+2025-07-12 13:27:37,383 - INFO - Epoch 361/500
+2025-07-12 13:27:37,383 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:27:37,383 - INFO - Train Dice: 0.9178, Val Dice: 0.9464
+2025-07-12 13:27:37,383 - INFO - Train IoU: 0.8551, Val IoU: 0.9016
+2025-07-12 13:27:40,419 - INFO - Epoch 362/500
+2025-07-12 13:27:40,420 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:27:40,420 - INFO - Train Dice: 0.9192, Val Dice: 0.9463
+2025-07-12 13:27:40,420 - INFO - Train IoU: 0.8573, Val IoU: 0.9013
+2025-07-12 13:27:43,410 - INFO - Epoch 363/500
+2025-07-12 13:27:43,410 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:27:43,410 - INFO - Train Dice: 0.9157, Val Dice: 0.9464
+2025-07-12 13:27:43,410 - INFO - Train IoU: 0.8519, Val IoU: 0.9015
+2025-07-12 13:27:46,431 - INFO - Epoch 364/500
+2025-07-12 13:27:46,432 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:27:46,432 - INFO - Train Dice: 0.9136, Val Dice: 0.9460
+2025-07-12 13:27:46,432 - INFO - Train IoU: 0.8487, Val IoU: 0.9009
+2025-07-12 13:27:49,470 - INFO - Epoch 365/500
+2025-07-12 13:27:49,470 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:27:49,470 - INFO - Train Dice: 0.9163, Val Dice: 0.9462
+2025-07-12 13:27:49,470 - INFO - Train IoU: 0.8528, Val IoU: 0.9012
+2025-07-12 13:27:52,640 - INFO - Epoch 366/500
+2025-07-12 13:27:52,640 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:27:52,640 - INFO - Train Dice: 0.9159, Val Dice: 0.9465
+2025-07-12 13:27:52,640 - INFO - Train IoU: 0.8522, Val IoU: 0.9018
+2025-07-12 13:27:55,595 - INFO - Epoch 367/500
+2025-07-12 13:27:55,595 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:27:55,595 - INFO - Train Dice: 0.9156, Val Dice: 0.9462
+2025-07-12 13:27:55,595 - INFO - Train IoU: 0.8517, Val IoU: 0.9013
+2025-07-12 13:27:58,645 - INFO - Epoch 368/500
+2025-07-12 13:27:58,646 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:27:58,646 - INFO - Train Dice: 0.9182, Val Dice: 0.9459
+2025-07-12 13:27:58,646 - INFO - Train IoU: 0.8558, Val IoU: 0.9006
+2025-07-12 13:28:01,709 - INFO - Epoch 369/500
+2025-07-12 13:28:01,709 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:28:01,709 - INFO - Train Dice: 0.9164, Val Dice: 0.9467
+2025-07-12 13:28:01,709 - INFO - Train IoU: 0.8530, Val IoU: 0.9021
+2025-07-12 13:28:04,897 - INFO - Epoch 370/500
+2025-07-12 13:28:04,897 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:28:04,897 - INFO - Train Dice: 0.9188, Val Dice: 0.9463
+2025-07-12 13:28:04,897 - INFO - Train IoU: 0.8567, Val IoU: 0.9013
+2025-07-12 13:28:08,181 - INFO - Epoch 371/500
+2025-07-12 13:28:08,181 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:28:08,181 - INFO - Train Dice: 0.9150, Val Dice: 0.9463
+2025-07-12 13:28:08,181 - INFO - Train IoU: 0.8508, Val IoU: 0.9013
+2025-07-12 13:28:11,272 - INFO - Epoch 372/500
+2025-07-12 13:28:11,272 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:28:11,272 - INFO - Train Dice: 0.9155, Val Dice: 0.9464
+2025-07-12 13:28:11,272 - INFO - Train IoU: 0.8515, Val IoU: 0.9016
+2025-07-12 13:28:14,373 - INFO - Epoch 373/500
+2025-07-12 13:28:14,373 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:28:14,373 - INFO - Train Dice: 0.9194, Val Dice: 0.9461
+2025-07-12 13:28:14,374 - INFO - Train IoU: 0.8577, Val IoU: 0.9010
+2025-07-12 13:28:17,469 - INFO - Epoch 374/500
+2025-07-12 13:28:17,470 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:28:17,470 - INFO - Train Dice: 0.9158, Val Dice: 0.9463
+2025-07-12 13:28:17,470 - INFO - Train IoU: 0.8520, Val IoU: 0.9013
+2025-07-12 13:28:20,801 - INFO - Epoch 375/500
+2025-07-12 13:28:20,801 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:28:20,801 - INFO - Train Dice: 0.9190, Val Dice: 0.9465
+2025-07-12 13:28:20,801 - INFO - Train IoU: 0.8571, Val IoU: 0.9018
+2025-07-12 13:28:24,190 - INFO - Epoch 376/500
+2025-07-12 13:28:24,190 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:28:24,190 - INFO - Train Dice: 0.9193, Val Dice: 0.9458
+2025-07-12 13:28:24,190 - INFO - Train IoU: 0.8575, Val IoU: 0.9005
+2025-07-12 13:28:27,276 - INFO - Epoch 377/500
+2025-07-12 13:28:27,277 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:28:27,277 - INFO - Train Dice: 0.9153, Val Dice: 0.9463
+2025-07-12 13:28:27,277 - INFO - Train IoU: 0.8513, Val IoU: 0.9013
+2025-07-12 13:28:30,339 - INFO - Epoch 378/500
+2025-07-12 13:28:30,339 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:28:30,339 - INFO - Train Dice: 0.9150, Val Dice: 0.9461
+2025-07-12 13:28:30,339 - INFO - Train IoU: 0.8507, Val IoU: 0.9010
+2025-07-12 13:28:33,390 - INFO - Epoch 379/500
+2025-07-12 13:28:33,391 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:28:33,391 - INFO - Train Dice: 0.9116, Val Dice: 0.9465
+2025-07-12 13:28:33,391 - INFO - Train IoU: 0.8456, Val IoU: 0.9017
+2025-07-12 13:28:36,416 - INFO - Epoch 380/500
+2025-07-12 13:28:36,416 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:28:36,416 - INFO - Train Dice: 0.9199, Val Dice: 0.9464
+2025-07-12 13:28:36,416 - INFO - Train IoU: 0.8584, Val IoU: 0.9015
+2025-07-12 13:28:39,659 - INFO - Epoch 381/500
+2025-07-12 13:28:39,660 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:28:39,660 - INFO - Train Dice: 0.9183, Val Dice: 0.9465
+2025-07-12 13:28:39,660 - INFO - Train IoU: 0.8560, Val IoU: 0.9017
+2025-07-12 13:28:42,727 - INFO - Epoch 382/500
+2025-07-12 13:28:42,728 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:28:42,728 - INFO - Train Dice: 0.9157, Val Dice: 0.9468
+2025-07-12 13:28:42,728 - INFO - Train IoU: 0.8519, Val IoU: 0.9023
+2025-07-12 13:28:45,859 - INFO - Epoch 383/500
+2025-07-12 13:28:45,859 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:28:45,859 - INFO - Train Dice: 0.9201, Val Dice: 0.9464
+2025-07-12 13:28:45,859 - INFO - Train IoU: 0.8587, Val IoU: 0.9015
+2025-07-12 13:28:48,912 - INFO - Epoch 384/500
+2025-07-12 13:28:48,912 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:28:48,912 - INFO - Train Dice: 0.9124, Val Dice: 0.9459
+2025-07-12 13:28:48,912 - INFO - Train IoU: 0.8468, Val IoU: 0.9007
+2025-07-12 13:28:51,991 - INFO - Epoch 385/500
+2025-07-12 13:28:51,991 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:28:51,991 - INFO - Train Dice: 0.9170, Val Dice: 0.9458
+2025-07-12 13:28:51,991 - INFO - Train IoU: 0.8539, Val IoU: 0.9004
+2025-07-12 13:28:55,295 - INFO - Epoch 386/500
+2025-07-12 13:28:55,295 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:28:55,295 - INFO - Train Dice: 0.9202, Val Dice: 0.9462
+2025-07-12 13:28:55,295 - INFO - Train IoU: 0.8589, Val IoU: 0.9012
+2025-07-12 13:28:58,319 - INFO - Epoch 387/500
+2025-07-12 13:28:58,319 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:28:58,319 - INFO - Train Dice: 0.9192, Val Dice: 0.9462
+2025-07-12 13:28:58,319 - INFO - Train IoU: 0.8573, Val IoU: 0.9012
+2025-07-12 13:29:01,422 - INFO - Epoch 388/500
+2025-07-12 13:29:01,422 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:29:01,422 - INFO - Train Dice: 0.9162, Val Dice: 0.9460
+2025-07-12 13:29:01,423 - INFO - Train IoU: 0.8526, Val IoU: 0.9009
+2025-07-12 13:29:04,467 - INFO - Epoch 389/500
+2025-07-12 13:29:04,467 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:29:04,467 - INFO - Train Dice: 0.9179, Val Dice: 0.9465
+2025-07-12 13:29:04,467 - INFO - Train IoU: 0.8554, Val IoU: 0.9017
+2025-07-12 13:29:07,589 - INFO - Epoch 390/500
+2025-07-12 13:29:07,589 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:29:07,589 - INFO - Train Dice: 0.9185, Val Dice: 0.9465
+2025-07-12 13:29:07,589 - INFO - Train IoU: 0.8563, Val IoU: 0.9017
+2025-07-12 13:29:10,922 - INFO - Epoch 391/500
+2025-07-12 13:29:10,922 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:29:10,922 - INFO - Train Dice: 0.9189, Val Dice: 0.9467
+2025-07-12 13:29:10,923 - INFO - Train IoU: 0.8568, Val IoU: 0.9020
+2025-07-12 13:29:13,970 - INFO - Epoch 392/500
+2025-07-12 13:29:13,970 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:29:13,970 - INFO - Train Dice: 0.9143, Val Dice: 0.9463
+2025-07-12 13:29:13,970 - INFO - Train IoU: 0.8497, Val IoU: 0.9014
+2025-07-12 13:29:16,998 - INFO - Epoch 393/500
+2025-07-12 13:29:16,999 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:29:16,999 - INFO - Train Dice: 0.9178, Val Dice: 0.9467
+2025-07-12 13:29:16,999 - INFO - Train IoU: 0.8552, Val IoU: 0.9020
+2025-07-12 13:29:20,069 - INFO - Epoch 394/500
+2025-07-12 13:29:20,069 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:29:20,070 - INFO - Train Dice: 0.9125, Val Dice: 0.9464
+2025-07-12 13:29:20,070 - INFO - Train IoU: 0.8470, Val IoU: 0.9016
+2025-07-12 13:29:23,138 - INFO - Epoch 395/500
+2025-07-12 13:29:23,138 - INFO - Train Loss: 0.0033, Val Loss: 0.0023
+2025-07-12 13:29:23,138 - INFO - Train Dice: 0.9092, Val Dice: 0.9466
+2025-07-12 13:29:23,138 - INFO - Train IoU: 0.8420, Val IoU: 0.9020
+2025-07-12 13:29:26,408 - INFO - Epoch 396/500
+2025-07-12 13:29:26,409 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:29:26,409 - INFO - Train Dice: 0.9156, Val Dice: 0.9466
+2025-07-12 13:29:26,409 - INFO - Train IoU: 0.8518, Val IoU: 0.9019
+2025-07-12 13:29:29,431 - INFO - Epoch 397/500
+2025-07-12 13:29:29,432 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:29:29,432 - INFO - Train Dice: 0.9189, Val Dice: 0.9461
+2025-07-12 13:29:29,432 - INFO - Train IoU: 0.8568, Val IoU: 0.9010
+2025-07-12 13:29:32,472 - INFO - Epoch 398/500
+2025-07-12 13:29:32,472 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:29:32,472 - INFO - Train Dice: 0.9218, Val Dice: 0.9462
+2025-07-12 13:29:32,472 - INFO - Train IoU: 0.8614, Val IoU: 0.9012
+2025-07-12 13:29:35,470 - INFO - Epoch 399/500
+2025-07-12 13:29:35,470 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:29:35,470 - INFO - Train Dice: 0.9179, Val Dice: 0.9467
+2025-07-12 13:29:35,470 - INFO - Train IoU: 0.8554, Val IoU: 0.9021
+2025-07-12 13:29:38,461 - INFO - Epoch 400/500
+2025-07-12 13:29:38,462 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:29:38,462 - INFO - Train Dice: 0.9176, Val Dice: 0.9460
+2025-07-12 13:29:38,462 - INFO - Train IoU: 0.8548, Val IoU: 0.9008
+2025-07-12 13:29:41,681 - INFO - Epoch 401/500
+2025-07-12 13:29:41,681 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:29:41,681 - INFO - Train Dice: 0.9170, Val Dice: 0.9465
+2025-07-12 13:29:41,681 - INFO - Train IoU: 0.8539, Val IoU: 0.9018
+2025-07-12 13:29:44,686 - INFO - Epoch 402/500
+2025-07-12 13:29:44,686 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:29:44,686 - INFO - Train Dice: 0.9171, Val Dice: 0.9466
+2025-07-12 13:29:44,686 - INFO - Train IoU: 0.8541, Val IoU: 0.9019
+2025-07-12 13:29:47,659 - INFO - Epoch 403/500
+2025-07-12 13:29:47,659 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:29:47,659 - INFO - Train Dice: 0.9195, Val Dice: 0.9464
+2025-07-12 13:29:47,659 - INFO - Train IoU: 0.8579, Val IoU: 0.9016
+2025-07-12 13:29:50,634 - INFO - Epoch 404/500
+2025-07-12 13:29:50,634 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:29:50,634 - INFO - Train Dice: 0.9168, Val Dice: 0.9460
+2025-07-12 13:29:50,634 - INFO - Train IoU: 0.8536, Val IoU: 0.9009
+2025-07-12 13:29:53,585 - INFO - Epoch 405/500
+2025-07-12 13:29:53,585 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:29:53,585 - INFO - Train Dice: 0.9201, Val Dice: 0.9462
+2025-07-12 13:29:53,585 - INFO - Train IoU: 0.8588, Val IoU: 0.9012
+2025-07-12 13:29:56,801 - INFO - Epoch 406/500
+2025-07-12 13:29:56,801 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:29:56,801 - INFO - Train Dice: 0.9192, Val Dice: 0.9464
+2025-07-12 13:29:56,801 - INFO - Train IoU: 0.8573, Val IoU: 0.9016
+2025-07-12 13:29:59,921 - INFO - Epoch 407/500
+2025-07-12 13:29:59,921 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:29:59,921 - INFO - Train Dice: 0.9180, Val Dice: 0.9465
+2025-07-12 13:29:59,921 - INFO - Train IoU: 0.8555, Val IoU: 0.9016
+2025-07-12 13:30:02,993 - INFO - Epoch 408/500
+2025-07-12 13:30:02,993 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:30:02,993 - INFO - Train Dice: 0.9158, Val Dice: 0.9460
+2025-07-12 13:30:02,993 - INFO - Train IoU: 0.8520, Val IoU: 0.9009
+2025-07-12 13:30:06,046 - INFO - Epoch 409/500
+2025-07-12 13:30:06,047 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:30:06,047 - INFO - Train Dice: 0.9148, Val Dice: 0.9463
+2025-07-12 13:30:06,047 - INFO - Train IoU: 0.8505, Val IoU: 0.9014
+2025-07-12 13:30:09,209 - INFO - Epoch 410/500
+2025-07-12 13:30:09,209 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:30:09,209 - INFO - Train Dice: 0.9179, Val Dice: 0.9466
+2025-07-12 13:30:09,209 - INFO - Train IoU: 0.8553, Val IoU: 0.9018
+2025-07-12 13:30:12,489 - INFO - Epoch 411/500
+2025-07-12 13:30:12,489 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:30:12,489 - INFO - Train Dice: 0.9151, Val Dice: 0.9461
+2025-07-12 13:30:12,489 - INFO - Train IoU: 0.8509, Val IoU: 0.9010
+2025-07-12 13:30:15,632 - INFO - Epoch 412/500
+2025-07-12 13:30:15,632 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:30:15,632 - INFO - Train Dice: 0.9166, Val Dice: 0.9465
+2025-07-12 13:30:15,632 - INFO - Train IoU: 0.8533, Val IoU: 0.9017
+2025-07-12 13:30:18,682 - INFO - Epoch 413/500
+2025-07-12 13:30:18,682 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:30:18,682 - INFO - Train Dice: 0.9210, Val Dice: 0.9463
+2025-07-12 13:30:18,682 - INFO - Train IoU: 0.8601, Val IoU: 0.9013
+2025-07-12 13:30:21,770 - INFO - Epoch 414/500
+2025-07-12 13:30:21,771 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:30:21,771 - INFO - Train Dice: 0.9185, Val Dice: 0.9463
+2025-07-12 13:30:21,771 - INFO - Train IoU: 0.8563, Val IoU: 0.9013
+2025-07-12 13:30:24,872 - INFO - Epoch 415/500
+2025-07-12 13:30:24,872 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:30:24,872 - INFO - Train Dice: 0.9153, Val Dice: 0.9463
+2025-07-12 13:30:24,872 - INFO - Train IoU: 0.8512, Val IoU: 0.9014
+2025-07-12 13:30:28,160 - INFO - Epoch 416/500
+2025-07-12 13:30:28,160 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:30:28,160 - INFO - Train Dice: 0.9159, Val Dice: 0.9467
+2025-07-12 13:30:28,160 - INFO - Train IoU: 0.8522, Val IoU: 0.9021
+2025-07-12 13:30:31,269 - INFO - Epoch 417/500
+2025-07-12 13:30:31,270 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:30:31,270 - INFO - Train Dice: 0.9182, Val Dice: 0.9461
+2025-07-12 13:30:31,270 - INFO - Train IoU: 0.8557, Val IoU: 0.9010
+2025-07-12 13:30:34,342 - INFO - Epoch 418/500
+2025-07-12 13:30:34,342 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:30:34,342 - INFO - Train Dice: 0.9174, Val Dice: 0.9461
+2025-07-12 13:30:34,342 - INFO - Train IoU: 0.8545, Val IoU: 0.9010
+2025-07-12 13:30:37,374 - INFO - Epoch 419/500
+2025-07-12 13:30:37,374 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:30:37,374 - INFO - Train Dice: 0.9160, Val Dice: 0.9464
+2025-07-12 13:30:37,374 - INFO - Train IoU: 0.8524, Val IoU: 0.9015
+2025-07-12 13:30:40,389 - INFO - Epoch 420/500
+2025-07-12 13:30:40,389 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:30:40,389 - INFO - Train Dice: 0.9172, Val Dice: 0.9463
+2025-07-12 13:30:40,389 - INFO - Train IoU: 0.8542, Val IoU: 0.9013
+2025-07-12 13:30:43,649 - INFO - Epoch 421/500
+2025-07-12 13:30:43,649 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:30:43,649 - INFO - Train Dice: 0.9161, Val Dice: 0.9463
+2025-07-12 13:30:43,649 - INFO - Train IoU: 0.8525, Val IoU: 0.9015
+2025-07-12 13:30:46,741 - INFO - Epoch 422/500
+2025-07-12 13:30:46,741 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:30:46,741 - INFO - Train Dice: 0.9203, Val Dice: 0.9462
+2025-07-12 13:30:46,741 - INFO - Train IoU: 0.8591, Val IoU: 0.9011
+2025-07-12 13:30:49,821 - INFO - Epoch 423/500
+2025-07-12 13:30:49,822 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:30:49,822 - INFO - Train Dice: 0.9181, Val Dice: 0.9464
+2025-07-12 13:30:49,822 - INFO - Train IoU: 0.8557, Val IoU: 0.9016
+2025-07-12 13:30:52,897 - INFO - Epoch 424/500
+2025-07-12 13:30:52,897 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:30:52,897 - INFO - Train Dice: 0.9203, Val Dice: 0.9463
+2025-07-12 13:30:52,897 - INFO - Train IoU: 0.8590, Val IoU: 0.9013
+2025-07-12 13:30:55,907 - INFO - Epoch 425/500
+2025-07-12 13:30:55,907 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:30:55,907 - INFO - Train Dice: 0.9169, Val Dice: 0.9468
+2025-07-12 13:30:55,907 - INFO - Train IoU: 0.8537, Val IoU: 0.9022
+2025-07-12 13:30:59,283 - INFO - Epoch 426/500
+2025-07-12 13:30:59,283 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:30:59,283 - INFO - Train Dice: 0.9142, Val Dice: 0.9464
+2025-07-12 13:30:59,283 - INFO - Train IoU: 0.8495, Val IoU: 0.9016
+2025-07-12 13:31:02,354 - INFO - Epoch 427/500
+2025-07-12 13:31:02,354 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:02,354 - INFO - Train Dice: 0.9163, Val Dice: 0.9463
+2025-07-12 13:31:02,354 - INFO - Train IoU: 0.8527, Val IoU: 0.9014
+2025-07-12 13:31:05,377 - INFO - Epoch 428/500
+2025-07-12 13:31:05,377 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:31:05,377 - INFO - Train Dice: 0.9205, Val Dice: 0.9460
+2025-07-12 13:31:05,378 - INFO - Train IoU: 0.8594, Val IoU: 0.9009
+2025-07-12 13:31:08,418 - INFO - Epoch 429/500
+2025-07-12 13:31:08,418 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:08,418 - INFO - Train Dice: 0.9164, Val Dice: 0.9460
+2025-07-12 13:31:08,418 - INFO - Train IoU: 0.8530, Val IoU: 0.9009
+2025-07-12 13:31:11,432 - INFO - Epoch 430/500
+2025-07-12 13:31:11,432 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:11,432 - INFO - Train Dice: 0.9158, Val Dice: 0.9462
+2025-07-12 13:31:11,432 - INFO - Train IoU: 0.8520, Val IoU: 0.9012
+2025-07-12 13:31:14,723 - INFO - Epoch 431/500
+2025-07-12 13:31:14,723 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:31:14,723 - INFO - Train Dice: 0.9135, Val Dice: 0.9460
+2025-07-12 13:31:14,723 - INFO - Train IoU: 0.8486, Val IoU: 0.9009
+2025-07-12 13:31:17,786 - INFO - Epoch 432/500
+2025-07-12 13:31:17,786 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:17,786 - INFO - Train Dice: 0.9168, Val Dice: 0.9463
+2025-07-12 13:31:17,786 - INFO - Train IoU: 0.8535, Val IoU: 0.9013
+2025-07-12 13:31:20,902 - INFO - Epoch 433/500
+2025-07-12 13:31:20,903 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:31:20,903 - INFO - Train Dice: 0.9170, Val Dice: 0.9466
+2025-07-12 13:31:20,903 - INFO - Train IoU: 0.8540, Val IoU: 0.9018
+2025-07-12 13:31:23,993 - INFO - Epoch 434/500
+2025-07-12 13:31:23,994 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:23,994 - INFO - Train Dice: 0.9196, Val Dice: 0.9466
+2025-07-12 13:31:23,994 - INFO - Train IoU: 0.8579, Val IoU: 0.9019
+2025-07-12 13:31:27,083 - INFO - Epoch 435/500
+2025-07-12 13:31:27,083 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:31:27,083 - INFO - Train Dice: 0.9169, Val Dice: 0.9469
+2025-07-12 13:31:27,083 - INFO - Train IoU: 0.8538, Val IoU: 0.9023
+2025-07-12 13:31:30,489 - INFO - Epoch 436/500
+2025-07-12 13:31:30,489 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:30,489 - INFO - Train Dice: 0.9173, Val Dice: 0.9464
+2025-07-12 13:31:30,489 - INFO - Train IoU: 0.8543, Val IoU: 0.9015
+2025-07-12 13:31:33,706 - INFO - Epoch 437/500
+2025-07-12 13:31:33,707 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:31:33,707 - INFO - Train Dice: 0.9174, Val Dice: 0.9466
+2025-07-12 13:31:33,707 - INFO - Train IoU: 0.8545, Val IoU: 0.9019
+2025-07-12 13:31:37,021 - INFO - Epoch 438/500
+2025-07-12 13:31:37,021 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:37,021 - INFO - Train Dice: 0.9168, Val Dice: 0.9463
+2025-07-12 13:31:37,021 - INFO - Train IoU: 0.8535, Val IoU: 0.9013
+2025-07-12 13:31:40,154 - INFO - Epoch 439/500
+2025-07-12 13:31:40,154 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:40,154 - INFO - Train Dice: 0.9176, Val Dice: 0.9464
+2025-07-12 13:31:40,154 - INFO - Train IoU: 0.8548, Val IoU: 0.9016
+2025-07-12 13:31:43,192 - INFO - Epoch 440/500
+2025-07-12 13:31:43,192 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:31:43,192 - INFO - Train Dice: 0.9182, Val Dice: 0.9468
+2025-07-12 13:31:43,192 - INFO - Train IoU: 0.8557, Val IoU: 0.9023
+2025-07-12 13:31:46,441 - INFO - Epoch 441/500
+2025-07-12 13:31:46,441 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:46,441 - INFO - Train Dice: 0.9182, Val Dice: 0.9459
+2025-07-12 13:31:46,441 - INFO - Train IoU: 0.8558, Val IoU: 0.9007
+2025-07-12 13:31:49,483 - INFO - Epoch 442/500
+2025-07-12 13:31:49,483 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:49,483 - INFO - Train Dice: 0.9185, Val Dice: 0.9462
+2025-07-12 13:31:49,483 - INFO - Train IoU: 0.8563, Val IoU: 0.9012
+2025-07-12 13:31:52,564 - INFO - Epoch 443/500
+2025-07-12 13:31:52,565 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:31:52,565 - INFO - Train Dice: 0.9121, Val Dice: 0.9461
+2025-07-12 13:31:52,565 - INFO - Train IoU: 0.8463, Val IoU: 0.9011
+2025-07-12 13:31:55,589 - INFO - Epoch 444/500
+2025-07-12 13:31:55,589 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:31:55,589 - INFO - Train Dice: 0.9169, Val Dice: 0.9459
+2025-07-12 13:31:55,589 - INFO - Train IoU: 0.8538, Val IoU: 0.9007
+2025-07-12 13:31:58,679 - INFO - Epoch 445/500
+2025-07-12 13:31:58,679 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:31:58,679 - INFO - Train Dice: 0.9178, Val Dice: 0.9461
+2025-07-12 13:31:58,679 - INFO - Train IoU: 0.8551, Val IoU: 0.9010
+2025-07-12 13:32:02,136 - INFO - Epoch 446/500
+2025-07-12 13:32:02,136 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:32:02,136 - INFO - Train Dice: 0.9206, Val Dice: 0.9464
+2025-07-12 13:32:02,136 - INFO - Train IoU: 0.8596, Val IoU: 0.9016
+2025-07-12 13:32:05,186 - INFO - Epoch 447/500
+2025-07-12 13:32:05,186 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:32:05,186 - INFO - Train Dice: 0.9143, Val Dice: 0.9464
+2025-07-12 13:32:05,186 - INFO - Train IoU: 0.8498, Val IoU: 0.9015
+2025-07-12 13:32:08,344 - INFO - Epoch 448/500
+2025-07-12 13:32:08,344 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:32:08,344 - INFO - Train Dice: 0.9174, Val Dice: 0.9462
+2025-07-12 13:32:08,344 - INFO - Train IoU: 0.8546, Val IoU: 0.9011
+2025-07-12 13:32:11,455 - INFO - Epoch 449/500
+2025-07-12 13:32:11,455 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:32:11,455 - INFO - Train Dice: 0.9190, Val Dice: 0.9462
+2025-07-12 13:32:11,455 - INFO - Train IoU: 0.8570, Val IoU: 0.9013
+2025-07-12 13:32:14,544 - INFO - Epoch 450/500
+2025-07-12 13:32:14,544 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:32:14,544 - INFO - Train Dice: 0.9206, Val Dice: 0.9461
+2025-07-12 13:32:14,544 - INFO - Train IoU: 0.8595, Val IoU: 0.9011
+2025-07-12 13:32:17,883 - INFO - Epoch 451/500
+2025-07-12 13:32:17,883 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:32:17,883 - INFO - Train Dice: 0.9142, Val Dice: 0.9463
+2025-07-12 13:32:17,883 - INFO - Train IoU: 0.8496, Val IoU: 0.9015
+2025-07-12 13:32:20,999 - INFO - Epoch 452/500
+2025-07-12 13:32:20,999 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:32:20,999 - INFO - Train Dice: 0.9126, Val Dice: 0.9462
+2025-07-12 13:32:20,999 - INFO - Train IoU: 0.8471, Val IoU: 0.9012
+2025-07-12 13:32:24,043 - INFO - Epoch 453/500
+2025-07-12 13:32:24,043 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:32:24,043 - INFO - Train Dice: 0.9197, Val Dice: 0.9463
+2025-07-12 13:32:24,043 - INFO - Train IoU: 0.8582, Val IoU: 0.9013
+2025-07-12 13:32:27,120 - INFO - Epoch 454/500
+2025-07-12 13:32:27,120 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:32:27,120 - INFO - Train Dice: 0.9150, Val Dice: 0.9463
+2025-07-12 13:32:27,120 - INFO - Train IoU: 0.8509, Val IoU: 0.9014
+2025-07-12 13:32:30,168 - INFO - Epoch 455/500
+2025-07-12 13:32:30,168 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:32:30,168 - INFO - Train Dice: 0.9175, Val Dice: 0.9461
+2025-07-12 13:32:30,168 - INFO - Train IoU: 0.8547, Val IoU: 0.9010
+2025-07-12 13:32:33,449 - INFO - Epoch 456/500
+2025-07-12 13:32:33,449 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:32:33,449 - INFO - Train Dice: 0.9155, Val Dice: 0.9462
+2025-07-12 13:32:33,449 - INFO - Train IoU: 0.8515, Val IoU: 0.9013
+2025-07-12 13:32:36,508 - INFO - Epoch 457/500
+2025-07-12 13:32:36,509 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:32:36,509 - INFO - Train Dice: 0.9162, Val Dice: 0.9465
+2025-07-12 13:32:36,509 - INFO - Train IoU: 0.8526, Val IoU: 0.9018
+2025-07-12 13:32:39,554 - INFO - Epoch 458/500
+2025-07-12 13:32:39,554 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:32:39,554 - INFO - Train Dice: 0.9176, Val Dice: 0.9463
+2025-07-12 13:32:39,554 - INFO - Train IoU: 0.8549, Val IoU: 0.9014
+2025-07-12 13:32:42,618 - INFO - Epoch 459/500
+2025-07-12 13:32:42,618 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:32:42,618 - INFO - Train Dice: 0.9156, Val Dice: 0.9460
+2025-07-12 13:32:42,618 - INFO - Train IoU: 0.8518, Val IoU: 0.9009
+2025-07-12 13:32:45,644 - INFO - Epoch 460/500
+2025-07-12 13:32:45,645 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:32:45,645 - INFO - Train Dice: 0.9140, Val Dice: 0.9459
+2025-07-12 13:32:45,645 - INFO - Train IoU: 0.8492, Val IoU: 0.9007
+2025-07-12 13:32:48,955 - INFO - Epoch 461/500
+2025-07-12 13:32:48,955 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:32:48,955 - INFO - Train Dice: 0.9186, Val Dice: 0.9464
+2025-07-12 13:32:48,955 - INFO - Train IoU: 0.8564, Val IoU: 0.9016
+2025-07-12 13:32:52,025 - INFO - Epoch 462/500
+2025-07-12 13:32:52,025 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:32:52,025 - INFO - Train Dice: 0.9174, Val Dice: 0.9464
+2025-07-12 13:32:52,025 - INFO - Train IoU: 0.8546, Val IoU: 0.9016
+2025-07-12 13:32:55,099 - INFO - Epoch 463/500
+2025-07-12 13:32:55,099 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:32:55,100 - INFO - Train Dice: 0.9158, Val Dice: 0.9461
+2025-07-12 13:32:55,100 - INFO - Train IoU: 0.8521, Val IoU: 0.9010
+2025-07-12 13:32:58,187 - INFO - Epoch 464/500
+2025-07-12 13:32:58,187 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:32:58,187 - INFO - Train Dice: 0.9124, Val Dice: 0.9465
+2025-07-12 13:32:58,187 - INFO - Train IoU: 0.8469, Val IoU: 0.9017
+2025-07-12 13:33:01,269 - INFO - Epoch 465/500
+2025-07-12 13:33:01,269 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:01,269 - INFO - Train Dice: 0.9121, Val Dice: 0.9458
+2025-07-12 13:33:01,269 - INFO - Train IoU: 0.8464, Val IoU: 0.9005
+2025-07-12 13:33:04,731 - INFO - Epoch 466/500
+2025-07-12 13:33:04,731 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:04,731 - INFO - Train Dice: 0.9157, Val Dice: 0.9460
+2025-07-12 13:33:04,731 - INFO - Train IoU: 0.8518, Val IoU: 0.9009
+2025-07-12 13:33:07,866 - INFO - Epoch 467/500
+2025-07-12 13:33:07,867 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:33:07,867 - INFO - Train Dice: 0.9185, Val Dice: 0.9463
+2025-07-12 13:33:07,867 - INFO - Train IoU: 0.8562, Val IoU: 0.9013
+2025-07-12 13:33:10,880 - INFO - Epoch 468/500
+2025-07-12 13:33:10,881 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:10,881 - INFO - Train Dice: 0.9157, Val Dice: 0.9463
+2025-07-12 13:33:10,881 - INFO - Train IoU: 0.8519, Val IoU: 0.9013
+2025-07-12 13:33:13,991 - INFO - Epoch 469/500
+2025-07-12 13:33:13,991 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:33:13,991 - INFO - Train Dice: 0.9170, Val Dice: 0.9464
+2025-07-12 13:33:13,991 - INFO - Train IoU: 0.8539, Val IoU: 0.9016
+2025-07-12 13:33:17,108 - INFO - Epoch 470/500
+2025-07-12 13:33:17,108 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:33:17,108 - INFO - Train Dice: 0.9160, Val Dice: 0.9464
+2025-07-12 13:33:17,108 - INFO - Train IoU: 0.8523, Val IoU: 0.9016
+2025-07-12 13:33:20,478 - INFO - Epoch 471/500
+2025-07-12 13:33:20,478 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:20,478 - INFO - Train Dice: 0.9167, Val Dice: 0.9464
+2025-07-12 13:33:20,478 - INFO - Train IoU: 0.8535, Val IoU: 0.9016
+2025-07-12 13:33:23,662 - INFO - Epoch 472/500
+2025-07-12 13:33:23,662 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:23,662 - INFO - Train Dice: 0.9135, Val Dice: 0.9458
+2025-07-12 13:33:23,662 - INFO - Train IoU: 0.8485, Val IoU: 0.9006
+2025-07-12 13:33:26,690 - INFO - Epoch 473/500
+2025-07-12 13:33:26,691 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:33:26,691 - INFO - Train Dice: 0.9176, Val Dice: 0.9461
+2025-07-12 13:33:26,691 - INFO - Train IoU: 0.8549, Val IoU: 0.9010
+2025-07-12 13:33:29,706 - INFO - Epoch 474/500
+2025-07-12 13:33:29,706 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:29,706 - INFO - Train Dice: 0.9165, Val Dice: 0.9462
+2025-07-12 13:33:29,706 - INFO - Train IoU: 0.8531, Val IoU: 0.9011
+2025-07-12 13:33:32,711 - INFO - Epoch 475/500
+2025-07-12 13:33:32,711 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:32,711 - INFO - Train Dice: 0.9157, Val Dice: 0.9462
+2025-07-12 13:33:32,711 - INFO - Train IoU: 0.8519, Val IoU: 0.9012
+2025-07-12 13:33:35,889 - INFO - Epoch 476/500
+2025-07-12 13:33:35,889 - INFO - Train Loss: 0.0030, Val Loss: 0.0024
+2025-07-12 13:33:35,889 - INFO - Train Dice: 0.9181, Val Dice: 0.9464
+2025-07-12 13:33:35,889 - INFO - Train IoU: 0.8557, Val IoU: 0.9015
+2025-07-12 13:33:38,903 - INFO - Epoch 477/500
+2025-07-12 13:33:38,903 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:38,903 - INFO - Train Dice: 0.9142, Val Dice: 0.9467
+2025-07-12 13:33:38,903 - INFO - Train IoU: 0.8496, Val IoU: 0.9020
+2025-07-12 13:33:41,909 - INFO - Epoch 478/500
+2025-07-12 13:33:41,909 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:33:41,910 - INFO - Train Dice: 0.9144, Val Dice: 0.9464
+2025-07-12 13:33:41,910 - INFO - Train IoU: 0.8500, Val IoU: 0.9016
+2025-07-12 13:33:44,902 - INFO - Epoch 479/500
+2025-07-12 13:33:44,902 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:44,902 - INFO - Train Dice: 0.9161, Val Dice: 0.9463
+2025-07-12 13:33:44,902 - INFO - Train IoU: 0.8525, Val IoU: 0.9013
+2025-07-12 13:33:47,898 - INFO - Epoch 480/500
+2025-07-12 13:33:47,898 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:47,898 - INFO - Train Dice: 0.9170, Val Dice: 0.9462
+2025-07-12 13:33:47,898 - INFO - Train IoU: 0.8540, Val IoU: 0.9011
+2025-07-12 13:33:51,091 - INFO - Epoch 481/500
+2025-07-12 13:33:51,092 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:33:51,092 - INFO - Train Dice: 0.9147, Val Dice: 0.9463
+2025-07-12 13:33:51,092 - INFO - Train IoU: 0.8503, Val IoU: 0.9014
+2025-07-12 13:33:54,158 - INFO - Epoch 482/500
+2025-07-12 13:33:54,158 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:33:54,158 - INFO - Train Dice: 0.9171, Val Dice: 0.9459
+2025-07-12 13:33:54,158 - INFO - Train IoU: 0.8540, Val IoU: 0.9007
+2025-07-12 13:33:57,190 - INFO - Epoch 483/500
+2025-07-12 13:33:57,190 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:33:57,190 - INFO - Train Dice: 0.9165, Val Dice: 0.9463
+2025-07-12 13:33:57,190 - INFO - Train IoU: 0.8531, Val IoU: 0.9014
+2025-07-12 13:34:00,246 - INFO - Epoch 484/500
+2025-07-12 13:34:00,246 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:34:00,246 - INFO - Train Dice: 0.9122, Val Dice: 0.9464
+2025-07-12 13:34:00,246 - INFO - Train IoU: 0.8466, Val IoU: 0.9015
+2025-07-12 13:34:03,294 - INFO - Epoch 485/500
+2025-07-12 13:34:03,294 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:34:03,294 - INFO - Train Dice: 0.9214, Val Dice: 0.9463
+2025-07-12 13:34:03,295 - INFO - Train IoU: 0.8609, Val IoU: 0.9014
+2025-07-12 13:34:06,511 - INFO - Epoch 486/500
+2025-07-12 13:34:06,512 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:34:06,512 - INFO - Train Dice: 0.9193, Val Dice: 0.9465
+2025-07-12 13:34:06,512 - INFO - Train IoU: 0.8575, Val IoU: 0.9016
+2025-07-12 13:34:09,612 - INFO - Epoch 487/500
+2025-07-12 13:34:09,612 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:34:09,612 - INFO - Train Dice: 0.9146, Val Dice: 0.9463
+2025-07-12 13:34:09,612 - INFO - Train IoU: 0.8502, Val IoU: 0.9013
+2025-07-12 13:34:12,712 - INFO - Epoch 488/500
+2025-07-12 13:34:12,712 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:34:12,712 - INFO - Train Dice: 0.9161, Val Dice: 0.9462
+2025-07-12 13:34:12,712 - INFO - Train IoU: 0.8525, Val IoU: 0.9011
+2025-07-12 13:34:15,720 - INFO - Epoch 489/500
+2025-07-12 13:34:15,721 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:34:15,721 - INFO - Train Dice: 0.9172, Val Dice: 0.9464
+2025-07-12 13:34:15,721 - INFO - Train IoU: 0.8542, Val IoU: 0.9016
+2025-07-12 13:34:18,860 - INFO - Epoch 490/500
+2025-07-12 13:34:18,860 - INFO - Train Loss: 0.0029, Val Loss: 0.0023
+2025-07-12 13:34:18,860 - INFO - Train Dice: 0.9238, Val Dice: 0.9465
+2025-07-12 13:34:18,860 - INFO - Train IoU: 0.8645, Val IoU: 0.9017
+2025-07-12 13:34:22,233 - INFO - Epoch 491/500
+2025-07-12 13:34:22,233 - INFO - Train Loss: 0.0031, Val Loss: 0.0023
+2025-07-12 13:34:22,233 - INFO - Train Dice: 0.9179, Val Dice: 0.9467
+2025-07-12 13:34:22,233 - INFO - Train IoU: 0.8552, Val IoU: 0.9020
+2025-07-12 13:34:25,418 - INFO - Epoch 492/500
+2025-07-12 13:34:25,418 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:34:25,418 - INFO - Train Dice: 0.9145, Val Dice: 0.9467
+2025-07-12 13:34:25,418 - INFO - Train IoU: 0.8500, Val IoU: 0.9021
+2025-07-12 13:34:28,523 - INFO - Epoch 493/500
+2025-07-12 13:34:28,523 - INFO - Train Loss: 0.0032, Val Loss: 0.0023
+2025-07-12 13:34:28,523 - INFO - Train Dice: 0.9150, Val Dice: 0.9469
+2025-07-12 13:34:28,523 - INFO - Train IoU: 0.8508, Val IoU: 0.9024
+2025-07-12 13:34:28,740 - INFO - Best model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:34:31,940 - INFO - Epoch 494/500
+2025-07-12 13:34:31,940 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:34:31,940 - INFO - Train Dice: 0.9132, Val Dice: 0.9463
+2025-07-12 13:34:31,940 - INFO - Train IoU: 0.8481, Val IoU: 0.9014
+2025-07-12 13:34:34,971 - INFO - Epoch 495/500
+2025-07-12 13:34:34,971 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:34:34,971 - INFO - Train Dice: 0.9197, Val Dice: 0.9465
+2025-07-12 13:34:34,971 - INFO - Train IoU: 0.8581, Val IoU: 0.9017
+2025-07-12 13:34:38,460 - INFO - Epoch 496/500
+2025-07-12 13:34:38,460 - INFO - Train Loss: 0.0033, Val Loss: 0.0024
+2025-07-12 13:34:38,460 - INFO - Train Dice: 0.9128, Val Dice: 0.9463
+2025-07-12 13:34:38,460 - INFO - Train IoU: 0.8474, Val IoU: 0.9014
+2025-07-12 13:34:41,525 - INFO - Epoch 497/500
+2025-07-12 13:34:41,525 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:34:41,525 - INFO - Train Dice: 0.9144, Val Dice: 0.9466
+2025-07-12 13:34:41,525 - INFO - Train IoU: 0.8499, Val IoU: 0.9018
+2025-07-12 13:34:44,541 - INFO - Epoch 498/500
+2025-07-12 13:34:44,541 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:34:44,541 - INFO - Train Dice: 0.9179, Val Dice: 0.9466
+2025-07-12 13:34:44,541 - INFO - Train IoU: 0.8553, Val IoU: 0.9018
+2025-07-12 13:34:47,611 - INFO - Epoch 499/500
+2025-07-12 13:34:47,611 - INFO - Train Loss: 0.0031, Val Loss: 0.0024
+2025-07-12 13:34:47,612 - INFO - Train Dice: 0.9168, Val Dice: 0.9459
+2025-07-12 13:34:47,612 - INFO - Train IoU: 0.8535, Val IoU: 0.9007
+2025-07-12 13:34:50,637 - INFO - Epoch 500/500
+2025-07-12 13:34:50,637 - INFO - Train Loss: 0.0032, Val Loss: 0.0024
+2025-07-12 13:34:50,637 - INFO - Train Dice: 0.9135, Val Dice: 0.9463
+2025-07-12 13:34:50,637 - INFO - Train IoU: 0.8485, Val IoU: 0.9014
+2025-07-12 13:34:51,224 - INFO - Fine-tuning history saved to CSV: ./results/finetuning_segmentation_cvc_clinicdb_training_history.csv
+2025-07-12 13:34:51,232 - INFO - Results saved to ./ft_results/finetuned_cvc_clinicdb
+2025-07-12 13:34:51,442 - INFO - Fine-tuned model saved to ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+2025-07-12 13:34:51,443 - INFO - Final summary saved to ./results/finetuning_summary.json
+2025-07-12 13:34:51,444 - INFO - Fine-tuning completed!

@@ -1,0 +1,20 @@
+{
+  "finetuning_timestamp": "2025-07-12T13:34:51.443426",
+  "foundation_model_path": "./models/foundation_model_final.pth",
+  "tasks_completed": 1,
+  "results": {
+    "segmentation_cvc_clinicdb": {
+      "final_loss": 0.002357859474917253,
+      "final_metrics": {
+        "loss": 0.002357859474917253,
+        "accuracy": 0.9821756998697917,
+        "mean_iou": 0.9013650528190611,
+        "mean_dice": 0.9462954151743883,
+        "iou_Class_0": 0.9805750977229384,
+        "dice_Class_0": 0.99019229197651,
+        "iou_Class_1": 0.8221550079151838,
+        "dice_Class_1": 0.9023985383722665
+      }
+    }
+  }
+}

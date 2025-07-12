@@ -1,0 +1,32 @@
+FOUNDATION MODEL INFERENCE REPORT
+==================================================
+
+Generated: 2025-07-12 13:35:29
+Task: segmentation
+Dataset: cvc_clinicdb
+Dataset Path: data/segmentation/cvc_clinicdb_test
+Model Path: ./ft_results/finetuned_cvc_clinicdb/finetuned_cvc_clinicdb.pth
+Output Directory: inference_results/cvc_clinicdb_test
+
+SUMMARY
+--------------------
+Total samples processed: 13
+Available datasets in model: ['medseg_covid', 'medseg_liver', 'cvc_clinicdb', 'kvasir_seg', 'brain_stroke', 'brain_stroke_external']
+
+METRICS
+--------------------
+avg_dice_score: 0.8292
+std_dice_score: 0.1050
+avg_iou: 0.7211
+std_iou: 0.1441
+avg_pixel_accuracy: 0.9862
+std_pixel_accuracy: 0.0070
+avg_sensitivity: 0.9412
+std_sensitivity: 0.0418
+avg_specificity: 0.9878
+std_specificity: 0.0078
+avg_precision: 0.7546
+std_precision: 0.1535
+avg_f1_score: 0.8292
+std_f1_score: 0.1050
+num_samples: 13

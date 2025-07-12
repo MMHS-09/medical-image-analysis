@@ -175,40 +175,121 @@ class MultiHeadAttentionClassifier(nn.Module):
         return self.classifier(x)
 
 
-# Enhanced UNet Decoder with CBAM
+# Multi-Head Attention for Segmentation
+class MultiHeadAttentionSegmentation(nn.Module):
+    def __init__(self, feature_dim, num_heads=8, dropout=0.2):
+        super().__init__()
+        self.feature_dim = feature_dim
+        self.num_heads = num_heads
+        self.head_dim = feature_dim // num_heads
+        
+        assert feature_dim % num_heads == 0, "feature_dim must be divisible by num_heads"
+        
+        # Multi-head self-attention
+        self.query = nn.Linear(feature_dim, feature_dim)
+        self.key = nn.Linear(feature_dim, feature_dim)
+        self.value = nn.Linear(feature_dim, feature_dim)
+        
+        self.attention_dropout = nn.Dropout(dropout)
+        self.output_projection = nn.Linear(feature_dim, feature_dim)
+        
+        # Layer normalization for better training stability
+        self.layer_norm = nn.LayerNorm(feature_dim)
+    
+    def forward(self, x):
+        B, C, H, W = x.shape
+        
+        # Flatten spatial dimensions
+        x_flat = x.view(B, C, H * W).permute(0, 2, 1)  # (B, H*W, C)
+        
+        # Store for residual connection
+        residual = x_flat
+        
+        # Apply layer norm
+        x_flat = self.layer_norm(x_flat)
+        
+        # Multi-head self-attention
+        Q = self.query(x_flat).view(B, H * W, self.num_heads, self.head_dim).transpose(1, 2)
+        K = self.key(x_flat).view(B, H * W, self.num_heads, self.head_dim).transpose(1, 2)
+        V = self.value(x_flat).view(B, H * W, self.num_heads, self.head_dim).transpose(1, 2)
+        
+        # Scaled dot-product attention
+        scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(self.head_dim)
+        attention_weights = F.softmax(scores, dim=-1)
+        attention_weights = self.attention_dropout(attention_weights)
+        
+        attended = torch.matmul(attention_weights, V)
+        attended = attended.transpose(1, 2).contiguous().view(B, H * W, C)
+        
+        # Output projection
+        attended = self.output_projection(attended)
+        
+        # Residual connection
+        attended = attended + residual
+        
+        # Reshape back to spatial dimensions
+        attended = attended.permute(0, 2, 1).view(B, C, H, W)
+        
+        return attended
+
+
+# Enhanced UNet Decoder with CBAM and Multi-Head Attention
 class EnhancedUNetDecoder(nn.Module):
-    """Enhanced UNet-style decoder with CBAM attention for segmentation"""
+    """Enhanced UNet-style decoder with CBAM attention and multi-head attention for segmentation
+    
+    Architecture Order (IMPROVED):
+    1. CBAM - Focus on important spatial and channel features
+    2. Multi-Head Attention - Model relationships between focused features  
+    3. DecoderBlock - Process and transform the well-attended features
+    """
     
     def __init__(
         self,
         encoder_channels,
         decoder_channels=(256, 128, 64, 32, 16),
         num_classes=1,
-        dropout=0.2
+        dropout=0.2,
+        num_attention_heads=8
     ):
         super().__init__()
         
         # Reverse encoder channels for decoder
         encoder_channels = encoder_channels[::-1]
         
-        # Create decoder blocks with CBAM
+        # Create components for each decoder stage
         self.decoder_blocks = nn.ModuleList()
         self.cbam_modules = nn.ModuleList()
+        self.attention_modules = nn.ModuleList()
         
         for i, (enc_ch, dec_ch) in enumerate(zip(encoder_channels, decoder_channels)):
             if i == 0:
-                # First decoder block (bottleneck)
+                # First stage: only encoder features (bottleneck)
+                input_ch = enc_ch
+                
+                # CBAM works on input features
+                self.cbam_modules.append(CBAM(input_ch))
+                # Attention works on input features  
+                self.attention_modules.append(
+                    MultiHeadAttentionSegmentation(input_ch, num_heads=num_attention_heads, dropout=dropout)
+                )
+                # Decoder transforms from input to output channels
                 self.decoder_blocks.append(
-                    DecoderBlock(enc_ch, dec_ch, dropout=dropout)
+                    DecoderBlock(input_ch, dec_ch, dropout=dropout)
                 )
             else:
-                # Skip connections from encoder
-                self.decoder_blocks.append(
-                    DecoderBlock(enc_ch + decoder_channels[i-1], dec_ch, dropout=dropout)
+                # Subsequent stages: previous decoder output + skip connection
+                input_ch = enc_ch + decoder_channels[i-1]
+                
+                # CBAM works on concatenated features
+                self.cbam_modules.append(CBAM(input_ch))
+                # Attention works on concatenated features
+                self.attention_modules.append(
+                    MultiHeadAttentionSegmentation(input_ch, num_heads=num_attention_heads, dropout=dropout)
                 )
-            
-            # Add CBAM for each decoder block
-            self.cbam_modules.append(CBAM(dec_ch))
+                # Decoder transforms from concatenated to output channels
+                self.decoder_blocks.append(
+                    DecoderBlock(input_ch, dec_ch, dropout=dropout)
+                )
         
         # Final classification layer
         self.final_conv = nn.Conv2d(decoder_channels[-1], num_classes, kernel_size=1)
@@ -219,17 +300,29 @@ class EnhancedUNetDecoder(nn.Module):
         
         x = features[0]  # Start with deepest features
         
-        for i, (decoder_block, cbam) in enumerate(zip(self.decoder_blocks, self.cbam_modules)):
+        for i, (decoder_block, cbam, attention) in enumerate(zip(self.decoder_blocks, self.cbam_modules, self.attention_modules)):
             if i == 0:
+                # First stage: Apply new order to bottleneck features
+                # 1. CBAM - Focus on important features first
+                x = cbam(x)
+                # 2. Multi-Head Attention - Model feature relationships
+                x = attention(x)
+                # 3. DecoderBlock - Transform focused and attended features
                 x = decoder_block(x)
             else:
-                # Upsample and concatenate with skip connection
+                # Subsequent stages: Handle skip connections then apply new order
+                # Upsample current features to match skip connection size
                 x = F.interpolate(x, size=features[i].shape[-2:], mode='bilinear', align_corners=False)
+                # Concatenate with skip connection
                 x = torch.cat([x, features[i]], dim=1)
+                
+                # Apply improved order to combined features:
+                # 1. CBAM - Focus on important combined features
+                x = cbam(x)
+                # 2. Multi-Head Attention - Model relationships in combined features  
+                x = attention(x)
+                # 3. DecoderBlock - Transform the well-attended combined features
                 x = decoder_block(x)
-            
-            # Apply CBAM attention
-            x = cbam(x)
         
         # Final upsampling to input size
         x = F.interpolate(x, size=input_size, mode='bilinear', align_corners=False)
@@ -323,7 +416,8 @@ class FoundationModel(nn.Module):
                     encoder_channels=self.feature_dims,
                     decoder_channels=(256, 128, 64, 32, 16),
                     num_classes=num_classes,
-                    dropout=dropout
+                    dropout=dropout,
+                    num_attention_heads=self.num_attention_heads
                 )
             else:
                 # Original UNet decoder
@@ -398,7 +492,8 @@ class FoundationModel(nn.Module):
                 encoder_channels=self.feature_dims,
                 decoder_channels=(256, 128, 64, 32, 16),
                 num_classes=num_classes,
-                dropout=dropout
+                dropout=dropout,
+                num_attention_heads=self.num_attention_heads
             )
         else:
             # Original UNet decoder

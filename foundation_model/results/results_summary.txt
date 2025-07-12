@@ -1,0 +1,126 @@
+Medical Image Analysis - Foundation Model Results
+==================================================
+
+Dataset: classification_brain_mri_nd5
+------------------------------
+loss: 0.0000
+accuracy: 0.9994
+precision: 0.9994
+recall: 0.9994
+f1_score: 0.9994
+precision_glioma: 1.0000
+recall_glioma: 0.9982
+f1_glioma: 0.9991
+precision_meningioma: 0.9978
+recall_meningioma: 1.0000
+f1_meningioma: 0.9989
+precision_none: 1.0000
+recall_none: 1.0000
+f1_none: 1.0000
+precision_pituitary: 1.0000
+recall_pituitary: 1.0000
+f1_pituitary: 1.0000
+
+Dataset: classification_hf_brain_tumor
+------------------------------
+loss: 0.0001
+accuracy: 0.9993
+precision: 0.9993
+recall: 0.9993
+f1_score: 0.9993
+precision_glioma: 1.0000
+recall_glioma: 1.0000
+f1_glioma: 1.0000
+precision_meningioma: 1.0000
+recall_meningioma: 0.9972
+f1_meningioma: 0.9986
+precision_none: 1.0000
+recall_none: 1.0000
+f1_none: 1.0000
+precision_pituitary: 0.9971
+recall_pituitary: 1.0000
+f1_pituitary: 0.9986
+
+Dataset: classification_pancreas
+------------------------------
+loss: 0.0000
+accuracy: 1.0000
+precision: 1.0000
+recall: 1.0000
+f1_score: 1.0000
+precision_NPancreas: 1.0000
+recall_NPancreas: 1.0000
+f1_NPancreas: 1.0000
+precision_PPancreas: 1.0000
+recall_PPancreas: 1.0000
+f1_PPancreas: 1.0000
+
+Dataset: classification_breast_cancer
+------------------------------
+loss: 0.0004
+accuracy: 1.0000
+precision: 1.0000
+recall: 1.0000
+f1_score: 1.0000
+precision_Cancer: 1.0000
+recall_Cancer: 1.0000
+f1_Cancer: 1.0000
+precision_NonCancer: 1.0000
+recall_NonCancer: 1.0000
+f1_NonCancer: 1.0000
+
+Dataset: segmentation_medseg_covid
+------------------------------
+loss: 0.0226
+accuracy: 0.9814
+mean_iou: 0.4907
+mean_dice: 0.4953
+iou_Class_0: 0.9814
+dice_Class_0: 0.9906
+iou_Class_1: 0.0000
+dice_Class_1: 0.0000
+
+Dataset: segmentation_medseg_liver
+------------------------------
+loss: 0.0060
+accuracy: 0.9950
+mean_iou: 0.9322
+mean_dice: 0.9638
+iou_Class_0: 0.9948
+dice_Class_0: 0.9974
+iou_Class_1: 0.8695
+dice_Class_1: 0.9302
+
+Dataset: segmentation_cvc_clinicdb
+------------------------------
+loss: 0.0023
+accuracy: 0.9814
+mean_iou: 0.8963
+mean_dice: 0.9432
+iou_Class_0: 0.9798
+dice_Class_0: 0.9898
+iou_Class_1: 0.8127
+dice_Class_1: 0.8967
+
+Dataset: segmentation_kvasir_seg
+------------------------------
+loss: 0.0046
+accuracy: 0.9612
+mean_iou: 0.8668
+mean_dice: 0.9262
+iou_Class_0: 0.9550
+dice_Class_0: 0.9770
+iou_Class_1: 0.7785
+dice_Class_1: 0.8755
+
+Dataset: segmentation_brain_stroke
+------------------------------
+loss: 0.0017
+accuracy: 0.9964
+mean_iou: 0.7293
+mean_dice: 0.8152
+iou_Class_0: 0.9964
+dice_Class_0: 0.9982
+iou_Class_1: 0.4622
+dice_Class_1: 0.6322
+
